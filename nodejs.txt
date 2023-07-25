@@ -1,0 +1,205 @@
+--->MVC 
+    MVC stands for Model-View-Controller, which is a software architectural pattern commonly used in the development of web applications 
+    it has 3 parts
+    model view controller
+    Model - It maintains the data of the application. It is the database part of the
+            application.
+    View - The View is responsible for presenting the data to the user. It handles the user interface,
+            displaying the information retrieved from the Model in a way that is understandable and visually appealing.
+    Controller - The Controller acts as an intermediary between the Model and the View. It receives user input from the View,
+                 processes it, and interacts with the Model to retrieve the necessary data or update it as needed.
+
+
+--->REPL
+
+--->NPM 
+     node package manager
+     npm allows developers to install, update, and uninstall packages easily.
+
+--->RENDER 
+   - The res.render() function is used to render a view.
+
+--->response.write() - is used to display the normal text and Response. you can send
+     multiple responses.
+
+--->API - (APPLICATION PROGRAMMING INTERFACE) - the connection between the browser
+    and server
+     Request: The client application sends a request to the server application using a specific API endpoint. The request typically includes information about what data or action the client wants from the server.
+
+    Processing: The server receives the request, processes it, and performs the necessary actions based on the information provided by the client.
+
+    Response: After processing the request, the server sends back a response to the client. The response includes the requested data or the outcome of the action.
+
+    Data Format: APIs use standard data formats, such as JSON or XML, to structure the data exchanged between the client and server. This ensures that both applications understand and can interpret the information correctly.
+
+--->res. end() - if we don't give this, the program won't end, it will load any file to fetch.
+
+--->diff b/w res.render and res.send();
+    res.send is used to send a response back to the client with data in the form of plain text, HTML, JSON, or any other format supported by the server.
+    res.render() is used in server side rendering. It is used to render a specified template (view) along with data into HTML and then send that HTML back to the client.
+    res.render is used to combine the template with data and generate the final HTML, which is then sent as a response to the client. 
+    This enables dynamic content generation on the server before sending the complete HTML to the client.
+
+--->Server-Side Rendering (SSR) is a technique used in web development to render web pages on the server and send the fully rendered HTML page to the client's browser. 
+    Request: When you (the client) want to visit a web page, you send a request to the server. It's like asking the server for the content you want to see.
+
+    Data and Template: The server receives your request and starts gathering all the necessary data to create the web page. This data can come from databases,
+     APIs, or other sources. The server also has a pre-designed template, which is like a blueprint or a skeleton of how the web page should look.
+
+    Server-Side Rendering: The magic happens here! The server takes the collected data and inserts it into the template in the right places. It's like filling in 
+    the blanks in the blueprint with real content.
+
+    Fully Rendered Page: After combining the data with the template, the server creates a complete HTML page, ready to be displayed in your browser. This HTML page
+     contains all the dynamic content you requested.
+
+    Sending the Response: The server sends this fully rendered HTML page back to your browser as a response to your request.
+
+    Display: When your browser receives the HTML page, it can instantly display the complete web page, with all the content visible and ready to interact with.
+     No extra processing is needed on the client-side for the initial display.
+
+--->STREAMS
+
+    Streams provide a flexible way to work with large amounts of data by dividing it into smaller chunks and processing it as it arrives instead of loading it into memory.
+
+    Imagine you have a large container of water, and you want to transfer it to another container. Instead of picking up the entire heavy container and moving it all at once,
+     you connect a pipe between the two containers. Now, the water flows through the pipe in smaller amounts, making the transfer easier and more efficient.
+
+    In Node.js, streams work similarly:
+
+    You have a large amount of data (like a big file or network data) that you want to process.
+
+    Instead of loading the entire data into memory all at once, you use streams to process it in smaller chunks as it becomes available.
+
+    These smaller chunks of data flow through the stream like water flows through a pipe, making it easier to handle and work with the data.
+
+    Streams are particularly useful for dealing with large data or real-time data, as they allow you to process it efficiently without consuming too much memory.
+
+--->BUFFER
+
+--->MODULES - Modules are JavaScript libraries you can include in your project.
+              core modules - - It is Built-in module
+                                HTTP, URL, path, fs, os, query string
+              Local modules -- We can create our own modules and we can use it in our Project
+                               We can export this module using the module. Exports
+              NPM Third-party Modules-
+        
+--->LOGGER 
+
+--->MORGON
+    When you run your application and send HTTP requests to it, Morgan will automatically log the request details to the console.
+    The log output will include information like the HTTP method, URL, status code, response time, and more. 
+
+--->MIDDLEWARE
+
+
+    if any request comes from the client it'll go through each middleware function after it
+    we'll get a response. this cycle is called the REQUEST RESPONSE CYCLE.
+
+    Types of middleware - Application-level middleware, Router-level middleware, Built-in
+    middleware, Error-handling middleware, and Third-party middleware.
+
+    Router-level middleware 
+        middleware functions that are specifically applied to a particular route or a group of routes in a web application.
+    Application -level middleware
+        Application-level middleware in the context of web development refers to middleware functions that are applied
+        globally to an entire web application, regardless of the specific routes or URLs being accessed. 
+    Built-in-middleware
+        These built-in middleware functions are provided by Express.js and are designed to handle common tasks and functionalities in web applications.
+        express.static()
+           --express.static is a built-in middleware function in Express.js that is used to serve static files, such as HTML, CSS, images,
+             and JavaScript, to the web browser. 
+             Example:
+                    Imagine you have an index.html file that is the main page of your website, and you have a styles.css file that contains the styles to make your website look 
+                    beautiful. When a user visits your website, you need to send these files to their browser so that they can see the content and the design.
+                    This is where express.static comes in:
+                    You specify a folder on your server (let's call it the "static folder") where all your static files are stored, like index.html, styles.css, images, and more.
+                    You use express.static middleware to tell Express.js that any file requested by the user should first be looked for in that "static folder."
+                    When a user visits your website and requests the index.html or styles.css, Express.js automatically finds those files in the "static folder"
+                    and sends them to the user's browser.
+                    eg:app.use(express.static(path.join(__dirname, 'public')));
+           --express.json()
+                   express.json is a built-in middleware function in Express.js that is used to parse incoming JSON payloads from the request body.
+                   In simpler terms, it helps your server understand and work with data that is sent to it in JSON format.
+                   However, when the JSON data arrives at the server, it is initially received as a string of text. The server needs to convert this string representation
+                   of JSON into a JavaScript object, so it can work with the data in a structured and meaningful way. This process of converting the incoming JSON data (string)
+                   into a JavaScript object is called "parsing."
+           --express.urlencoded()
+                  express.urlencoded is a built-in middleware function in Express.js that is used to parse incoming URL-encoded form data from the request body.
+                  In simpler terms, it helps your server understand and work with data sent from HTML forms.
+                  when a user submits a form on a website (for example, a login form or a contact form), the data entered into the form fields needs
+                  to be sent to the server so that it can be processed or saved. By default, HTML forms use the URL-encoded format to send this data to the server.
+                  Without using express.urlencoded middleware, your server would receive the data as a raw string of text.
+                  By adding express.urlencoded() as middleware, Express.js automatically parses the incoming URL-encoded form data for you.
+                  it takes the URL-encoded data and converts it into a JavaScript object, where each form field name becomes a key,
+                  and its corresponding value becomes the value in the object. 
+
+                  When a user submits an HTML form, the form data is sent to the server using the URL-encoded format. In this format, the form field names 
+                  and their corresponding values are combined into a single string with key-value pairs, and then the whole string is URL-encoded.
+                  eg:key1=value1&key2=value2&key3=value3
+           --express.Router()
+                  As your web application grows, you may have multiple route handlers for different URLs, and managing them all in one file can become challenging and less organized. 
+                  With express.Router, you can define routes and their respective route handlers in separate files and then mount them in your main application. 
+                  in Express.js allows you to create modular and organized route handlers by grouping related routes together in separate files. 
+                  This helps improve code readability and maintainability as your application grows.      
+           --express.session
+           --express.cookieParser
+
+--->App.use()
+
+--->App.set()
+
+    In summary, app.use() is for setting up middleware to process incoming requests, while app.set() is for configuring various options and characteristics of your application. 
+
+--->App.all
+
+--->Http vs Https
+      HTTP and HTTPS are both communication protocols used for transmitting data over the internet
+      The main difference between HTTP and HTTPS lies in the level of security provided when transmitting data over the internet:
+
+      HTTP Stands for "Hypertext Transfer Protocol."
+      Plain text communication: Data is transmitted in plain text format, which means it is not encrypted.
+      Less secure: Since the data is not encrypted, it can be easily intercepted and read by malicious parties during transmission. This makes it vulnerable to security threats
+      such as eavesdropping and data tampering.
+
+      HTTPS Stands for "Hypertext Transfer Protocol Secure."
+      Secure communication: Data is encrypted before transmission, using SSL/TLS (Secure Sockets Layer/Transport Layer Security) protocols, providing an additional layer of security.
+
+
+--->Http methods
+      GET: The GET method is used to retrieve data from the server. It requests the server to send the specified resource back to the client.
+           GET requests are typically used for reading data, and they should not have any side effects on the server.
+      POST: The POST method is used to submit data to the server to create a new resource. It is commonly used for submitting form data, uploading files,
+            or performing other actions that result in the creation of new data on the server.
+      PUT : The PUT method is used to update an entire resource on the server.
+            If the resource already exists on the server, the entire resource will be replaced with the new data you provided in the PUT request.
+      PATCH : The PATCH method is used to make partial updates to a resource on the server.
+              PATCH is used when you want to update only a few attributes of a resource without affecting the rest of the data.
+
+--->package.json()
+
+--->Query parameters - 
+        The query parameter is the variable whose value is passed in the URL in the form of key-value pair at the end of the URL after a question mark (?). Forexample, www.geeksforgeeks.org? 
+        name=abc where 'name' is the key of the query parameter whose value is 'abc'.
+--->params 
+        both "params" and "query" are ways to pass data from the client (e.g., a web browser) to the server in the URL.
+        app.get('/users/:id', (req, res) => {
+        const userId = req.params.id; // Access the value of the "id" parameter
+        res.send(`User ID: ${userId}`);
+        });
+--->View Engine
+        In simple terms, a view engine is a tool used in web development to dynamically generate the HTML code that will be sent to the user's web browser.
+        It helps to create dynamic and interactive web pages by combining data from the server with HTML templates.Developers create template files containing HTML code with special placeholders
+        or variables where dynamic data will be inserted.When a user makes a request to a web application, the server processes the request and retrieves the necessary data.
+        The view engine takes the retrieved data and combines it with the HTML template, replacing the placeholders with the actual data values.
+        The view engine generates a complete HTML page with the dynamic data merged into the template.
+        eg:handleBars,ejs...etc
+
+--->cors 
+       CORS stands for Cross-Origin Resource Sharing. It is a security feature implemented in web browsers that controls how web pages
+       from one domain (origin) can request and interact with resources hosted on another domain.
+       It protects users from unauthorized access to sensitive data and resources. 
+       (more details needed)
+
+--->Preflight requests
+
+--->PM2 -r. It allows you to keep applications alive forever

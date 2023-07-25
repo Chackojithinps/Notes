@@ -1,0 +1,91 @@
+     Everything inside a javascript happens inside an execution context.
+     inside execution context memory and code component aret there.(it is also know variable environment and theread of execution)
+     Global execution context was created and it is put inside callStack.   
+ 
+--->Even before the execution of a single line the memory is allocated for every variables and functins
+--->when ever the javascript runs the global object also will created. that is window in case of browsers. 
+    in the global lever this === window
+    when ever the execution context is created the this will also created along with execution context.
+--->for the function that function code is allocated in the memory allocation phase.
+---> javascript is syncrhronous single threaded language.
+     single threaded means js can execute one command at a time in a specific order.
+--->Hoisting means we can access the variable and functins even before we are initializing it .
+
+--->Scope means where we can access a specific variable and functins in our code 
+
+--->Why callstack?
+    The call stack maintains the order of function calls
+    When a function is called in JavaScript, it creates an execution context that contains information about the function, its parameters,
+    local variables, and the current position in the code.
+    The JavaScript engine starts executing the code inside that function. If that function, in turn, calls another function, 
+    the new function's plate is added on top of the previous one, creating a stack of function calls.
+    When a function finishes executing, it's like removing a plate from the top of the stack, and the program goes back to the previous
+    function in the stack to continue its execution.
+    The call stack ensures that JavaScript executes functions in the order they were called.
+--->Event loop
+    it plays a crucial role in handling asynchronous operations and events in a single-threaded environment.
+    When your JavaScript code starts executing, it creates the global execution context and forms the execution stack.
+    The execution stack is a stack of function calls that keeps track of the order in which functions are called and executed.
+    JavaScript maintains an event queue, which is a queue that stores pending events and tasks.
+    Events can be user interactions (e.g., click, keypress) or asynchronous operations (e.g., timers, network requests) that have not yet completed.
+    The event loop continuously checks the execution stack and the event queue to determine what task to execute next.
+    If the execution stack is empty, the event loop looks at the event queue to see if there are any pending events or tasks to process.
+    jif there are events or tasks in the queue, the event loop picks the oldest one (first in the queue that finishes the task) and moves it to the execution stack.
+
+
+--->Lexical environment is created whenever the the exectution context is created.
+    Lexical environment is the local memory + the referece to the Lexical environment of the parent
+    parent means where actually that code present.
+    this whole chain of Lexical environment is called scope chain  
+
+--->let and const also allocating memmory (that is what Hoisting).but they are stored in different memory space than global and  
+    we cant access this memeory space before we put values in them . The time where we are assigning values to that variable is temporary dead Zone.
+
+--->Shadowing: Now, when a variable is declared in a certain scope having the same name defined on its outer scope and when we call the variable from the inner scope,
+   the value assigned to the variable in the inner scope is the value that will be stored in the variable in the memory space. This is known as Shadowing or Variable Shadowing. 
+   In JavaScript, the introduction of let and const in ECMAScript 6 along with block scoping allows variable shadowing.
+   we can shadow var variable by let variable but cannot do the opposite. 
+   but we cant shadow let variable by var variable and it is called illegal shadowing.
+
+--->let and const will be in block scope when we write let and const inside {}.(inside block like if condition).
+    but var will be in global scope if we write inside {}.
+
+--->function along with its Lexical scope is bundled together to form a closure.
+
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+   Here it afer the makeFunc get deleted from the global exectution context the myFunc variable still rememebers it lexical scope.
+
+--->First-Class Function: A programming language is said to have First-class functions if functions in that language are treated 
+   like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function.
+   JavaScript treat function as a first-class-citizens. This means that functions are simply a value and are just another type of object.
+
+--->JavaScript is single threaded and synchronous
+
+--->Synchronous: In synchronous programming, tasks are executed one after the other, in a sequential order. Each task must complete before going to the next task.
+                 Synchronous refers to the nature of tasks and how they are handled in a program.That means the nature that it executes in top to bottom order one by one.
+
+
+--->Asynchronous  :The program does not wait for the completion of an particular task and continues executing other code.
+                   This nature is called Asynchronous.
+
+--->Single threaded :Ont task will perform at a time. line by line exectution.
+
+--->Multi threaded : multiple task at a time. it wont wait for a particular task to complete.instead it will execute the next line of code.
+
+--->Blocking refers to operations that block further execution until that operation finishes
+    
+--->non-blocking refers to code that doesn't block execution.
+
+--->Why callback
+    we know that javascript is synchronous. That means code will execute line by line. so if a large operation is want to perform then it will wait for that 
+    particular line of code to complete. so this will affect the efficient and takes time. so using callback we are setting this Asynchronous. that means it wont wait 
+    for the particular code .it will execute the next line of code.

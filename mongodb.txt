@@ -1,0 +1,215 @@
+● what is mongoDb?
+    NoSQL database management System.
+    we can  store, manage, and retrieve large volumes of unstructured or semi-structured data.
+
+● Where is Mongo DB used?
+     Mongo Db is used as a Web application as a back-end database.
+
+● Difference bw relation and non relation database
+     In relational databases, data is organized into tables with rows and columns, and each table has a predefined schema that defines
+     the data types and relationships between tables. Data is stored in a structured manner, and relationships between tables are maintained using foreign keys.
+     it has fixed schema.
+     eg:MySQL, PostgreSQL, ORACLE, MariaDB
+
+     A non-relational database, also known as a NoSQL (Not Only SQL) database, is a type of database management system that does not use the traditional 
+     tabular structure found in relational databases. Instead, it employs various data models, such as key-value, document, column-family, or graph-based models, 
+     to store and manage data in a more flexible and scalable manner.
+     Flexible Schema: NoSQL databases are schema-flexible, meaning each record or document within the database can have different attributes or fields. 
+     This flexibility allows developers to store and retrieve data without a fixed schema, making it ideal for handling dynamic or evolving data structures.
+     eg:- Mongo DB, Apache Cassandra, OrientDB, DynamoDB, google’s -BigTable.
+
+● Collection
+      A collection is a groups of documents. A collection is the equivalent of a table in a relational database system
+
+● document
+     a way to organize and store data 
+     a document is the basic unit of data storage and representation. It is the equivalent of a row or record in a relational database.
+     A document in MongoDB is a JSON-like data structure that consists of field-value pairs,
+     MongoDB internally uses BSON (Binary JSON) to represent and store documents.  
+
+● BSON (Binary json)
+     Binary version of json.
+     BSON - MongoDB stores documents (objects) in a format called BSON. The
+     reason why BSON is used is BSON supports much more datatypes than json
+
+● JSON
+      JSON is a data format  that is easy for humans to read and write 
+      JSON is a text-based data format, and its data is represented using key-value pairs, where keys are strings, and values can be strings,
+      numbers, booleans, arrays, objects, or null.
+
+● Comparison Operators - 
+      $in , $nin , $ne, $eq, $gt ,$lt ,$gte , $lte
+
+●  Logical Operators 
+      - $and, $or, $not, $nor
+
+●  UPSERT
+        upsert() - upsert is a method that is used to insert and update the value in any
+        operation. the MongoDB upsert method is a combination of insert and update.
+        By default, the upsert method's value is always false. If the document matches
+        the specified query and the method's value is set to true, the update operation
+        will update the matching documents. If the document does not match the
+        specified query and the method's value is true, this method inserts a new
+        document in the collection. This new document contains the fields that indicate
+        the operation.
+
+●  Array update Operators - 
+        $push , $pop , $pull , $pullall , $ - positional operator$all() , $size()$addtoset()
+
+●  EXISTS
+        $exists - checking the existence of the field in the specified collection using the $exists operator.
+
+●  $ELEMMATCH
+   
+●  Field Filters - db.person.find({}, { name:1 , age:0})
+        Field filtering in MongoDB allows you to control which fields are returned in the query results. By specifying which fields to include or exclude,
+ 
+●  $regex -
+      db.person.find({name: {$regex:/rel/i}})  where ever the rel present in the name it will show .
+      $regex - db.person.find({name: {$regex:/^rel/i}}) if name starts with rel then that document shows
+      $regex - db.person.find({name: {$regex:/rel$/i}}) if name ends with rel then that document shows. 
+
+●  Agregation
+     In MongoDB, the aggregation framework allows you to perform advanced data processing and transformation operations on the data stored in collections. 
+     it is a way of processing a large number ofdocuments in a collection by means of passing them through different stages.
+
+●  OUt stage
+      The $out stage is the last stage in the pipeline and it writes the resulting documents to a specified collection. 
+
+●  Unwind
+      Unwind - $unwind Deconstructs an array field from the input documents to output a document for each element.
+      $unwind stage is used to deconstruct an array field in a document and produce a new document for each element in the array.
+      This is particularly useful when you have documents with arrays and want to perform further operations on the individual array elements.
+
+●  aggregation pipeline
+      The aggregation pipeline refers to a specific flow of operations that processes, transforms, and returns results. 
+      It allows you to take a collection of documents (data) and apply a series of steps (stages) to transform, filter, and analyze that data to get meaningful results.
+
+●  AllowDiskuse
+      Allowdiskuse - all aggregation stages can use a maximum of 100 MB of RAM. Use allowDiskUse() to either allow or prohibit writing temporary files on disk
+      when a pipeline stage exceeds the 100 MB limit. Syntax: {allowDiskUse:true}
+
+●  Accumilators
+     $sum, $min, $max, $avg
+
+●  Unary operators
+     $type, $or, $lt, $gt, $and, $multiply
+
+●  Lookup -
+      The $lookup operator is an aggregation operator or an aggregation
+      stage, which is used to join a Document from one collection to a document of
+      another collection of the same database.
+
+●  MongoDB utilities
+      MongoDB utilities, also known as MongoDB tools, are software programs provided by MongoDB to help people manage and work with their MongoDB databases more easily. 
+      MongoDB utilities are a set of tools provided by MongoDB to manage and maintain MongoDB databases.
+      mongoexport-
+        it is used to export data from a MongoDB collection to an external file. It generates a JSON, CSV, or TSV file containing the exported data.
+        Exports MongoDB collection data into JSON or CSV format
+      mongoImport-
+         it is used to import data from an external file (e.g., JSON, CSV, TSV) into a MongoDB collection.
+         Imports MongoDB collection data in JSON or CSV format
+      MongoDumb -
+          It is used to create a binary export of a MongoDB database or specific collections.
+          This tool is commonly used for creating backups of MongoDB data, which can be later restored using mongorestore.
+          A backup is a copy of your database and its contents at a specific point in time. It serves as a safety net, allowing you to recover your
+          data in case of data loss, accidental deletion, hardware failure, or other unforeseen circumstances.   
+          "When you use mongodump to create binary export files in BSON format, you are making a copy of your MongoDB data that captures exactly 
+          how it looks at a specific moment in time. 
+          The advantage of using mongodump is that this snapshot (backup) is in a special binary format called BSON, which is very efficient 
+          and can accurately represent all the different types of data MongoDB uses
+       Mongorestore -
+         used to restore the binary backups of MongoDB, indexes will be recreated
+●  indexes 
+        Indexes - In MongoDB, an index is a data structure that improves the performance of queries by allowing them to quickly locate the specific documents they are looking for.
+
+●  Distinct
+        The distinct() method in MongoDB is primarily used to get a list of unique or distinct values from a specific field in a collection.
+        It provides a way to extract all the different values that exist in that field without any duplicates.
+
+●   Capped collection - 
+        Fixed-size collections are called capped collections in MongoDB. While creating a collection, the user must 
+        specify the collection's maximum size in bytes and the maximum number of documents it would store.
+        Syntax- isCapped()
+        Once the collection reaches its size limit, new documents will replace the oldest ones
+
+●  cap theorm
+
+● Replication 
+    - MongoDB replication is the process of creating a copy of the same data set in more than one MongoDB server.This can be achieved by using a Replica Set.
+      Replication in MongoDB is the process of creating and maintaining copies of the database across multiple servers
+      If the primary node fails, one of the secondaries automatically becomes the new primary, providing seamless failover and allowing the database to remain operational.
+      In a replication setup, the minimum number of servers required to store data is two: one primary server and one secondary server 
+● Replic set-
+     
+● Normalisation
+    helps to avoid repeating the same information multiple times, making your data more efficient and easier to manage. 
+    The goal of normalization is to minimize data duplication and ensure that each piece of information is stored only once, in the most appropriate place.
+
+    Normalized (With Normalization):
+      In a normalized structure, you create two separate collections: one for "products" and another for "categories." Each product document will only store a reference to the category it belongs to using a unique category ID:
+
+      Collection: "categories"
+
+            {
+            "_id": 1,
+            "name": "Electronics"
+            }
+
+      Collection: "products"
+            {
+            "name": "Smartphone",
+            "category_id": 1,
+            "price": 499.99
+            }
+
+      Now, the category information is stored in a separate collection, and each product document only contains a reference to the corresponding category 
+      ID (in this case, 1 for "Electronics").
+      To retrieve the category information inside the product document, you need to perform a separate query to the "categories" collection using the
+      "category_id" as the lookup value.
+      const product = db.products.findOne({ "name": "Smartphone" });
+      const category = db.categories.findOne({ "_id": product.category_id });
+     
+
+     The database becomes easier to manage, and data integrity is improved by normalization
+
+● DEnormalisation
+     Denormalization is the process of intentionally introducing redundancy into a database by combining related data into a single database table or document.
+     The goal of denormalization is to improve read performance and simplify complex queries, even if it results in data duplication. 
+     {
+      "name": "Smartphone",
+      "category": "Electronics",
+      "price": 499.99
+     }
+
+● Sharding
+    Sharding is a database scaling technique used to distribute and manage large amounts of data across multiple servers or nodes, allowing for horizontal scaling.
+    Database sharding is splitting data into smaller chunks, called shards,and storing them across several database servers. Ex - horizontal scaling chunks
+    Sharding enables the database to handle more data and traffic by spreading the load across multiple machines, improving performance, and ensuring high availability.
+     In sharding, data is partitioned into smaller subsets, known as shards. Each shard is an independent database instance responsible for storing a portion of the data. 
+    This partitioning is usually done based on a specific sharding key,
+    Each shard is hosted on a separate server or a group of servers that function as a single logical unit.
+    These servers work together to handle read and write operations for the data within their assigned shard.
+    This allows databases to handle massive amounts of data and provide faster and more scalable performance.
+
+● Scaling
+     used to increasing the capacity and performance of a system, particularly in the context of database management and server resources.
+
+● Vertical Scaling
+    Upgrading the existing resources to handle more work.
+    Vertical scaling, also known as "scaling up," involves increasing the capacity of a single server or machine by adding more resources to it. 
+    In this approach, the system's capacity is increased by upgrading the existing hardware, such as adding more CPU cores, RAM, or storage to a single machine.
+● horizontal Scaling 
+     Adding more servers and distributing the workload among them. It's like expanding the number of pizza ovens and chefs in your restaurant
+     to serve more customers concurrently.
+     the system's capacity is increased by adding more resources in parallel, typically by adding more servers to a server cluster.
+
+● GridFs
+   used to store and retrieve large files, such as images, videos, audio files, and other binary data. It is specifically designed to handle
+   files that exceed the BSON document size limit in MongoDB, which is typically 16 MB. GridFS allows you to break down large files into smaller
+   chunks and store them as separate documents in MongoDB, making it suitable for managing and serving large files efficiently.
+
+● NameSpace
+   In MongoDB, a "namespace" is a term used to refer to a combination of a database name and a collection name.
+    eg:db.products.find().
+●
