@@ -152,9 +152,44 @@
 // }
 // console.log(arr3)
 
-const word = "hello jithin"  
+// const word = "hello jithin"  
 
 
-const k = word.split("").reverse().join("").split(" ").reverse().join(" ")
+// const k = word.split("").reverse().join("").split(" ").reverse().join(" ")
 
-console.log(k)
+// console.log(k)
+
+// const arr= [1000,21,53,66,13,67,90,33,23]
+
+// let sm=arr[0]
+// let ssm= Infinity
+// let lg= arr[0];
+// let llg= 0;
+
+// for(var i=1;i<arr.length;i++){
+//    if(arr[i]>lg){
+//      llg=lg
+//      lg=arr[i];
+     
+//    }else if(arr[i]>llg){
+//      llg=arr[i]
+//    }
+//    if(arr[i]<sm){
+//      ssm=sm;
+//      sm=arr[i];
+//    }else if(arr[i]<ssm){
+//      ssm=arr[i]
+//    }
+// }
+// console.log("smallest",sm)
+// console.log("largest",lg)
+// console.log(ssm)
+// console.log(llg)
+// console.log(ssm+llg)
+
+// Implicit Type Coercion: Number to String
+let num = 42;
+let str =  num+"";
+console.log(typeof(str))
+console.log(str); // Output: "The answer is: 42"
+

@@ -164,7 +164,6 @@
       HTTPS Stands for "Hypertext Transfer Protocol Secure."
       Secure communication: Data is encrypted before transmission, using SSL/TLS (Secure Sockets Layer/Transport Layer Security) protocols, providing an additional layer of security.
 
-
 --->Http methods
       GET: The GET method is used to retrieve data from the server. It requests the server to send the specified resource back to the client.
            GET requests are typically used for reading data, and they should not have any side effects on the server.

@@ -46,6 +46,25 @@
    In JavaScript, the introduction of let and const in ECMAScript 6 along with block scoping allows variable shadowing.
    we can shadow var variable by let variable but cannot do the opposite. 
    but we cant shadow let variable by var variable and it is called illegal shadowing.
+        // Outer Scope
+        const x = 10;
+
+        function outerFunction() {
+        const y = 20;
+
+        function innerFunction() {
+            const x = 5; // Inner variable "x" shadows the outer variable "x"
+            console.log(x); // Output: 5 (Value of the inner "x" variable)
+            console.log(y); // Output: 20 (Accessing the "y" variable from the outer scope)
+        }
+
+        innerFunction();
+        console.log(x); // Output: 10 (Accessing the "x" variable from the outer scope)
+        }
+
+        outerFunction();
+        console.log(x); // Output: 10 (Accessing the "x" variable from the outermost scope)
+
 
 --->let and const will be in block scope when we write let and const inside {}.(inside block like if condition).
     but var will be in global scope if we write inside {}.
@@ -89,3 +108,10 @@
     we know that javascript is synchronous. That means code will execute line by line. so if a large operation is want to perform then it will wait for that 
     particular line of code to complete. so this will affect the efficient and takes time. so using callback we are setting this Asynchronous. that means it wont wait 
     for the particular code .it will execute the next line of code.
+--->what is callback
+
+    a callback is a function that is passed as an argument to another function and is intended to be executed at a later time or under specific conditions. Callbacks are commonly used in
+    asynchronous programming to handle the results of asynchronous operations, such as fetching data from a server, reading files, or responding to user input.
+
+--->The main difference between Primitive and non-primitive data types is that Non-primitive data types are mutable, meaning that their values can be changed after they are created. 
+    And Primitive data types are immutable, meaning that their values cannot be changed once they are created.
