@@ -87,6 +87,7 @@
    like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function.
    JavaScript treat function as a first-class-citizens. This means that functions are simply a value and are just another type of object.
 
+
 --->JavaScript is single threaded and synchronous
 
 --->Synchronous: In synchronous programming, tasks are executed one after the other, in a sequential order. Each task must complete before going to the next task.
@@ -138,3 +139,53 @@ const city = person.address?.city;
 
  ---> json.stringify() This method is used to convert a JavaScript object (or an array) into a JSON string.
      json.parse() -this method is used to convert a JSON string back into a JavaScript object (or array).
+
+--->Memoization is an optimization technique used in computer programming, including JavaScript, to improve the performance of functions by caching the
+ results of expensive function calls. The primary goal of memoization is to avoid redundant computations and reduce the overall processing time by storing 
+ previously computed results and returning them directly when the same inputs are encountered again.
+
+In JavaScript, functions can be computationally expensive, especially if they involve complex calculations or repetitive operations. Memoization 
+allows you to trade off memory usage for improved execution speed, particularly for functions that are called with the same arguments repeatedly.
+
+The memoization process involves creating a cache (usually an object or a Map) to store the function's input and its corresponding output. When the 
+function is called with specific inputs, the memoization system first checks if the result for those inputs already exists in the cache. If it does,
+ the cached result is returned directly without recomputing the function. If the result is not in the cache, the function is executed, and the result
+  is stored in the cache for future use.
+
+  --->IIFE stands for Immediately Invoked Function Expression. It is a JavaScript function that is defined and executed immediately after its creation. 
+
+
+---> Type casting, also known as type conversion, is the process of converting a value from one data type to another.
+
+
+--->Higher-order functions are functions in programming languages that can take other functions as arguments, return functions as results, or both.
+
+    .map
+    .reduce 
+    .filter
+
+--->With call(), an object can use a method belonging to another object.
+
+
+callback
+
+In JavaScript, a callback function is a function that is passed as an argument to another function and is intended to be executed at a later point in time.
+The function receiving the callback can "call back" or execute the provided function once it has completed its task or when a certain event occurs.
+
+Asynchronous operations, such as reading from a file, making network requests, or handling user input, often take time to complete. Instead of waiting
+for these operations to finish, JavaScript can continue executing other tasks while keeping track of the callback function. 
+
+
+A Promise can have three possible states:
+
+Pending: The initial state when the Promise is created and the asynchronous operation is still in progress.
+
+Fulfilled (Resolved): The state when the asynchronous operation is successfully completed, and the Promise has a resulting value. This is also known as "resolved."
+
+Rejected: The state when the asynchronous operation encounters an error or fails to produce the expected result.
+
+Promise.all() is a method in JavaScript that takes an array of Promises as input and returns a new Promise. This new Promise is fulfilled
+ with an array containing the resolved values of all the input Promises, in the same order as the original array of Promises. If any of the input
+  Promises is rejected, the Promise.all() method immediately rejects with the reason of that rejected Promise.
+
+The syntax for using Promise.all() is as follows:

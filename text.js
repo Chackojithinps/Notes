@@ -188,8 +188,66 @@
 // console.log(ssm+llg)
 
 // Implicit Type Coercion: Number to String
-let num = 42;
-let str =  num+"";
-console.log(typeof(str))
-console.log(str); // Output: "The answer is: 42"
+// let num = 42;
+// let str =  num+"";
+// console.log(typeof(str))
+// console.log(str); // Output: "The answer is: 42"
 
+
+// const A=(callback)=>{
+//    setTimeout(()=>{
+    
+//        callback(5)
+//    },1000)
+// }
+// const B= (callback)=>{
+//     setTimeout(() => {
+       
+//         callback(10)
+//     }, 1000);
+// }
+// const c= (callback)=>{
+//     setTimeout(() => {
+//        callback(15) 
+//     }, 1000);
+// }
+
+// A((value)=>{
+//     B((value2)=>{
+//         c((value3)=>{
+//             console.log(value+value2+value3)
+//         })
+//     })
+// })
+
+// const add=(num1,num2)=>{
+//     return Promise((res,rej)=>{
+//         if(num1==0){
+//             rej("error")
+//         }
+//         res(num1+num2);
+//     })
+// }
+// add(10,20).then((sum)=>{
+//    console.log(sum)
+// })
+// .catch((err)=>{
+//     console.log("err")
+// })
+
+
+// const promise = new Promise((resolved, rejected)=>{
+//     if(conditon==true){
+//         resolved("")
+//     }
+//     rejected("")
+// })
+// promise.then((res)=>{
+//     console.log(res)
+// }).catch("djfds;flkd")
+
+// const add=(num1,num2)=>{
+//     return Promise((resolve,reject)=>{
+//         if()
+//     })
+// }

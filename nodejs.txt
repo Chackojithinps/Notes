@@ -147,11 +147,12 @@
 --->App.use()
 
 --->App.set()
+   view engine': This setting is used to specify the template engine to be used for rendering views in your application.
 
     In summary, app.use() is for setting up middleware to process incoming requests, while app.set() is for configuring various options and characteristics of your application. 
 
 --->App.all
-
+     It allows you to handle all types of requests to a specific URL path in a single place.
 --->Http vs Https
       HTTP and HTTPS are both communication protocols used for transmitting data over the internet
       The main difference between HTTP and HTTPS lies in the level of security provided when transmitting data over the internet:
@@ -204,4 +205,48 @@
 --->PM2 -r. It allows you to keep applications alive forever
 
 --->With express-session, you can create and manage sessions for users, which allows you to store user data on the server-side.
-    It generates a unique session ID for each user, which is sent to the client as a cookie. This session ID helps identify the user and retrieve     their session data on subsequent requests.
+    It generates a unique session ID for each user, which is sent to the client as a cookie. This session ID helps identify the user and retrieve 
+    their session data on subsequent requests.In subsequent requests from the same user, the session ID cookie is automatically included in the request headers. 
+--->Session storage is a client-side storage mechanism
+    It is used to store data on the client's side during the duration of a page session, which means the data persists across page reloads but is 
+    cleared when the user closes the browser or navigates to a different website.
+    Session storage provides a simple key-value storage system that allows web applications to store data specific to a user's browsing session. 
+    Unlike cookies, session storage data is not sent to the server with every HTTP request; it remains on the client-side and is accessible only to
+    the web application running in that particular browser tab or window.
+
+---> Cookies are sent to the server with each HTTP request, allowing the server to recognize the user.
+      Cookies have a relatively small size limit 
+      The cookie is a small text file that contains information, like a unique identifier (ID) for your session.
+      our browser stores the cookie on your computer or device. Whenever you visit the same website again, your browser sends the cookie back to the web server
+       along with your request.
+       The web server receives the cookie and reads the information it contains. This allows the server to recognize you and
+        remember your previous interactions with the website.
+        . They are commonly used for user authentication, tracking user behavior, and maintaining session information (e.g., login status, shopping cart items).
+--->Session storage
+      ts part of the Web Storage API and is used to store data temporarily during a user's browsing session
+       Similar to localStorage, sessionStorage has a larger size limit (usually several megabytes) compared to cookies. 
+       Data in sessionStorage is session-based and cleared when the browsing session ends.
+       sessionStorage is accessible only within the same tab or window.
+
+       Purpose: sessionStorage is used for storing data temporarily during a user's browsing session.
+--->Local Storage
+      : localStorage is also part of the Web Storage API and is used for long-term client-side storage. Data stored in localStorage
+       persists even when the browser is closed and is available across browser sessions.
+Size Limit: localStorage has a larger size limit (usually several megabytes) compared to cookies.
+Expiration: Data in localStorage is not automatically cleared, and it remains stored on the user's browser until explicitly
+ removed or cleared by the application or the user.
+Accessibility: Like sessionStorage, localStorage is accessible only within the same tab or window. Data stored in one tab/window 
+is not accessible from other tabs/windows, even if they belong to the same website.
+Purpose: localStorage is used for long-term client-side storage. Data stored in localStorage persists even when the browser is closed and 
+is available across browser sessions.
+
+--->In Node.js, the writeHead() method is used to set the HTTP response status code and headers before sending the response body to the client
+
+--->Both expires and maxAge are options used for setting the expiration time of cookies in web development. They control how long a cookie should 
+remain valid before it is automatically deleted from the user's browser
+The expires option is used to specify an exact date and time when the cookie should expire
+The maxAge option is used to set the maximum age of the cookie in seconds
+
+--->Dynamic rendering and conditional rendering
+     After the initial page load, client-side JavaScript code takes over the control of the application. JavaScript is responsible
+      for handling user interactions, fetching data from the server, and updating the UI dynamically.
