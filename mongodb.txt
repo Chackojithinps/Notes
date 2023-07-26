@@ -126,6 +126,22 @@
 ●  Distinct
         The distinct() method in MongoDB is primarily used to get a list of unique or distinct values from a specific field in a collection.
         It provides a way to extract all the different values that exist in that field without any duplicates.
+          eg: [
+                  { "_id": 1, "name": "Apple", "color": "Red" },
+                  { "_id": 2, "name": "Banana", "color": "Yellow" },
+                  { "_id": 3, "name": "Apple", "color": "Green" },
+                  { "_id": 4, "name": "Orange", "color": "Orange" },
+                  { "_id": 5, "name": "Apple", "color": "Yellow" },
+                  { "_id": 6, "name": "Grapes", "color": "Purple" }
+              ]
+              db.fruits.distinct("name");
+              [
+                  "Apple",
+                  "Banana",
+                  "Orange",
+                  "Grapes"
+             ]
+
 
 ●   Capped collection - 
         Fixed-size collections are called capped collections in MongoDB. While creating a collection, the user must 
@@ -134,6 +150,27 @@
         Once the collection reaches its size limit, new documents will replace the oldest ones
 
 ●  cap theorm
+       The CAP Theorem is a concept that a distributed database system can only guarantee two out of three characteristics: Consistency, Availability, and Partition tolerance.
+       This theorem is applicable to all distributed systems, including MongoDB.
+       Consistency: Consistency means that all clients see the same data at the same time, even with concurrent updates.
+                    So, a write operation by one client is immediately seen by all other clients.
+
+                    eg:Suppose we have a user profile for "John" stored in the database. His age is initially set to 30.
+
+                        Client A sends a request to update John's age to 31.
+                        At the same time, Client B sends a request to read John's profile.
+                        In a consistent system:
+
+                        The update operation sent by Client A will be immediately seen by all other clients (including Client B) after the update is complete.
+                        Client B will read John's profile with the updated age of 31.
+                        So, in a consistent system, all clients see the same data at the same time. If one client performs an update, all other clients reading that
+                        data will see the updated value.
+                        [need more clarification]
+       Availability: Availability means that all clients can always read and write data. It doesn't matter whether there's a network issue or if some of the servers 
+                     are down, the system is still available for read/write operations. 
+                     [need more]
+       Partition tolerance:It means that the distributed system can continue to function correctly even if some parts of the system are unable to communicate
+       with each other due to network failures or partitions.
 
 ● Replication 
     - MongoDB replication is the process of creating a copy of the same data set in more than one MongoDB server.This can be achieved by using a Replica Set.
@@ -212,4 +249,25 @@
 ● NameSpace
    In MongoDB, a "namespace" is a term used to refer to a combination of a database name and a collection name.
     eg:db.products.find().
-●
+
+● Transaction
+    A transaction in MongoDB is like a safe box that holds a group of actions.
+    Transactions ensure that either all the operations in the group are executed successfully, or none of them are executed at all. This property is known as atomicity, 
+
+    Imagine you have a banking application that needs to transfer money from one account to another. 
+    This transfer involves two operations: deducting the money from the sender's account and adding the money to the recipient's account.
+     Without transactions, if one operation succeeds and the other fails (e.g., due to a server error or network interruption), the system might
+      end up in an inconsistent state where money is lost or duplicated.
+
+With transactions, you can combine these two operations into a single transaction. MongoDB ensures that either both the deduction and addition
+ happen successfully, or none of them happen, leaving the data in a consistent state. This means that if any part of the transaction fails,
+  MongoDB will automatically roll back (undo) any changes made within that transaction.
+
+  Acid properties
+    it ensure the reliability and consistency of transactions in a database management system
+    Atomomicity
+    consistency
+    isolation
+    durability
+
+    

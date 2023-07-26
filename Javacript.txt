@@ -115,3 +115,26 @@
 
 --->The main difference between Primitive and non-primitive data types is that Non-primitive data types are mutable, meaning that their values can be changed after they are created. 
     And Primitive data types are immutable, meaning that their values cannot be changed once they are created.
+
+--->Keyword
+   a keyword is a reserved word that has a specific meaning and purpose in the language's syntax. 
+
+--->In programming, an identifier is a name used to identify a variable, function, class, object, or any other entity in the code.
+
+--->
+Optional chaining is a feature introduced in JavaScript (starting from ECMAScript 2020, also known as ES11) that provides a convenient way to access
+ nested properties of an object when the properties may be undefined or null.
+const person = {
+  name: 'Alice',
+  address: {
+    city: 'New York',
+    zipCode: 12345
+  }
+};
+
+// Using optional chaining to access nested property
+const city = person.address?.city;
+ If the object is null or undefined, the expression will short-circuit, and the result will be undefined, without throwing an error.
+
+ ---> json.stringify() This method is used to convert a JavaScript object (or an array) into a JSON string.
+     json.parse() -this method is used to convert a JSON string back into a JavaScript object (or array).
