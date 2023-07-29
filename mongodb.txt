@@ -269,8 +269,6 @@ With transactions, you can combine these two operations into a single transactio
     consistency
     isolation
     durability
-
-
 --->
 In MongoDB, an "embedded document" (also known as an embedded object) refers to a data structure that allows you to store nested or complex data within a single document. 
 

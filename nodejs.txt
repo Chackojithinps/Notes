@@ -91,7 +91,6 @@
 
 --->MIDDLEWARE
 
-
     if any request comes from the client it'll go through each middleware function after it
     we'll get a response. this cycle is called the REQUEST RESPONSE CYCLE.
 
@@ -147,12 +146,13 @@
 --->App.use()
 
 --->App.set()
-   view engine': This setting is used to specify the template engine to be used for rendering views in your application.
+    view engine': This setting is used to specify the template engine to be used for rendering views in your application.
 
     In summary, app.use() is for setting up middleware to process incoming requests, while app.set() is for configuring various options and characteristics of your application. 
 
 --->App.all
      It allows you to handle all types of requests to a specific URL path in a single place.
+
 --->Http vs Https
       HTTP and HTTPS are both communication protocols used for transmitting data over the internet
       The main difference between HTTP and HTTPS lies in the level of security provided when transmitting data over the internet:
