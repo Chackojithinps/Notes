@@ -50,7 +50,7 @@
     the blanks in the blueprint with real content.
 
     Fully Rendered Page: After combining the data with the template, the server creates a complete HTML page, ready to be displayed in your browser. This HTML page
-     contains all the dynamic content you requested.
+     contains all the  dynamic content you requested.
 
     Sending the Response: The server sends this fully rendered HTML page back to your browser as a response to your request.
 
