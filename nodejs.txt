@@ -43,7 +43,7 @@
 --->Server-Side Rendering (SSR) is a technique used in web development to render web pages on the server and send the fully rendered HTML page to the client's browser. 
     Request: When you (the client) want to visit a web page, you send a request to the server. It's like asking the server for the content you want to see.
 
-    Data and Template: The server receives your request and starts gathering all the necessary data to create the web page. This data can come from databases,
+    Data  and Template: The server receives your request and starts gathering all the necessary data to create the web page. This data can come from databases,
      APIs, or other sources. The server also has a pre-designed template, which is like a blueprint or a skeleton of how the web page should look.
 
     Server-Side Rendering: The magic happens here! The server takes the collected data and inserts it into the template in the right places. It's like filling in 
