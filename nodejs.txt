@@ -224,7 +224,7 @@
         . They are commonly used for user authentication, tracking user behavior, and maintaining session information (e.g., login status, shopping cart items).
 --->Session storage
       ts part of the Web Storage API and is used to store data temporarily during a user's browsing session
-       Similar to localStorage, sessionStorage has a larger size limit (usually several megabytes) compared to cookies. 
+       Similar  to localStorage, sessionStorage has a larger size limit (usually several megabytes) compared to cookies. 
        Data in sessionStorage is session-based and cleared when the browsing session ends.
        sessionStorage is accessible only within the same tab or window.
 
