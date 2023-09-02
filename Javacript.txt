@@ -1,5 +1,5 @@
      Everything inside a javascript happens inside an execution context.
-     inside execution context memory and code component aret there.(it is also know variable environment and theread of execution)
+     inside execution context memory component and code component are there.(it is also know variable environment and theread of execution)
      Global execution context was created and it is put inside callStack.   
  
 --->Even before the execution of a single line the memory is allocated for every variables and functins
