@@ -2,13 +2,24 @@
      inside execution context memory component and code component are there.(it is also know variable environment and theread of execution)
      Global execution context was created and it is put inside callStack.   
  
---->Even before the execution of a single line the memory is allocated for every variables and functins
+--->Even before the execution of a single line, the memory is allocated for every variables and functins
+
+--->when creating exectution context for functions it allocates memory for all parameters also along with other variables and fucntions.
+
+--->When ever we return a statement in fucntion then it checks the value for that statement in local memory and it will return it to the variable
+    where in outer exectution context.and also exectution context for that funciton will get deleted.
+
+--->Once javascript done it all works then Main exectution context also get deleted.
+
 --->when ever the javascript runs the global object also will created. that is window in case of browsers. 
     in the global lever this === window
     when ever the execution context is created the this will also created along with execution context.
+
 --->for the function that function code is allocated in the memory allocation phase.
+
 ---> javascript is syncrhronous single threaded language.
      single threaded means js can execute one command at a time in a specific order.
+
 --->Hoisting means we can access the variable and functins even before we are initializing it .
 
 --->Scope means where we can access a specific variable and functins in our code 
