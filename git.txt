@@ -1,0 +1,7 @@
+git rm --cached -r .  --> to unstage all the committed ones.
+git merge --squash login(branch which one we need to merge with master)  ---> this wiil make all the commits into a single one commit.(after doing this
+we need to do git commit -a -m "Merged login to master")
+
+git branch -m signup forget -->if we are standing in another branch and want to change the name of another branch then do like this.
+git branch -m forget --> if we are in the sighnup branch and want to change the name to forget do like this.
+git branch -D signup --> for deleteing that branch (for deleting this we have to come out of that branch . dont deletes if we are on the same branch)
