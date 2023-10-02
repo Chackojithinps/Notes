@@ -5,3 +5,8 @@ we need to do git commit -a -m "Merged login to master")
 git branch -m signup forget -->if we are standing in another branch and want to change the name of another branch then do like this.
 git branch -m forget --> if we are in the sighnup branch and want to change the name to forget do like this.
 git branch -D signup --> for deleteing that branch (for deleting this we have to come out of that branch . dont deletes if we are on the same branch)
+git checkout -B login ---> here everything in the login will reset and everything in the master branch completely will be there.so no conflits
+git reset --hard 6o8343843947384366434647364(commit id) -->to comeback to this commit id
+git config --global user.name or user.email --> to show the username and email
+git config --global user.name kiran@gmail.com --> if there is no username or email then give like this
+git clone (repo url) --> for cloning

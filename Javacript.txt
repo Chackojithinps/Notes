@@ -14,6 +14,51 @@
 --->when ever the javascript runs the global object also will created. that is window in case of browsers. 
     in the global lever this === window
     when ever the execution context is created the this will also created along with execution context.
+    [
+     When JavaScript code runs in a browser environment, a global object is automatically created for you. In browsers,
+     this global object is referred to as window. So, in the global context, this refers to the window object.
+     For example, if you were to open the browser console and type this, it would return the window object, like this:
+     console.log(this === window);
+     This means that any variables or functions declared in the global scope are attached as properties and methods to the window object.
+
+    The value of this in a function execution context is determined by how the function is called. There are four ways to call a function:
+
+    Method call: When a function is called as a method of an object, this refers to that object.
+    Direct call: When a function is called directly, this refers to the global object, unless the function is called in strict mode, in which case this is
+    undefined.
+    Constructor call: When a function is called with the new keyword, this refers to the new object that is being created.
+    Arrow function: Arrow functions do not have their own this binding. Instead, they inherit the this binding of the enclosing lexical context.
+
+    EG:
+    // Global scope
+const person = {
+  name: "Alice",
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  },
+};
+
+// Function execution context
+function greet() {
+  console.log(`Hello from the greet function!`);
+}
+
+// Method call
+person.greet(); // "Hello, my name is Alice"
+
+// Direct call
+greet(); // "Hello from the greet function!"
+
+// Constructor call
+const newPerson = new Person("Bob");
+newPerson.greet(); // "Hello, my name is Bob"
+
+// Arrow function
+const arrowGreet = () => console.log(`Hello from the arrow function!`);
+arrowGreet(); // "Hello from the arrow function!"
+Use code with caution. Learn more
+
+]
 
 --->for the function that function code is allocated in the memory allocation phase.
 
