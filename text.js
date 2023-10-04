@@ -128,8 +128,8 @@
 // }, 500);
 
 
-// const arr1 = [2,4,5,6,7]
-// const arr2 = [ 10,23,58,69,34,56,77]
+// const arr1 = [2,4,5,6,7];
+// const arr2 = [ 10,23,58,69,34,56,77];
 
 // const arr3 = []
 // var k=0; var j =0;
@@ -251,3 +251,88 @@
 //         if()
 //     })
 // }
+
+
+// -----------------------------callback debug media -----------------------------------------
+
+// console.log("jithin")
+// const getData = ()=>{
+//     setTimeout(()=>{
+//         return "kiran"
+//     },1000)
+// }
+// const name = getData()
+// console.log(name)
+// console.log("helllo")
+
+// console.log("jithin")
+// const getData = (cb)=>{
+//     setTimeout(()=>{
+//         cb("kiran")
+//     },1000)
+// }
+// getData((value)=>{
+//     console.log(value)
+// })
+// console.log("helllo")
+
+
+// console.log("jithin")
+// const getData = (cb)=>{
+//     setTimeout(()=>{
+//         cb(5)
+//     },1000)
+// }
+// const getData2 = (cb)=>{
+//     setTimeout(()=>{
+//        cb(5)
+//     },1000)
+// }
+// getData((value)=>{
+//     console.log(value)
+//     getData2((value1)=>{
+//         console.log(value+value1)
+//     })
+// })
+// console.log("helllo")
+
+
+
+// console.log("jithin")
+
+// const promise = new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//        resolve(5)
+//     },1000)
+// })
+// const promise1 = new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//        resolve(10)
+//     },1000)
+// })
+// promise.then((res)=>{
+//     console.log(res)
+//     return promise1()
+// })
+// console.log("helllo")
+
+// const array= [2,4,5,6,7,7,78,8]
+// let total=1;
+// const b =array.map((item)=>{
+//     return total+item
+// })
+
+// console.log(b)
+
+function* generator(){
+    let a=2
+    while(a<5){
+        yield ++a 
+    }
+}
+
+let generat=generator()
+console.log(generat.next().value)
+
+console.log('hello')
+console.log(generat.next().value)

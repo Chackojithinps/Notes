@@ -78,6 +78,7 @@ Use code with caution. Learn more
     When a function finishes executing, it's like removing a plate from the top of the stack, and the program goes back to the previous
     function in the stack to continue its execution.
     The call stack ensures that JavaScript executes functions in the order they were called.
+
 --->Event loop
     it plays a crucial role in handling asynchronous operations and events in a single-threaded environment.
     When your JavaScript code starts executing, it creates the global execution context and forms the execution stack.
@@ -88,6 +89,9 @@ Use code with caution. Learn more
     If the execution stack is empty, the event loop looks at the event queue to see if there are any pending events or tasks to process.
     jif there are events or tasks in the queue, the event loop picks the oldest one (first in the queue that finishes the task) and moves it to the execution stack.
 
+
+     If JavaScript were to wait for each of these tasks to finish before moving on, it would make the entire application slow and unresponsive.
+     The event loop helps solve this problem by allowing JavaScript to keep doing other tasks while waiting for these time-consuming operations to complete.
 
 --->Lexical environment is created whenever the the exectution context is created.
     Lexical environment is the local memory + the referece to the Lexical environment of the parent
@@ -143,14 +147,12 @@ Use code with caution. Learn more
    like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function.
    JavaScript treat function as a first-class-citizens. This means that functions are simply a value and are just another type of object.
 
-
 --->JavaScript is single threaded and synchronous
 
 --->Synchronous: In synchronous programming, tasks are executed one after the other, in a sequential order. Each task must complete before going to the next task.
                  Synchronous refers to the nature of tasks and how they are handled in a program.That means the nature that it executes in top to bottom order one by one.
 
-
---->Asynchronous  :The program does not wait for the completion of an particular task and continues executing other code.
+--->Asynchronous :The program does not wait for the completion of an particular task and continues executing other code.
                    This nature is called Asynchronous.
 
 --->Single threaded :Ont task will perform at a time. line by line exectution.
@@ -173,6 +175,21 @@ Use code with caution. Learn more
 --->The main difference between Primitive and non-primitive data types is that Non-primitive data types are mutable, meaning that their values can be changed after they are created. 
     And Primitive data types are immutable, meaning that their values cannot be changed once they are created.
 
+    Mutable objects are objects whose state (i.e., the values of their properties) can be modified after they are created.
+     When you change a mutable object, you are typically modifying the same object in memory. Common examples of mutable objects include lists 
+     (arrays), dictionaries (objects with key-value pairs), and custom objects.
+    et mutableArray = [1, 2, 3];
+    mutableArray.push(4); // Modifying the array
+    console.log(mutableArray); // Output: [1, 2, 3, 4]
+
+    Immutable objects, on the other hand, are objects whose state cannot be changed once they are created. When you want to modify an immutable object,
+     you create a new object with the desired changes instead of modifying the original object. Examples of immutable objects include strings, numbers,
+     and frozen objects in JavaScript.
+     let immutableString = "Hello";
+    let newString = immutableString + ", World!"; // Creating a new string
+    console.log(immutableString); // Output: "Hello"
+    console.log(newString); // Output: "Hello, World!"
+
 --->Keyword
    a keyword is a reserved word that has a specific meaning and purpose in the language's syntax. 
 
@@ -193,7 +210,7 @@ const person = {
 const city = person.address?.city;
  If the object is null or undefined, the expression will short-circuit, and the result will be undefined, without throwing an error.
 
- ---> json.stringify() This method is used to convert a JavaScript object (or an array) into a JSON string.
+---> json.stringify() This method is used to convert a JavaScript object (or an array) into a JSON string.
      json.parse() -this method is used to convert a JSON string back into a JavaScript object (or array).
 
 --->Memoization is an optimization technique used in computer programming, including JavaScript, to improve the performance of functions by caching the
@@ -209,8 +226,15 @@ function is called with specific inputs, the memoization system first checks if 
   is stored in the cache for future use.
 
   --->IIFE stands for Immediately Invoked Function Expression. It is a JavaScript function that is defined and executed immediately after its creation. 
+        (function() {
+        // This code is wrapped in an IIFE and is executed immediately
+        var message = "Hello, IIFE!";
+        console.log(message);
+        })();
 
-
+         IIFE functions are often used to encapsulate code and create private scopes for variables and functions.
+        This helps prevent naming conflicts and keeps variables from polluting the global scope.
+        
 ---> Type casting, also known as type conversion, is the process of converting a value from one data type to another.
 
 
