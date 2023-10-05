@@ -324,15 +324,30 @@
 
 // console.log(b)
 
-function* generator(){
-    let a=2
-    while(a<5){
-        yield ++a 
-    }
-}
 
-let generat=generator()
-console.log(generat.next().value)
+// generator function -----------------------
+// function* generator(){
+//     let a=2
+//     while(a<5){
+//         yield ++a 
+//     }
+// }
 
-console.log('hello')
-console.log(generat.next().value)
+// let generat=generator()
+// console.log(generat.next().value)
+
+// console.log('hello')
+// console.log(generat.next().value)
+
+
+// const arr = arr1.map((val)=>(
+//      val*2
+// ))
+
+// const arr = arr1.reduce((total,item)=>(
+
+//      total+item
+// ),0)
+
+
+
