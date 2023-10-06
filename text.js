@@ -351,3 +351,104 @@
 
 
 
+// -----------------------shadowing=------
+
+// const fun=()=>{
+//    let k = 1;
+//    {
+//      let k = 100
+//      console.log("inner",k)
+//    }
+//    console.log("outer ",k)
+// }
+// fun()
+
+
+
+// ----------------------------------------binary search
+
+// const arr = [10,20,30,50,60,70,80,90,100]
+
+// const binarySearch =()=>{
+//   var target = 10;
+//   var start = 0;
+//   var end = arr.length;
+//   while(start<end){
+//     var mid = Math.floor((start + end)/ 2);
+//     if(arr[mid] == target){
+//       console.log("index of target value  is ",mid+1)
+//       break;
+//     }
+//     else if(target<arr[mid]){
+//         end = mid-1;
+//     }else{
+//       start = mid+1;
+//     }
+//   }
+// }
+
+// binarySearch()
+
+
+
+
+// const arr=[50,38,32,29,27,22,20,18,16,17,10,8,3,1]
+// var start = 0;
+// var end = arr.length - 1;
+// var target = 8;
+
+// const isAsc=arr[start]<arr[end]
+
+// while (start <= end) {
+//     var mid = Math.floor((start + end)/ 2);
+//     console.log(mid)
+//     if(target==arr[mid]){
+//         console.log(`${target} found at index ${mid}`);
+//         break;
+//     }
+//     if(isAsc){
+//         if(target < arr[mid]) {
+//             end = mid - 1;
+//         }else{
+//             start = mid + 1;
+//         }
+//     }else{
+//         if(target < arr[mid]) {
+//             start=mid+1;
+//         }else{
+//             end=mid-1
+//         }
+//     }
+// } 
+
+// if (start > end) {
+
+//     console.log("Value not found");
+// }
+
+// findFib=(num)=>{
+//    if(num<2){
+//      return num;
+//    }
+//    return findFib(num-1)+findFib(num-2)
+// }
+// const res=findFib(6)
+// console.log(res)
+
+const arr = [10,20,30,50,60,70,80,90,100]
+
+let start = 0;
+let end = arr.length-1
+let target  = 90
+const binarySearch = (start,end) =>{
+  var mid = Math.floor((start + end)/ 2);
+   if(arr[mid] == target ){
+     console.log("target value index is ",mid)
+   }else if(target<arr[mid]){
+      return binarySearch(start,mid-1)
+   }else {
+      return binarySearch(mid+1,end)
+   }
+}
+
+binarySearch(start,end)
