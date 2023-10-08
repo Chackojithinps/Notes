@@ -191,7 +191,6 @@ class LinkedList{
       }
       this.tail.next = newNode;
       this.tail= newNode;      
-      
     }
 
     removeDuplicates(){
@@ -267,6 +266,8 @@ class LinkedList{
        node.next = null
     }
 
+  
+
    reverseRecursive(){
      this.reverse(this.head)
    }
@@ -279,17 +280,50 @@ class LinkedList{
         
     }
 }
-const linkedList = new LinkedList()
-linkedList.addData(10)
-linkedList.addData(10)
-linkedList.addData(50)
-linkedList.addData(20)
-linkedList.addData(10)
-linkedList.addData(30)
-linkedList.addData(20)
-linkedList.addData(50)
+const list1 = new LinkedList()
+list1.addData(10)
+list1.addData(10)
+list1.addData(50)
+list1.addData(20)
+list1.addData(10)
+list1.addData(30)
+list1.addData(20)
+list1.addData(50)
+
+
+const list2 = new LinkedList()
+
+list2.addData(100)
+list2.addData(200)
+list2.addData(300)
+list2.addData(100)
+list2.addData(600)
+list2.addData(400)
+list2.addData(900)
+
+
+function merge(list1,list2){
+    let curr = list1.head;
+    let curr2 = list2.head;
+    const mergedList = new LinkedList()
+    while(curr){
+        mergedList.addData(curr.data)
+        curr= curr.next;
+    }
+    while(curr2){
+        mergedList.addData(curr2.data)
+        curr2 = curr2.next;
+    }
+
+    let temp = mergedList.head
+
+    while(temp){
+        console.log(temp.data)
+        temp=temp.next
+    }
+}
+merge(list1,list2)
 // linkedList.reverse()
 
-linkedList.reverseRecursive()
 // linkedList.removeDuplicates()
-linkedList.display()
+// linkedList.display()
