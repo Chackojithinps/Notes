@@ -435,20 +435,355 @@
 // const res=findFib(6)
 // console.log(res)
 
-const arr = [10,20,30,50,60,70,80,90,100]
+// const arr = [10,20,30,50,60,70,80,90,100]
 
-let start = 0;
-let end = arr.length-1
-let target  = 90
-const binarySearch = (start,end) =>{
-  var mid = Math.floor((start + end)/ 2);
-   if(arr[mid] == target ){
-     console.log("target value index is ",mid)
-   }else if(target<arr[mid]){
-      return binarySearch(start,mid-1)
-   }else {
-      return binarySearch(mid+1,end)
-   }
+// let start = 0;
+// let end = arr.length-1
+// let target  = 90
+// const binarySearch = (start,end) =>{
+//   var mid = Math.floor((start + end)/ 2);
+//    if(arr[mid] == target ){
+//      console.log("target value index is ",mid)
+//    }else if(target<arr[mid]){
+//       return binarySearch(start,mid-1)
+//    }else {
+//       return binarySearch(mid+1,end)
+//    }
+// }
+
+// binarySearch(start,end)
+
+// const factorial = (n) =>{
+//    if(n==1){
+//      return 1
+//    }
+//    return n*factorial(n-1)
+// }
+// let c = factorial(5)
+// console.log(c)
+
+
+// function generateArray(n) {
+//     if (n === 1) {
+//       return [1];  // Base case: return an array with only 1 when n is 1
+//     }
+  
+//     // Recursively generate the array for n-1
+//     const arr =  generateArray(n - 1);
+//     arr.push(n);  // Add n to the end of the array
+//     return arr
+//   }
+  
+//   // Example usage
+
+//   var result = generateArray(7);
+//   console.log(result);
+// let k = 0; 
+// let c = 0;
+// const sum = (n) =>{
+//   if(n==1){
+//     return 1;
+//   }
+//    c = sum(n-1)
+//    k = n+c;
+//   return k
+// }
+// const cm = sum(5);
+// console.log(cm)
+
+// let num = 12345;
+
+// const findSum = (n) =>{
+//     if(n<1){
+//        return 0;
+//     }
+//     let sum = Math.floor(n%10) + findSum(n/10)
+    
+//     return sum;
+// }
+// console.log(findSum(num))
+
+
+// ____________________________________________STACK
+
+// class Node {
+//     constructor(data){
+//         this.data = data;
+//         this.next = null;
+//     }
+// }
+// class Stack{
+//     constructor(){
+//         this.top= null;
+//     }
+//     addData = (data) =>{
+//        const newNode = new Node(data)
+//        if(this.top==null){
+//          this.top = newNode
+//          return;
+//        }
+//        newNode.next = this.top;
+//        this.top = newNode
+//        return
+//     }
+
+//     removeData=()=>{
+//         if(this.top == null){
+//             return
+//         }
+//         this.top= this.top.next;
+//         return
+//     }
+
+//     display(){
+//         var temp = this.top;
+//         while(temp!=null){
+//             console.log(temp.data)
+//             temp = temp.next
+//         }
+//     }
+// }
+
+// const stack = new Stack()
+// stack.addData(10)
+// stack.addData(20)
+// stack.addData(30)
+// stack.removeData()
+// stack.removeData()
+// stack.display()
+
+
+
+// class Node {
+//     constructor(data){
+//         this.data = data;
+//         this.next = null;
+//     }
+// }
+
+
+// class Queue{
+//     constructor(){
+//         // this.first= null;
+//         // this.rear
+//          this.arr1=[]
+//          this.arr2=[]
+//     }
+
+//     push(data){
+//          this.arr1.push(data)
+//     }
+
+//     undo(){
+//         this.arr2.push(this.arr1.pop())
+//     }
+//     redo(){
+//         this.arr1.push(this.arr2.pop())
+//     }
+//     Enqueue = (data) =>{
+//        const newNode = new Node(data)
+//        if(this.first==null){
+//          this.first = this.rear = newNode
+//          return;
+//        }
+
+//        this.rear.next = newNode;
+//        this.rear = newNode
+//        return
+//     }
+
+//     Dequeue=()=>{
+//         if(this.first == null){
+//             return
+//         }
+//         this.first= this.first.next;
+//         return
+//     }
+
+//     display(){
+//         // var temp = this.first;
+//         // while(temp!=null){
+//         //     console.log(temp.data)
+//         //     temp = temp.next
+//         // }
+//         for(var i=0;i<this.arr1.length;i++){
+//             console.log(this.arr1[i])
+//         }
+//     }
+// }
+
+// const queue = new Queue()
+// queue.push(10)
+// queue.push(20)
+// queue.push(30)
+// queue.push(40)
+// queue.push(50)
+// queue.undo()
+// queue.undo()
+// queue.redo()
+// queue.redo()
+// queue.redo()
+// // queue.Dequeue()
+// // queue.Dequeue()
+// queue.display()
+
+
+// class Node {
+//     constructor(data){
+//         this.data = data;
+//         this.next = null;
+//     }
+// }
+// class Stack{
+//    constructor(){
+//      this.top=null;
+//    }
+//    push(data){
+//     const newNode = new Node(data)
+//      if(this.top == null){
+//         this.top = newNode;
+//         return
+//      }
+//      newNode.next = this.top
+//      this.top = newNode;
+//      return
+//    }
+//    display(){
+//     var temp = this.top;
+//     while(temp!=null){
+//          console.log(temp.data)
+//          temp=temp.next
+//     }
+//    }
+// }
+// const stack = new Stack()
+// let str = "KERALA"
+// for(var i=0;i<str.length;i++){
+//     stack.push(str[i])
+// }
+// stack.display()
+
+// class Node {
+//     constructor(data){
+//         this.data = data;
+//         this.next = null
+//     }
+// }
+// class Stack{
+//     constructor(){
+//         this.top = null;
+//     }
+
+//     push(data){
+//         const newNode = new Node(data)
+//         if(this.top==null){
+//             this.top = newNode;
+//             return 
+//         }
+//         newNode.next = this.top;
+//         this.top = newNode;
+//     }
+    
+//     pop(){
+//         const val = this.top.data;
+//         this.top = this.top.next
+//         return val
+//     }
+
+//     queue(){
+//         var temp = this.top
+//         const stack1 = new Stack()
+
+//         while(temp){
+//             var k = stack.pop()
+//             stack1.push(k)
+//             temp= temp.next
+//         }
+//         stack1.display()
+       
+//     }
+
+//     display(){   
+//         var temp = this.top;
+//         while(temp){
+//             console.log(temp.data)
+//             temp = temp.next
+//         }
+//     }
+// }
+
+// const stack = new Stack();
+// stack.push(10)
+// stack.push(20)
+// stack.push(30)
+// stack.push(40)
+// stack.push(50)
+// stack.push(60)
+// // stack.pop()
+// stack.queue();
+// stack.display()
+
+const arr = [10,30,5,34,78,54,23,44,7]
+
+
+// const bubbleSort = (arr)=>{
+//    for(var i=0;i<arr.length;i++){
+//     for(var j=1;j<arr.length-i;j++){
+//         if(arr[j-1]>arr[j]){
+//             var temp = arr[j];
+//             arr[j]= arr[j-1]
+//             arr[j-1] = temp
+//         }
+//     }
+//    }
+//    return arr
+// }
+// const res = bubbleSort(arr)
+// console.log(res)
+
+
+// const insertionSort = (arr) =>{
+//     for(var i=1;i<arr.length;i++){
+//         j=i-1;
+//         var key = arr[i]
+//         while(j>=0 && arr[j] > key){
+//            arr[j+1] = arr[j]
+//            j=j-1
+//         }
+//         arr[j+1] = key;
+//     }
+//     return arr
+// }
+// const insertionSort=(arr)=>{
+//     var n=arr.length;
+//      for(var i=1;i<arr.length;i++){
+//         var j=i-1;
+//         var key=arr[i];
+//         while(j>=0 && arr[j]>key){
+//             arr[j+1]=arr[j]
+//             j=j-1;
+//         }
+//         arr[j+1]=key;
+//      }
+//      return arr
+// }
+// const res = insertionSort(arr)
+// console.log(res)
+
+
+// const array1 = [1, 2, 3];
+// const array2 = array1
+// array2.push(10)
+// console.log("array 1",array1)
+// console.log("array 2",array2);
+
+
+function k(){
+    var a = 10;
+    {
+        let a = 100;
+        console.log(a)
+    } 
+    console.log(a)
 }
-
-binarySearch(start,end)
+k()

@@ -1,0 +1,77 @@
+javascript
+--------------------------
+
+.Global execution context;
+.window object || global object 
+.this concept
+.Lexical environment
+.Hoisting
+.tdz
+.Shadowing
+.illegal shadowing
+.block scope,global scope,funciton scope
+.closure
+.currying
+.First-class fucntion
+.array methods
+.string methods
+.map,filter,reduce,forEach
+.ternary operator
+.nullish collish
+.spread operator
+.rest operator
+.shallow copy
+.deep copy
+.weekset 
+.weekMap
+.Set
+.Map
+.difference between the Set and weakSet.
+.difference between the Map and weekMap
+.Diff between object and map
+.differences between null and undefined
+.Factory function
+.throttling
+.debouncing
+.trikkling
+.defer
+.Function composition
+.Literals
+.Use strict
+.Event bubbling
+.Event propagation
+.Generetor function
+.arrow function vs regular functions
+.pure funciton
+.settimeout vs setinterval 
+.Continue
+.Do while
+.Finally
+.Throw statement
+.Class object constructor
+.Extends keyword
+.Switch case syntax
+.Primitive vs Non primitive
+.mutable vs immutable
+.passBy referece vs passBy value
+.keyword
+.identifier
+.optional chaining
+.Type casting
+.Higher order functions
+.Call,apply,bind
+.json.stringify and json.parse()
+.callstack
+.asynchronous tasks that should occur in an event loop
+.input arguments for an asynchronous queue
+.eventLoop
+.Single Threaded vs multi threaded
+.Synchronous vs Asynchronous
+.blocking vs unblocking
+.callback
+.Promises
+.promises states
+.promise.all,promise.any,promise.rise
+.promisify
+.memoization
+.IIFE

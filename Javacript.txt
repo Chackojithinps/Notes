@@ -1,3 +1,5 @@
+----------------------------------------------
+
      Everything inside a javascript happens inside an execution context.
      inside execution context memory component and code component are there.(it is also know variable environment and theread of execution)
      Global execution context was created and it is put inside callStack.   
@@ -10,6 +12,8 @@
     where in outer exectution context.and also exectution context for that funciton will get deleted.
 
 --->Once javascript done it all works then Main exectution context also get deleted.
+
+----------------------------------------------
 
 --->when ever the javascript runs the global object also will created. that is window in case of browsers. 
     in the global lever this === window
@@ -60,14 +64,21 @@ Use code with caution. Learn more
 
 ]
 
+----------------------------------------------
+
 --->for the function that function code is allocated in the memory allocation phase.
 
 ---> javascript is syncrhronous single threaded language.
      single threaded means js can execute one command at a time in a specific order.
 
+
+----------------------------------------------
+
 --->Hoisting means we can access the variable and functins even before we are initializing it .
 
 --->Scope means where we can access a specific variable and functins in our code 
+
+----------------------------------------------
 
 --->Why callstack?
     The call stack maintains the order of function calls
@@ -128,16 +139,28 @@ Use code with caution. Learn more
 
         outerFunction();
         console.log(x); // Output: 10 (Accessing the "x" variable from the outermost scope)
-
+    
+    --->illegal shadowing
+        This happens because let and var both technically have the same scope meaning that the variable name fruit already exists there.
+        The variable declared with the var in the block scope is not scoped and is accessible from the outside.
+         
+         funciton a(){
+            let b=10;
+            {
+                var b=20;
+                console.local(b)
+            }
+         }
+         this is the example of illegal shadowing
 
 --->let and const will be in block scope when we write let and const inside {}.(inside block like if condition).
     but var will be in global scope if we write inside {}.
 
 --->function along with its Lexical scope is bundled together to form a closure.
-
+     a funciton bind with the variables of its outer funciton
     function makeFunc() {
         const name = "Mozilla";
-        function displayName() {
+        function displayName(){
             console.log(name);
         }
         return displayName;
@@ -152,7 +175,6 @@ Use code with caution. Learn more
    JavaScript treat function as a first-class-citizens. This means that functions are simply a value and are just another type of object.
 
    
-
 --->JavaScript is single threaded and synchronous
 
 --->Synchronous: In synchronous programming, tasks are executed one after the other, in a sequential order. Each task must complete before going to the next task.
@@ -269,7 +291,6 @@ The function receiving the callback can "call back" or execute the provided func
 Asynchronous operations, such as reading from a file, making network requests, or handling user input, often take time to complete. Instead of waiting
 for these operations to finish, JavaScript can continue executing other tasks while keeping track of the callback function. 
 
-
 A Promise can have three possible states:
 
 Pending: The initial state when the Promise is created and the asynchronous operation is still in progress.
@@ -283,3 +304,432 @@ Promise.all() is a method in JavaScript that takes an array of Promises as input
   Promises is rejected, the Promise.all() method immediately rejects with the reason of that rejected Promise.
 
 The syntax for using Promise.all() is as follows:
+
+
+----------------------------------------------
+
+--->call()->we can borrow funcitons from other objects and use it with the data of some other object. so inside the call() we have to pass what the this 
+(this of that funciton) pointing to. 
+Call is a function that helps you change the context of the invoking function. In layperson's terms, it helps you replace the value of this(keyword) inside
+ a function with whatever value you want.
+why call() method using.? so we dont need to write the funciton again and again . we will change the this only.  
+
+eg:
+   let name:{
+      firstName:"jithin"
+      lastName:"Chacko"
+   }
+   let name2 = {
+      firstName:"Jinto",
+      lastName:"Ps"
+   }
+
+   funciton Person(){
+      return this.firstName + " " + this.lastName
+   }
+
+   const finalName = Person.call(name2)
+
+   Apply()---> almost same . but difference is in passing the argument .
+
+   eg:
+   let name:{
+      firstName:"jithin"
+      lastName:"Chacko"
+   }
+   let name2 = {
+      firstName:"Jinto",
+      lastName:"Ps"
+   }
+
+   funciton Person(homeTown,place) {
+      return this.firstName + " " + this.lastName + " " +homeTown + " " + place
+   }
+
+   const finalName = Person.apply(name2,["kannur","Naduvil"])
+
+   but in call method we will pass the argument induvidually.
+   
+   bind()---> So in call and apply we are invoking the funciton directly.but bind method doesnot directly invoking the function. instead it gives the 
+              copy of exactly same method.which can be Invoked later 
+
+              eg: const res = Person.bind(name) 
+                  res()
+                  here it create a copy of Person funciton and bind with the name object and return the funciton which can be call late
+
+----------------------------------------------
+
+---->currying
+     Currying is a technique used in JavaScript (and in functional programming in general) to transform a function that takes multiple
+     arguments into a series of functions, each taking one argument. This makes it easier to work with functions that need to be partially
+     applied or composed with other functions.
+
+     funciton multiply(x){
+        return funciton y(y){
+            console.log(x*y)
+        }
+     }
+     const res  = multiply(3)
+     res(3)
+
+----------------------------------------------
+
+--->ternary operator
+    ternary operator is a conditional operator.
+    condition ? expressionIfTrue : expressionIfFalse
+
+----------------------------------------------
+
+--->Nullish Coalescing Operator (??) 
+    It's often used in cases where you want to provide a default value if a variable is null or undefined,
+    const someValue = null; // or undefined or any other potentially falsy value
+    const result = someValue ?? defaultValue;
+
+----------------------------------------------
+
+--->spread Operator 
+    In summary, the spread operator is used for spreading or unpacking values, while the rest operator is used for collecting values
+     into arrays or variables. 
+    https://chat.openai.com/c/7588db26-a174-41f0-97a1-ddf082f389ad
+
+----------------------------------------------
+
+--->rest operator
+    The rest operator is used to collect multiple function arguments into a single array or to collect the remaining elements
+    of an iterable (like an array) into a single variable.
+    // Collecting function arguments into an array
+    function sum(...args) {
+    return args.reduce((total, num) => total + num, 0);
+    }
+
+    const result = sum(1, 2, 3, 4); // args is [1, 2, 3, 4]
+
+    // Collecting remaining array elements into a variable
+    const [first, second, ...rest] = [1, 2, 3, 4, 5];
+    // first = 1, second = 2, rest = [3, 4, 5]
+
+----------------------------------------------
+
+--->Shallow copy
+     (array1 and array2) that reference the same array in memory. 
+     This means that changes made to the nested objects or arrays inside the shallow copy will also affect the original data and vice versa.
+     const originalArray = [1, 2, [3, 4]];
+    // Shallow copy using the spread operator
+    const shallowCopy = [...originalArray];
+    shallowCopy[2][0] = 99;
+    console.log(originalArray); // Output: [1, 2, [99, 4]]
+
+----------------------------------------------
+
+---->Set Creating a Set
+    const uniqueNumbers = new Set();
+
+    // Adding elements to the Set
+    uniqueNumbers.add(1);
+    uniqueNumbers.add(2);
+    uniqueNumbers.add(3);
+    uniqueNumbers.add(2); // Duplicate value, won't be added
+
+    // Checking the size of the Set
+    console.log(uniqueNumbers.size); // Output: 3
+
+    // Checking if an element exists in the Set
+    console.log(uniqueNumbers.has(2)); // Output: true
+
+    // Removing an element from the Set
+    uniqueNumbers.delete(2);
+
+    // Iterating through the Set
+    for (const number of uniqueNumbers) {
+    console.log(number);
+    }
+----------------------------------------------
+
+---->Map 
+    A Map is a collection of key-value pairs where each key is associated with a value. Unlike objects, Map keys can be of any data type,
+     including objects and functions.
+     You can use a Map when you need to store data with an associated key or when you want to preserve the order of insertion.that means,
+     Keys are stored in the order in which they were added, making it useful for scenarios where the order of items matters.
+     // Creating a Map
+    const personMap = new Map();
+
+    // Adding key-value pairs to the Map
+    personMap.set("name", "John");
+    personMap.set("age", 30);
+    personMap.set("isStudent", false);
+
+    // Retrieving values from the Map
+    console.log(personMap.get("name")); // Output: "John"
+
+    // Checking if a key exists in the Map
+    console.log(personMap.has("age")); // Output: true
+
+    // Deleting a key-value pair from the Map
+    personMap.delete("isStudent");
+
+    // Iterating through the Map
+    for (const [key, value] of personMap) {
+    console.log(`${key}: ${value}`);
+    }
+----------------------------------------------
+
+---->difference of keys and object
+     
+     .In an Object, keys are always strings or symbols.
+     .In a Map, keys can be of any data type, including objects, functions, and primitive values. 
+
+     .The order of keys in an Object is not guaranteed to be preserved. 
+     .in map it is preserved
+----------------------------------------------
+
+--->Diff between null and undefined
+    let myVariable = null; // Initializing myVariable as empty
+    You can explicitly assign null to a variable to indicate that it has no value or to reset its value to an empty state.
+    on the other hand, is a value that you can explicitly assign to a variable to indicate that it has no value or is empty.
+
+    undefined is a primitive value that is automatically assigned to a variable that has been declared but hasn't been assigned any value.
+----------------------------------------------
+
+--->Weakset
+    In JavaScript, both WeakSet and WeakMap are specialized collections that allow you to store and manage objects 
+    Once the objects are no longer referenced in the code (set to null in this case), they can be garbage collected, and the WeakSet
+    will automatically remove them because the references to them are weak.
+
+    A WeakSet can only store objects as values. Primitive values (e.g., numbers, strings) are not allowed.
+----------------------------------------------
+ 
+--->WeakMap
+    Key-Value Pairs: A WeakMap stores key-value pairs, where the keys are objects and the values can be of any data type
+    (including objects, functions, and primitive values).
+    Uniqueness: Each key in a WeakMap must be unique, similar to how keys work in regular maps.
+    Both the keys and values in a WeakMap are stored as weak references. If there are no other references to a key 
+    (or its associated value), both the key and the value can be garbage collected.
+    Iteration: Unlike WeakSet, WeakMap provides methods to iterate through its key-value pairs (keys(), values(),
+    and entries()). You can use these methods to work with the data stored in the map.
+    // Creating a WeakMap
+        const weakMap = new WeakMap();
+
+        // Creating objects as keys
+        const key1 = {};
+        const key2 = {};
+
+        // Adding key-value pairs to the WeakMap
+        weakMap.set(key1, "Value associated with key1");
+        weakMap.set(key2, "Value associated with key2");
+
+        // Retrieving values from the WeakMap
+        console.log(weakMap.get(key1)); // Output: "Value associated with key1"
+
+        // Let's assume key1 is no longer referenced elsewhere in the code
+        key1 = null;
+
+        // Because key1 is no longer referenced, it can be garbage collected,
+        // and the corresponding entry in the WeakMap will automatically be removed.
+        console.log(weakMap.get(key1)); // Output: undefined
+----------------------------------------------
+
+---->difference between the weakSet and Set
+     Set: A Set holds strong references to the objects it contains. This means that as long as an object is stored in a Set,
+      it will not be garbage collected, even if there are no other references to that object in your code. Objects stored in a 
+      Set are kept alive.
+
+     WeakSet: A WeakSet holds weak references to the objects it contains. This means that the presence of an object in 
+     a WeakSet does not prevent it from being garbage collected if there are no strong references to it elsewhere in your code.
+      Objects stored in a WeakSet are not kept alive solely by the WeakSet.
+
+      Set: A Set is iterable, which means you can easily iterate through its elements using methods like forEach or a for...of loop.
+
+    WeakSet: A WeakSet is not iterable. You cannot directly iterate through its elements, which makes it suitable for scenarios
+     where you don't need to enumerate the objects it contains.
+
+    Set: A Set can store values of any data type, including primitive values (e.g., numbers, strings) and objects.
+
+    WeakSet: A WeakSet can only store objects. Primitive values are not allowed.
+
+----------------------------------------------
+
+---->difference between Map and weakMap
+
+     Map: A Map allows keys to be of any data type, including objects, functions, and primitive values (e.g., numbers, strings).
+
+    WeakMap: A WeakMap can only have objects as keys. Primitive values are not allowed as keys.
+
+    Map: A Map holds strong references to its keys. This means that as long as a key is stored in a Map, it will not be garbage collected, even if there are no other references to that key in your code. Keys stored in a Map are kept alive.
+
+    WeakMap: A WeakMap holds weak references to its keys. This means that the presence of a key in a WeakMap does not prevent
+     it from being garbage collected if there are no strong references to it elsewhere in your code. Keys stored in a WeakMap are 
+     not kept alive solely by the WeakMap.
+
+----------------------------------------------
+
+--->Factory funciton
+
+    Certainly! A factory function in JavaScript is like a recipe for creating objects. It's a function that you can use to make many 
+    similar objects quickly and easily.
+
+     Imagine you want to make lots of toy cars. Instead of building each car from scratch every time, you create a toy car factory.
+         The factory has instructions on how to make a toy car, like what color it should be and how many wheels it should have.
+
+     In JavaScript, a factory function is similar. It's a function that you call to make objects. You give it some information, and it
+         creates an object with that information. This way, you can make as many objects as you need without writing the same code over
+          and over again.
+
+     Here's a simple example:
+
+    javascript
+     // This is our factory function for creating people
+    function createPerson(name, age) {
+     // We create a new person object
+      const person = {};
+
+        // We fill in the details
+        person.name = name;
+        person.age = age;
+
+        // We give the person a way to say hello
+        person.sayHello = function () {
+            console.log(`Hello, my name is ${person.name} and I am ${person.age} years old.`);
+        };
+
+        // Finally, we return the person we created
+        return person;
+        }
+
+        // Now, we can use our factory function to make people
+        const person1 = createPerson("John", 30);
+        const person2 = createPerson("Alice", 25);
+
+        // Each person has their own information and can say hello
+        person1.sayHello(); // Output: "Hello, my name is John and I am 30 years old."
+        person2.sayHello(); // Output: "Hello, my name is Alice and I am 25 years old."
+        ```
+
+        So, a factory function is like a template that helps you create objects with similar
+         properties and behaviors without repeating yourself. It's a handy way to make objects in JavaScript!
+----------------------------------------------
+--->Throatling
+       Imagine you have a button, and every time you click it, a function runs. If you click the button multiple times very quickly,
+        the function may run many times in a short span, which could be overwhelming or inefficient.
+
+       Throttling helps with this. It makes sure that the function runs at a maximum rate, like every 1 second,
+        no matter how many times you click the button within that second. It slows down the execution rate.
+
+        It's commonly used to optimize performance when dealing with events that can trigger rapidly, such as scroll events or resize events.
+     , no matter how fast you trigger it.
+----------------------------------------------
+
+debouncing
+
+Imagine you have a button, and every time you press it, a function runs.
+Debouncing is like waiting for a pause before taking action.
+If you press the button multiple times quickly, debouncing makes sure the function only runs once after you stop pressing for a moment.
+It's useful when you want to wait for a break in activity, like waiting for someone to finish typing in a search bar before searching.
+
+----------------------------------------------
+ Defer 
+
+ Certainly! Let's break down the default behavior of script execution in more detail:
+
+1. **HTML Parsing and Rendering:**
+   - When a web browser loads a webpage, it starts by downloading the HTML file from the server.
+   - As it downloads the HTML, it begins parsing it, which means it reads the HTML code and constructs a Document Object Model (DOM) 
+   tree representing the structure of the webpage.
+   - The browser also constructs a render tree, which is used to display the content on the screen.
+
+2. **Script Encounters:**
+   - While parsing the HTML, if the browser encounters a `<script>` element (which includes external scripts loaded via the `src` 
+   attribute or inline scripts), it immediately stops parsing the HTML content.
+
+3. **Script Download and Execution:**
+   - The browser then initiates the download of the script file (if it's an external script) or executes the inline script.
+   - Script execution can involve downloading and parsing additional resources, which may include other scripts, stylesheets,
+    or external data.
+   - The browser will execute the script's code as it's downloaded or parsed.
+
+4. **Rendering Blockage:**
+   - While the script is being executed, the rendering process is blocked. This means that the browser cannot update the DOM or render
+     new content on the webpage.
+   - If the script takes a long time to execute, it can cause a delay in rendering, making the webpage appear unresponsive or slow to load.
+
+5. **Script Completion:**
+   - Once the script has been executed, the browser continues parsing the HTML from where it left off.
+   - After parsing the HTML and constructing the DOM, the browser can update the render tree and display the content on the screen.
+
+ In summary, the default behavior of script execution in a web browser involves pausing the parsing and rendering of HTML when a `<script>`
+  element is encountered. The browser then downloads and executes the script, which can potentially block the rendering of the webpage,
+   especially if the script is large or contains complex operations.
+
+ This behavior can lead to a less responsive user experience and slower page loading times, especially if scripts are placed in the `<head>`
+ section of the HTML, as they can delay the rendering of the visible content. To mitigate this issue, developers use techniques like the `async`
+  and `defer` attributes to control when and how scripts are executed, allowing the browser to continue rendering the webpage while scripts load and run.
+
+----------------------------------------------
+Function composition
+
+Function composition in JavaScript is like building a sequence of actions by combining smaller functions. It's a way to take multiple functions and use
+them together to create a new function that performs a series of operations in a specific order.
+
+Here's a simple explanation with an example:
+
+Imagine you're making a sandwich, and you have individual ingredients and steps to follow:
+
+Spread peanut butter on one slice of bread.
+Add jelly on top of the peanut butter.
+Place another slice of bread on top.
+
+----------------------------------------------
+
+a literal is a direct way to write and represent a value in your code. It's like writing a value exactly
+ as it is, without any calculations or extra steps.
+String Liter,Number Literals,Boolean Literes
+Number Literals is used to represent Numbers . like that others case also.
+----------------------------------------------
+
+Use Struct (strict mode)
+ It helps you catch common coding mistakes and prevents silent errors. For example, it makes sure you declare variables before using them.
+ "use strict";
+
+// This code runs with strict mode
+x = 10; // Error: x is not defined
+
+function doSomething() {
+  y = 20; // Error: y is not defined
+}
+
+doSomething();
+console.log(x); // This line won't be reached due to the errors
+
+With strict mode enabled, both x and y cause errors because they are used without being declared. Strict mode helps you catch these kinds
+ of issues early in development, making your code more reliable and less error-prone.
+
+----------------------------------------------
+
+Event bubbling is a concept in JavaScript where an event triggered on a nested or innermost element "bubbles" up through its ancestors
+ in the DOM hierarchy, triggering their respective event handlers as well. This means that when an event occurs on an element inside another 
+ element, it will also trigger the event on the outer elements in the nesting order, from the innermost to the outermost.
+
+ <div id="outer">
+  Outer Element
+  <div id="inner">
+    Inner Element
+  </div>
+</div>
+
+const outerElement = document.getElementById("outer");
+const innerElement = document.getElementById("inner");
+
+outerElement.addEventListener("click", function () {
+  console.log("Click event on outer element");
+});
+
+innerElement.addEventListener("click", function () {
+  console.log("Click event on inner element");
+});
+
+If you click on the "Inner Element," the event will first trigger the inner element's click event handler,
+ printing "Click event on inner element" to the console. Then, the event will bubble up to the outer element and 
+ trigger its click event handler, printing "Click event on outer element" to the console.
+ 
+----------------------------------------------
+
+
