@@ -729,7 +729,54 @@ innerElement.addEventListener("click", function () {
 If you click on the "Inner Element," the event will first trigger the inner element's click event handler,
  printing "Click event on inner element" to the console. Then, the event will bubble up to the outer element and 
  trigger its click event handler, printing "Click event on outer element" to the console.
- 
+
 ----------------------------------------------
 
+Evetnt propagation
 
+Certainly! Event propagation in JavaScript refers to the way events travel through the DOM (Document Object Model) hierarchy. 
+There are two main phases of event propagation: capturing phase and bubbling phase.
+
+Capturing Phase: In this phase, the event travels from the outermost ancestor to the target element.
+
+Bubbling Phase: In this phase, the event travels from the target element back up to the outermost ancestor.
+
+const outerElement = document.getElementById("outer");
+const innerElement = document.getElementById("inner");
+
+outerElement.addEventListener("click", function () {
+  console.log("Outer Element Clicked");
+});
+
+innerElement.addEventListener("click", function () {
+  console.log("Inner Element Clicked");
+});
+element.addEventListener(event, listener, useCapture);
+event: The event type (e.g., "click").
+listener: The function to be called when the event is triggered.
+useCapture: An optional boolean parameter that determines the phase to which the listener should be attached. If useCapture is true, the listener is attached to the capturing phase; if false or omitted, it's attached to the bubbling phase (which is the default).
+Since you didn't set useCapture to true when adding event listeners, both of them are attached to the bubbling phase. As a result, you see the event propagation behavior I described earlier:
+
+The capturing phase doesn't have any event listeners, so it doesn't log anything in this example.
+The bubbling phase has event listeners on both the innerElement and the outerElement, and they log messages when the event bubbles up.
+If you wanted to add event listeners to the capturing phase, you would explicitly set useCapture to true:
+
+outerElement.addEventListener("click", function () {
+  console.log("Outer Element Clicked - Capturing Phase");
+}, true);
+
+innerElement.addEventListener("click", function () {
+  console.log("Inner Element Clicked - Capturing Phase");
+}, true);
+
+now the out put is 
+"Outer Element Clicked - Capturing Phase"
+"Inner Element Clicked - Capturing Phase"
+
+----------------------------------------------
+----------------------------------------------
+----------------------------------------------
+----------------------------------------------
+----------------------------------------------
+----------------------------------------------
+----------------------------------------------

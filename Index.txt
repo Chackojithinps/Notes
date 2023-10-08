@@ -47,6 +47,7 @@ javascript
 .Continue
 .Do while
 .Finally
+.Bitwise operator
 .Throw statement
 .Class object constructor
 .Extends keyword

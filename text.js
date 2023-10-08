@@ -325,7 +325,8 @@
 // console.log(b)
 
 
-// generator function -----------------------
+// generator function ------------------------
+
 // function* generator(){
 //     let a=2
 //     while(a<5){
@@ -778,12 +779,12 @@ const arr = [10,30,5,34,78,54,23,44,7]
 // console.log("array 2",array2);
 
 
-function k(){
-    var a = 10;
-    {
-        let a = 100;
-        console.log(a)
-    } 
-    console.log(a)
-}
-k()
+// function k(){
+//     var a = 10;
+//     {
+//         let a = 100;
+//         console.log(a)
+//     } 
+//     console.log(a)
+// }
+// k()
