@@ -12,7 +12,8 @@
 
 --->REPL
       Read Evaluate Print Loop
-      
+      A REPL (Read-Eval-Print Loop) in Node.js is an interactive environment that allows you to enter JavaScript code, execute it,
+      and immediately see the results.
 
 --->NPM 
      node package manager
@@ -37,15 +38,22 @@
 --->res. end() - if we don't give this, the program won't end, it will load any file to fetch.
 
 --->diff b/w res.render and res.send();
+
     res.send is used to send a response back to the client with data in the form of plain text, HTML, JSON, or any other format supported by the server.
     res.render() is used in server side rendering. It is used to render a specified template (view) along with data into HTML and then send that HTML back to the client.
     res.render is used to combine the template with data and generate the final HTML, which is then sent as a response to the client. 
     This enables dynamic content generation on the server before sending the complete HTML to the client.
 
+
+--->res.end()
+       n Node.js, res.end() is a method commonly used when working with the HTTP module to end an HTTP response and send the response to the client.
+       It is typically used when you have finished sending all the data you want to include in the response and want to signal to the client that the response is complete.
+       Here's why res.end() is used in Node.js:
+       
 --->Server-Side Rendering (SSR) is a technique used in web development to render web pages on the server and send the fully rendered HTML page to the client's browser. 
     Request: When you (the client) want to visit a web page, you send a request to the server. It's like asking the server for the content you want to see.
 
-    Data  and Template: The server receives your request and starts gathering all the necessary data to create the web page. This data can come from databases,
+    Data and Template : The server receives your request and starts gathering all the necessary data to create the web page. This data can come from databases,
      APIs, or other sources. The server also has a pre-designed template, which is like a blueprint or a skeleton of how the web page should look.
 
     Server-Side Rendering: The magic happens here! The server takes the collected data and inserts it into the template in the right places. It's like filling in 
