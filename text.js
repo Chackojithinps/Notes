@@ -297,7 +297,9 @@
 // console.log("helllo")
 
 
-
+// let res = "jithin"
+// let k = res.split(" ")
+// console.log(k)
 // console.log("jithin")
 
 // const promise = new Promise((resolve,reject)=>{
@@ -325,6 +327,11 @@
 // console.log(b)
 
 
+// const arr = [10,30]
+// const res = arr.reduce((total,value)=>{
+//    return total+value
+// },0)
+// console.log(res)
 // generator function ------------------------
 
 // function* generator(){
@@ -724,7 +731,6 @@
 // stack.queue();
 // stack.display()
 
-const arr = [10,30,5,34,78,54,23,44,7]
 
 
 // const bubbleSort = (arr)=>{
@@ -788,3 +794,91 @@ const arr = [10,30,5,34,78,54,23,44,7]
 //     console.log(a)
 // }
 // k()
+// function* iterateArray(arr) {
+//     for (let i = 0; i < arr.length; i++) {
+//       yield arr[i];
+//     }
+//   }
+  
+//   const myArray = [10, 20, 30];
+//   const arrayIterator = iterateArray(myArray);
+  
+//   for (const value of arrayIterator) {
+//     console.log(value);
+//   }
+  
+
+// class Node {
+//   constructor(data){
+//     this.data = data;
+//     this.next = null
+//   }
+// }
+ 
+
+// class Stack{
+//   constructor(){
+//     this.top = null;
+//   }
+
+//   push(data){
+//     const newNode = new Node(data)
+//       if(this.top ==null){
+//           this.top = newNode
+//           return;
+//       }
+
+//       newNode.next = this.top;
+//       this.top = newNode;
+//       return
+//   }
+
+//   pop(){
+//     if(this.top==null){
+//       return;
+//     }
+//     this.top = this.top.next;
+//   }
+
+//   undo(){
+     
+//   }
+//   redo(){
+
+//   }
+
+//   display(){
+//     var temp  =  this.top
+//     while(temp){
+//       console.log(temp.data)
+//       temp = temp.next
+//     }
+//   }
+// }
+
+// const stack = new Stack()
+// stack.push(10)
+// stack.push(20)
+// stack.push(30)
+// stack.push(40)
+// stack.push(50)
+// // stack.pop()
+// stack.display()
+
+// var a = 10;
+// var b = "a"
+// var c = b+a
+// console.log(c)
+// console.log(typeof(c))
+
+// function* generator(){
+//   let a =1;
+//   while(a<5){
+//     yield ++a;
+//   }
+// }
+
+// let iterator = generator()
+// console.log(iterator.next().value)
+// console.log("jithin")
+// console.log(iterator.next().value)

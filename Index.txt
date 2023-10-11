@@ -47,6 +47,9 @@ javascript
 .Continue
 .Do while
 .Finally
+.default parameters
+.WebAPIs
+.escape sequence
 .Bitwise operator
 .Throw statement
 .Class object constructor
@@ -71,8 +74,84 @@ javascript
 .blocking vs unblocking
 .callback
 .Promises
+.methods of promise
 .promises states
-.promise.all,promise.any,promise.rise
+.promise.all,promise.any,promise.race
 .promisify
 .memoization
 .IIFE
+.control flow function
+
+
+
+NOde js--------------------------------------------------------------------
+
+.what is node js?
+.repl
+.npm 
+.render
+.res.send() vs res.render()
+.res.end()
+.res.write()
+.API
+.server side rendering
+.Streams
+.BUFFER
+.Modules
+.MORGON
+.middleware,types of middleware
+.express.json(),express.urlencoded(),express.Router()
+.body-parser
+.app.use
+.app.all
+.app.set
+.http vs https
+.express.session
+.express.cookieParser
+.express session vs session storage
+.Http methods
+.package.json()
+.Query parameters  
+.params
+.view engine
+.cors
+.Preflight request
+.PM2 -r
+.session-storage
+.localStorage
+.cookie
+.writeHead()
+.expires vs maxAge
+.Dynamic rendering vs conditional rendering
+.OPTIONS
+.preflight request
+.CORS
+.env
+.trace 
+.error middleware
+.piping
+.controll flow functions
+.dynamic routing
+.router chaining
+.write head
+.set head
+.disadvantages to using Node.js
+.primary reason for using the event-based model in Node.js
+.difference between Node.js and Ajax
+.Can you access DOM in Node
+."non-blocking" in node.js
+.overcome the problem of blocking I/O operations
+.concept of stub in Node.js
+.Libuv.
+.assert used in Node.js
+.handle the child threads
+.Event Emitter in Node.js
+.Clustering
+.measure the duration of async operations
+.measure the performance of async operations
+.types of streams available in Node.js
+.difference between readFile and create Read Stream in Node.js
+.Node concurrentcy
+
+
+

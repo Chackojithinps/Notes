@@ -5,12 +5,14 @@
     Model - It maintains the data of the application. It is the database part of the
             application.
     View - The View is responsible for presenting the data to the user. It handles the user interface,
-            displaying the information retrieved from the Model in a way that is understandable and visually appealing.
+           displaying the information retrieved from the Model in a way that is understandable and visually appealing.
     Controller - The Controller acts as an intermediary between the Model and the View. It receives user input from the View,
                  processes it, and interacts with the Model to retrieve the necessary data or update it as needed.
 
 
 --->REPL
+      Read Evaluate Print Loop
+      
 
 --->NPM 
      node package manager
@@ -24,7 +26,7 @@
 
 --->API - (APPLICATION PROGRAMMING INTERFACE) - the connection between the browser
     and server
-     Request: The client application sends a request to the server application using a specific API endpoint. The request typically includes information about what data or action the client wants from the server.
+    Request: The client application sends a request to the server application using a specific API endpoint. The request typically includes information about what data or action the client wants from the server.
 
     Processing: The server receives the request, processes it, and performs the necessary actions based on the information provided by the client.
 
@@ -147,7 +149,6 @@
 
 --->App.set()
     view engine': This setting is used to specify the template engine to be used for rendering views in your application.
-
     In summary, app.use() is for setting up middleware to process incoming requests, while app.set() is for configuring various options and characteristics of your application. 
 
 --->App.all
@@ -164,7 +165,7 @@
 
       HTTPS Stands for "Hypertext Transfer Protocol Secure."
       Secure communication: Data is encrypted before transmission, using SSL/TLS (Secure Sockets Layer/Transport Layer Security) protocols, providing an additional layer of security.
-
+      
 --->Http methods
       GET: The GET method is used to retrieve data from the server. It requests the server to send the specified resource back to the client.
            GET requests are typically used for reading data, and they should not have any side effects on the server.

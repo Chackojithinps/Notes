@@ -15,7 +15,9 @@
 
 ----------------------------------------------
 
---->when ever the javascript runs the global object also will created. that is window in case of browsers. 
+--->
+
+    when ever the javascript runs the global object also will created. that is window in case of browsers. 
     in the global lever this === window
     when ever the execution context is created the this will also created along with execution context.
     [
@@ -32,7 +34,6 @@
     undefined.
     Constructor call: When a function is called with the new keyword, this refers to the new object that is being created.
     Arrow function: Arrow functions do not have their own this binding. Instead, they inherit the this binding of the enclosing lexical context.
-
     EG:
     // Global scope
 const person = {
@@ -165,7 +166,6 @@ Use code with caution. Learn more
         }
         return displayName;
     }
-
     const myFunc = makeFunc();
     myFunc();
    Here it afer the makeFunc get deleted from the global exectution context the myFunc variable still rememebers it lexical scope.
@@ -174,31 +174,7 @@ Use code with caution. Learn more
    like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function.
    JavaScript treat function as a first-class-citizens. This means that functions are simply a value and are just another type of object.
 
-   
---->JavaScript is single threaded and synchronous
 
---->Synchronous: In synchronous programming, tasks are executed one after the other, in a sequential order. Each task must complete before going to the next task.
-                 Synchronous refers to the nature of tasks and how they are handled in a program.That means the nature that it executes in top to bottom order one by one.
-
---->Asynchronous :The program does not wait for the completion of an particular task and continues executing other code.
-                   This nature is called Asynchronous.
-
---->Single threaded :Ont task will perform at a time. line by line exectution.
-
---->Multi threaded : multiple task at a time. it wont wait for a particular task to complete.instead it will execute the next line of code.
-
---->Blocking refers to operations that block further execution until that operation finishes
-    
---->non-blocking refers to code that doesn't block execution.
-
---->Why callback
-    we know that javascript is synchronous. That means code will execute line by line. so if a large operation is want to perform then it will wait for that 
-    particular line of code to complete. so this will affect the efficient and takes time. so using callback we are setting this Asynchronous. that means it wont wait 
-    for the particular code .it will execute the next line of code.
---->what is callback
-
-    a callback is a function that is passed as an argument to another function and is intended to be executed at a later time or under specific conditions. Callbacks are commonly used in
-    asynchronous programming to handle the results of asynchronous operations, such as fetching data from a server, reading files, or responding to user input.
 
 --->The main difference between Primitive and non-primitive data types is that Non-primitive data types are mutable, meaning that their values can be changed after they are created. 
     And Primitive data types are immutable, meaning that their values cannot be changed once they are created.
@@ -273,24 +249,103 @@ function is called with specific inputs, the memoization system first checks if 
 
 ---> Type casting, also known as type conversion, is the process of converting a value from one data type to another.
 
-
 --->Higher-order functions are functions in programming languages that can take other functions as arguments, return functions as results, or both.
 
     .map
     .reduce 
     .filter
+    Higher-order functions are a fundamental concept in JavaScript and functional programming. A higher-order function 
+    is a function that either takes one or more functions as arguments (callbacks) or returns a function as its result.
+     In other words, it treats functions as first-class citizens.
 
 --->With call(), an object can use a method belonging to another object.
 
-
+-------------------------------------------------------------------------------
 callback
+
+--->JavaScript is single threaded and synchronous
+
+--->Synchronous: In synchronous programming, tasks are executed one after the other, in a sequential order. Each task must complete before going to the next task.
+                 Synchronous refers to the nature of tasks and how they are handled in a program.That means the nature that it executes in top to bottom order one by one.
+
+--->Asynchronous :The program does not wait for the completion of an particular task and continues executing other code.
+                   This nature is called Asynchronous.
+
+--->Single threaded :Ont task will perform at a time. line by line exectution.
+
+--->Multi threaded : multiple task at a time. it wont wait for a particular task to complete.instead it will execute the next line of code.
+
+--->Blocking refers to operations that block further execution until that operation finishes
+    
+--->non-blocking refers to code that doesn't block execution.
+
+--->Why callback
+    we know that javascript is synchronous. That means code will execute line by line. so if a large operation is want to perform then it will wait for that 
+    particular line of code to complete. so this will affect the efficient and takes time. so using callback we are setting this Asynchronous. that means it wont wait 
+    for the particular code .it will execute the next line of code.
+    
+--->what is callback
+
+    a callback is a function that is passed as an argument to another function and is intended to be executed at a later time or under specific conditions. Callbacks are commonly used in
+    asynchronous programming to handle the results of asynchronous operations, such as fetching data from a server, reading files, or responding to user input.
+
+    eg:function doSomething(callback) {
+  console.log("Doing something...");
+  // Simulate a time-consuming task
+  setTimeout(function() {
+        console.log("Task is done!");
+        callback(); // Call the callback function
+      }, 2000);
+    }
+
+    function callbackFunction() {
+      console.log("Callback function executed.");
+    }
+
+    doSomething(callbackFunction);
 
 In JavaScript, a callback function is a function that is passed as an argument to another function and is intended to be executed at a later point in time.
 The function receiving the callback can "call back" or execute the provided function once it has completed its task or when a certain event occurs.
 
-Asynchronous operations, such as reading from a file, making network requests, or handling user input, often take time to complete. Instead of waiting
-for these operations to finish, JavaScript can continue executing other tasks while keeping track of the callback function. 
 
+--->event loop 
+    the event loop constantly checks if the call stack is empty. If it is, it takes the first task from the task queue (if there's any) and pushes it onto the call stack. This means that the next asynchronous task is processed when the call stack is empty.
+    Asynchronous operations, such as reading from a file, making network requests, or handling user input, often take time to complete. Instead of waiting
+    for these operations to finish, JavaScript can continue executing other tasks while keeping track of the callback function. 
+
+
+---->Callback hell
+
+     funciton getData1(callback){
+       settimeout(()=>{
+           callback() 
+
+       })
+     }
+
+     funciton getData2(callback){
+      setTimeout(()=>{
+           callback() 
+
+      })
+     }
+
+    funciton getData3(callback){
+      setTimeout(()=>{
+            callback() 
+
+      })
+    }
+
+     getData1((value)=>{
+        console.log(value)
+        getData2((val2)=>{
+           console.log(val2+value)
+           getData3((val3) =>{
+            console.log(val2+val3+value)
+           })
+        })
+     })
 A Promise can have three possible states:
 
 Pending: The initial state when the Promise is created and the asynchronous operation is still in progress.
@@ -300,13 +355,104 @@ Fulfilled (Resolved): The state when the asynchronous operation is successfully 
 Rejected: The state when the asynchronous operation encounters an error or fails to produce the expected result.
 
 Promise.all() is a method in JavaScript that takes an array of Promises as input and returns a new Promise. This new Promise is fulfilled
- with an array containing the resolved values of all the input Promises, in the same order as the original array of Promises. If any of the input
-  Promises is rejected, the Promise.all() method immediately rejects with the reason of that rejected Promise.
+with an array containing the resolved values of all the input Promises, in the same order as the original array of Promises. If any of the input
+Promises is rejected, the Promise.all() method immediately rejects with the reason of that rejected Promise.
+
+consider we have multiple apis and we want to resolve it together. then it we will use this promise.all()
+Promise.all: You use Promise.all to group these promises together. It takes an array of promises as input.
+
+Wait for All: Promise.all works in the background, and it waits for all the promises in the array to complete. It doesn't matter which one finishes first; 
+it waits for all of them.
+
+Resolve Together: Once all the promises are resolved (meaning they've completed successfully), Promise.all itself resolves. It gives you an array of the 
+results from each promise in the same order as you provided them.
+
+Continue: Now that you have all the results, you can proceed with the next steps in your code.
 
 The syntax for using Promise.all() is as follows:
 
+eg:
+   const promise1 = new Promise((resolve,reject)=>{
+      resolve("jithin")
+   })
+   const promise2 = new Promise((resolve,reject)=>{
+      resolve("jinto")
+   })
 
-----------------------------------------------
+   const promiseAll = Promise.all([promise1,promise2])
+   promiseAll.then((res)=>{
+    console.log(res)
+   })
+
+promise.allsettled()
+
+Promise.allSettled is a JavaScript method that helps you work with multiple promises, but unlike Promise.all, 
+it doesn't care if some of them fail or are rejected. It gives you information about all the promises, whether they succeed or fail.
+ You use the Promise.allSettled method and pass an array of these promises as input.
+
+Wait for All to Settle: Promise.allSettled works in the background, waiting for all the promises to settle. "Settling" means that a promise can either succeed 
+(resolve) or fail (reject).
+
+Once all the promises have settled (either resolved or rejected), Promise.allSettled itself resolves with an array of objects
+. Each object represents the outcome of one promise. These objects have two properties:
+
+status: Indicates whether the promise was fulfilled (resolved) or rejected.
+value or reason: Depending on whether the promise was fulfilled or rejected, this property contains the result or the reason for rejection.
+
+ const promise1 = new Promise((resolve,reject)=>{
+      resolve("jithin")
+   })
+   const promise2 = new Promise((resolve,reject)=>{
+      reject("jinto")
+   })
+
+   const promiseAll = Promise.all([promise1,promise2])
+   promiseAll.then((res)=>{
+    console.log(res)
+   })
+
+   results : [{status:fulfilled , "jithin" },
+               {status:rejected , reason:"Api failed"}]
+              
+   
+Promise.any()
+
+   const promise1 = new Promise((resolve,reject)=>{
+      resolve("jithin")
+   })
+   const promise2 = new Promise((resolve,reject)=>{
+      reject("jinto")
+   })
+
+   const promiseAll = Promise.any([promise1,promise2])
+   promiseAll.then((res)=>{
+    console.log(res)
+   })
+
+   this returns a single promise after success.if everything get failed then it will show that "all promises were rejected"
+   if the first one is rejected and second one is resolved then it will show the second resolved promise 
+
+Promise.race()
+
+const promise1 = new Promise((resolve,reject)=>{
+      resolve("jithin")
+   })
+   const promise2 = new Promise((resolve,reject)=>{
+      reject("Api error")
+   })
+
+   const promiseAll = Promise.race([promise1,promise2])
+   promiseAll.then((res)=>{
+    console.log(res)
+   })
+
+   what ever the result of the first promise finished it will show that one. if it is resolved then it shows the resolved promise.
+   if it is rejected then it shows the rejected one. 
+
+
+--->"Promisify" is a term used in JavaScript to describe the process of converting a function that uses callbacks into a function that returns a Promise. 
+-------------------------------------------------------------------------------
+
 
 --->call()->we can borrow funcitons from other objects and use it with the data of some other object. so inside the call() we have to pass what the this 
 (this of that funciton) pointing to. 
@@ -473,13 +619,14 @@ eg:
     }
 ----------------------------------------------
 
----->difference of keys and object
+---->difference of map and object
      
      .In an Object, keys are always strings or symbols.
      .In a Map, keys can be of any data type, including objects, functions, and primitive values. 
 
      .The order of keys in an Object is not guaranteed to be preserved. 
      .in map it is preserved
+
 ----------------------------------------------
 
 --->Diff between null and undefined
@@ -529,6 +676,7 @@ eg:
 ----------------------------------------------
 
 ---->difference between the weakSet and Set
+
      Set: A Set holds strong references to the objects it contains. This means that as long as an object is stored in a Set,
       it will not be garbage collected, even if there are no other references to that object in your code. Objects stored in a 
       Set are kept alive.
@@ -539,12 +687,12 @@ eg:
 
       Set: A Set is iterable, which means you can easily iterate through its elements using methods like forEach or a for...of loop.
 
-    WeakSet: A WeakSet is not iterable. You cannot directly iterate through its elements, which makes it suitable for scenarios
+      WeakSet: A WeakSet is not iterable. You cannot directly iterate through its elements, which makes it suitable for scenarios
      where you don't need to enumerate the objects it contains.
 
-    Set: A Set can store values of any data type, including primitive values (e.g., numbers, strings) and objects.
+     Set: A Set can store values of any data type, including primitive values (e.g., numbers, strings) and objects.
 
-    WeakSet: A WeakSet can only store objects. Primitive values are not allowed.
+     WeakSet: A WeakSet can only store objects. Primitive values are not allowed.
 
 ----------------------------------------------
 
@@ -607,15 +755,17 @@ eg:
         So, a factory function is like a template that helps you create objects with similar
          properties and behaviors without repeating yourself. It's a handy way to make objects in JavaScript!
 ----------------------------------------------
+
 --->Throatling
        Imagine you have a button, and every time you click it, a function runs. If you click the button multiple times very quickly,
-        the function may run many times in a short span, which could be overwhelming or inefficient.
+       the function may run many times in a short span, which could be overwhelming or inefficient.
 
        Throttling helps with this. It makes sure that the function runs at a maximum rate, like every 1 second,
-        no matter how many times you click the button within that second. It slows down the execution rate.
+       no matter how many times you click the button within that second. It slows down the execution rate.
 
         It's commonly used to optimize performance when dealing with events that can trigger rapidly, such as scroll events or resize events.
-     , no matter how fast you trigger it.
+        no matter how fast you trigger it.
+
 ----------------------------------------------
 
 debouncing
@@ -680,10 +830,12 @@ Place another slice of bread on top.
 ----------------------------------------------
 
 a literal is a direct way to write and represent a value in your code. It's like writing a value exactly
- as it is, without any calculations or extra steps.
+as it is, without any calculations or extra steps.
 String Liter,Number Literals,Boolean Literes
 Number Literals is used to represent Numbers . like that others case also.
+
 ----------------------------------------------
+
 
 Use Struct (strict mode)
  It helps you catch common coding mistakes and prevents silent errors. For example, it makes sure you declare variables before using them.
@@ -754,8 +906,10 @@ innerElement.addEventListener("click", function () {
 element.addEventListener(event, listener, useCapture);
 event: The event type (e.g., "click").
 listener: The function to be called when the event is triggered.
-useCapture: An optional boolean parameter that determines the phase to which the listener should be attached. If useCapture is true, the listener is attached to the capturing phase; if false or omitted, it's attached to the bubbling phase (which is the default).
-Since you didn't set useCapture to true when adding event listeners, both of them are attached to the bubbling phase. As a result, you see the event propagation behavior I described earlier:
+useCapture: An optional boolean parameter that determines the phase to which the listener should be attached. If useCapture is true, the listener 
+is attached to the capturing phase; if false or omitted, it's attached to the bubbling phase (which is the default).
+Since you didn't set useCapture to true when adding event listeners, both of them are attached to the bubbling phase. As a result, 
+you see the event propagation behavior I described earlier:
 
 The capturing phase doesn't have any event listeners, so it doesn't log anything in this example.
 The bubbling phase has event listeners on both the innerElement and the outerElement, and they log messages when the event bubbles up.
@@ -774,9 +928,83 @@ now the out put is
 "Inner Element Clicked - Capturing Phase"
 
 ----------------------------------------------
+Generator function
+A generator function in JavaScript is a special type of function that can be paused and resumed during its execution. 
+It allows you to generate a sequence of values lazily, meaning you can produce values one at a time and only when needed, which 
+can be particularly useful for dealing with large data sets or asynchronous operations.
+
+function* generator(){
+    let a=2
+    while(a<5){
+        yield ++a 
+    }
+}
+
+let generat=generator()
+console.log(generat.next().value)
+
+console.log('hello')
+console.log(generat.next().value)
+
 ----------------------------------------------
+
+Regular Functions: Regular functions have their own this binding, which is determined by how the function is called.
+ The value of this can vary based on the calling context (e.g., the object that calls the function or the global object).
+
+Arrow Functions: Arrow functions do not have their own this binding. Instead, they inherit the this value from the surrounding
+lexical context (the context in which they were created). This can be advantageous in certain scenarios, such as when working
+with callbacks or event handlers.
 ----------------------------------------------
+
+A pure function always produces the same output for the same input. It doesn't rely on any external state or data that may change over time. 
+This property makes pure functions predictable, which is essential for debugging and testing.
+// Example 1: Addition
+function add(a, b) {
+  return a + b;
+}
 ----------------------------------------------
+
+do...while loop guarantees that the block of code will execute at least once, even if the condition is initially false.
 ----------------------------------------------
+In JavaScript, the finally block is used in conjunction with try...catch to specify a block of code that should be executed
+ regardless of whether an exception (error) was thrown or not. This is useful for performing cleanup operations or releasing
+  resources that need to be done no matter what.
+
+try {
+  // Code that may throw an exception
+} catch (error) {
+  // Code to handle the exception
+} finally {
+  // Code that will always run, whether there was an exception or not
+}
+
 ----------------------------------------------
+
+In pass by value, a copy of the actual data (the value) is passed to a function. This means that changes made to the parameter 
+inside the function don't affect the original variable outside the function.
+function doubleValue(num) {
+  num = num * 2;
+  return num;
+}
+
+let x = 5;
+let result = doubleValue(x);
+
+console.log(x);      // x remains 5 (unchanged)
+console.log(result); // result is 10
+
+In pass by reference, a reference to the original data (the memory location) is passed to a function. This means that changes made to the 
+parameter inside the function affect the original variable outside the function.
+
+function doubleArray(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i] * 2;
+  }
+}
+
+let numbers = [1, 2, 3];
+doubleArray(numbers);
+
+console.log(numbers); // numbers is now [2, 4, 6]
+
 ----------------------------------------------
