@@ -92,6 +92,8 @@ NOde js--------------------------------------------------------------------
 .res.send() vs res.render()
 .res.end()
 .res.write()
+.res.writeHead()
+.server.listen
 .API
 .server side rendering
 .Streams

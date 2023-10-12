@@ -9,21 +9,19 @@
     Controller - The Controller acts as an intermediary between the Model and the View. It receives user input from the View,
                  processes it, and interacts with the Model to retrieve the necessary data or update it as needed.
 
+---------------------------------------------------------
 
 --->REPL
       Read Evaluate Print Loop
       A REPL (Read-Eval-Print Loop) in Node.js is an interactive environment that allows you to enter JavaScript code, execute it,
       and immediately see the results.
+---------------------------------------------------------
 
 --->NPM 
      node package manager
      npm allows developers to install, update, and uninstall packages easily.
 
---->RENDER 
-   - The res.render() function is used to render a view.
-
---->response.write() - is used to display the normal text and Response. you can send
-     multiple responses.
+---------------------------------------------------------
 
 --->API - (APPLICATION PROGRAMMING INTERFACE) - the connection between the browser
     and server
@@ -35,7 +33,8 @@
 
     Data Format: APIs use standard data formats, such as JSON or XML, to structure the data exchanged between the client and server. This ensures that both applications understand and can interpret the information correctly.
 
---->res. end() - if we don't give this, the program won't end, it will load any file to fetch.
+
+---------------------------------------------------------
 
 --->diff b/w res.render and res.send();
 
@@ -43,13 +42,52 @@
     res.render() is used in server side rendering. It is used to render a specified template (view) along with data into HTML and then send that HTML back to the client.
     res.render is used to combine the template with data and generate the final HTML, which is then sent as a response to the client. 
     This enables dynamic content generation on the server before sending the complete HTML to the client.
+---------------------------------------------------------
+    
+--->Server creating
+const http = require('http');
 
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' }); // Set response headers
+  res.write('Hello, World!'); // Write some data to the response
+  res.end(); // End the response
+});
 
+server.listen(3000);
+---------------------------------------------------------
 --->res.end()
-       n Node.js, res.end() is a method commonly used when working with the HTTP module to end an HTTP response and send the response to the client.
+       in Node.js, res.end() is a method commonly used when working with the HTTP module to end an HTTP response and send the response to the client.
        It is typically used when you have finished sending all the data you want to include in the response and want to signal to the client that the response is complete.
        Here's why res.end() is used in Node.js:
-       
+       Once res.end() is called, no more data can be written to the response.
+
+       After calling res.end(), the connection between the server and client is typically closed. The client knows that it has received the entire response.
+       Here's a key point to understand: res.end() is not only used to end a response but also to send the response back to the client. You can optionally
+       include data to be sent in the response, as shown in the example above.
+
+     res. end() - if we don't give this, the program won't end, it will load any file to fetch.
+     This means the client will keep waiting for the response to finish, and the connection between the server and the client will not be closed properly.
+     This means the client will keep waiting for the response to finish, and the connection between the server and the client will not be closed properly.
+
+---------------------------------------------------------
+
+--->res.writeHead()
+    res.writeHead(200, { 'Content-Type': 'text/plain' });: In this line, you are setting the HTTP response headers.
+            The res.writeHead() method is used to specify the status code and response headers for the HTTP response. In this case:
+            200 is the HTTP status code, indicating a successful response (OK).
+            { 'Content-Type': 'text/plain' } sets the Content-Type header to indicate that the response body will be in plain text format.
+---------------------------------------------------------
+
+--->res.write('Hello, World!');
+    This line writes data to the response. It sends the text "Hello, World!" to the response body. This data will be included in the HTTP response
+    sent to the client.
+---------------------------------------------------------
+
+--->server.listen(3000);: Finally, you start the HTTP server by calling the server.listen() method and specifying the port number 3000.
+    This means the server will listen for incoming requests on port 3000.
+
+---------------------------------------------------------
+
 --->Server-Side Rendering (SSR) is a technique used in web development to render web pages on the server and send the fully rendered HTML page to the client's browser. 
     Request: When you (the client) want to visit a web page, you send a request to the server. It's like asking the server for the content you want to see.
 
@@ -66,6 +104,7 @@
 
     Display: When your browser receives the HTML page, it can instantly display the complete web page, with all the content visible and ready to interact with.
      No extra processing is needed on the client-side for the initial display.
+---------------------------------------------------------
 
 --->STREAMS
 
@@ -83,6 +122,8 @@
     These smaller chunks of data flow through the stream like water flows through a pipe, making it easier to handle and work with the data.
 
     Streams are particularly useful for dealing with large data or real-time data, as they allow you to process it efficiently without consuming too much memory.
+
+---------------------------------------------------------
 
 --->BUFFER
 
