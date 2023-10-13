@@ -56,7 +56,7 @@
 ●  Array update Operators - 
         $push , $pop , $pull , $pullall , $ - positional operator$all() , $size()$addtoset()
 
-●  EXISTS
+●  EXISTS   
         $exists - checking the existence of the field in the specified collection using the $exists operator.
 
 ●  $ELEMMATCH

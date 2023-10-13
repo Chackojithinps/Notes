@@ -97,6 +97,7 @@ NOde js--------------------------------------------------------------------
 .API
 .server side rendering
 .Streams
+.types of streams available in Node.js
 .BUFFER
 .Modules
 .MORGON
@@ -127,6 +128,7 @@ NOde js--------------------------------------------------------------------
 .OPTIONS
 .preflight request
 .CORS
+.dependencies vs devdependencies
 .env
 .trace 
 .error middleware
@@ -144,15 +146,104 @@ NOde js--------------------------------------------------------------------
 .overcome the problem of blocking I/O operations
 .concept of stub in Node.js
 .Libuv.
-.assert used in Node.js
+.Threadpool
+.assert used in Node.js 
 .handle the child threads
 .Event Emitter in Node.js
 .Clustering
 .measure the duration of async operations
 .measure the performance of async operations
-.types of streams available in Node.js
 .difference between readFile and create Read Stream in Node.js
 .Node concurrentcy
+
+
+Mongo Db--------------------------------------------------------------------
+
+● what is mongoDb?
+● Where is Mongo DB used?
+● Difference bw relation and non relation database
+● Collection
+● document
+● BSON (Binary json)
+● JSON
+● Comparison Operators - 
+●  Logical Operators 
+●  UPSERT
+●  Array update Operators - 
+●  EXISTS
+●  $ELEMMATCH   
+●  Field Filters
+●  $regex -
+●  Agregation
+●  OUt stage
+●  Unwind
+●  aggregation pipeline
+●  AllowDiskuse
+●  Accumilators
+●  Unary operators
+●  Lookup -
+●  MongoDB utilities
+●  indexes 
+● Types of indexing
+●  Distinct
+●  Capped collection - 
+●  cap theorm
+● Replication 
+● Replic set-
+● Normalisation
+● DEnormalisation
+● Sharding
+● Scaling
+● Vertical Scaling
+● horizontal Scaling 
+● GridFs
+● NameSpace
+● Transaction
+● Acid properties
+● cursor
+● multi draw
+● auto scaling
+● concurrency
+● bulk write
+● batch sizing
+● shard key
+● query routes
+● update vs replace
+● in
+● all
+● type
+● views
+● Geospatial index
+● $ne $nin $in $not
+● $project
+● Atomic operation
+●Explain the spawn, fork, and exec methods
+●differences between process.nextTick(), setImmediate(), and setTimeout()
+●$addToSet
+●method binding(check)
+●
+●
+●
+●
+●
+●
+●
+●
+●
+●
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
