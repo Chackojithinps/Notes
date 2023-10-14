@@ -328,115 +328,264 @@
 // linkedList.removeDuplicates()
 // linkedList.display()
 
-    class Node{
-        constructor(data){
-            this.data = data;
-            this.right = null;
-            this.left = null;
-        }
-    }
-    class Bst{
+//     class Node{
+//         constructor(data){
+//             this.data = data;
+//             this.right = null;
+//             this.left = null;
+//         }
+//     }
+//     class Bst{
+//     constructor(){
+//         this.root = null
+//     }
+//     isEmpty(){
+//         return this.root == null;
+//     }
+//     insert(data){
+//         const newNode = new Node(data)
+//         if(this.isEmpty()){
+//             this.root = newNode;
+//         }else{
+//             this.insertNode(this.root,newNode)
+//         }
+//     }
+//     insertNode(root,newNode){
+//         if(newNode.data<root.data){
+//             if(root.left == null){
+//                 root.left = newNode;
+//             }else{
+//                 this.insertNode(root.left,newNode)
+//             }
+//         }else{
+//             if(root.right == null){
+//                 root.right = newNode;
+//             }else{
+//                 this.insertNode(root.right,newNode)
+//             }
+//         }
+//     }
+//     search(root,value){
+//        if(!root){
+//         return false
+//        } 
+//        if(root.data == value){
+//         return true
+//        }
+//        if(value<root.data){
+//          return this.search(root.left,value)
+//        }else{
+//         return this.search(root.right,value)
+//        }
+//     }
+
+//     min(root){
+//         if(!root.left){
+//             return root.data
+//         }else{
+//             return this.min(root.left)
+//         }
+//     }
+//     max(root){
+//         if(!root.right){
+//             return root.data
+//         }else{
+//             return this.max(root.right)
+//         }
+//     }
+
+//     printAllLeaves(root){
+//         if(!root){
+//             return root
+//         }
+//         if(!root.right && !root.left){
+//            console.log(root.data)
+//         }
+//         if(root.left){
+//             this.printAllLeaves(root.left)
+//         }
+//         if(root.right){
+//             this.printAllLeaves(root.right)
+//         }
+//     }
+
+//     preOrder(root){
+//         if(root){
+//             console.log(root.data)
+//             this.preOrder(root.left)
+//             this.preOrder(root.right)
+//         }
+//     }
+//     postOrder(root){
+//         if(root){
+//             this.postOrder(root.left)
+//             this.postOrder(root.right)
+//             console.log(root.data)
+//         }
+//     }
+//     inOrder(root){
+//         if(root){
+//             this.inOrder(root.left)
+//             console.log(root.data)
+//             this.inOrder(root.right)
+//         }
+//     }
+// }
+
+
+    // const bst = new Bst()
+    // bst.insert(10)
+    // bst.insert(5)
+    // bst.insert(3)
+    // bst.insert(3)
+    // bst.insert(12)
+    // bst.insert(16)
+    // bst.insert(7)
+    // bst.inOrder(bst.root)
+    // // const res= bst.search(bst.root,142)
+    // // console.log(res)
+    // const res = bst.min(bst.root)
+    // console.log("min",res)
+    // const max = bst.max(bst.root)
+    // console.log("max",max)
+    // bst.printAllLeaves(bst.root)
+// ----------------------------------------------------------
+//     function heapify(arr, n, i) {
+
+//         let largest = i;
+//         let leftChild = 2 * i + 1;
+//         let rightChild = 2 * i + 2;
+      
+//         if (leftChild < n && arr[i] < arr[leftChild]) {
+//           largest = leftChild;
+//         }
+      
+//         if (rightChild < n && arr[largest] < arr[rightChild]) {
+//           largest = rightChild;
+//         }
+      
+//         if (largest !== i) {
+//           [arr[i], arr[largest]] = [arr[largest], arr[i]];
+//           heapify(arr, n, largest);
+//         }
+
+// }
+    
+//       function heapSort(arr) {
+//         const n = arr.length;
+      
+//         // Build max heap
+//         for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+//           heapify(arr, n, i);
+//         }
+      
+//         // Extract elements one by one
+//         for (let i = n - 1; i > 0; i--) {
+//           [arr[0], arr[i]] = [arr[i], arr[0]];
+//           heapify(arr, i, 0);
+//         }
+//         return arr;
+//       }
+      
+//       // Example usage
+//       const arr = [12, 11, 13, 5, 6, 7];
+//       const sortedArr = heapSort(arr);
+//       console.log("Sorted array:");
+//       console.log(sortedArr);
+      
+
+// const arr = []
+// function heapify(arr,n,i){
+//    let largest = i;
+//    let leftindex = 2*i+1;
+//    let rightIndex = 2*i+2;
+//    if(leftindex<n && arr[leftindex]>arr[largest]){
+//      largest= leftindex
+//    }
+//    if(rightIndex<n && arr[rightIndex]>arr[largest]){
+//     largest = rightIndex
+//    }
+//    if(largest!=i){
+//      [arr[i],arr[largest]]=[arr[largest],arr[i]]
+//      this.heapify(arr,n,largest)
+//    }
+// }
+// function heapSort(arr){
+//    var n = arr.length;
+//    for(var i=Math.floor(n/2)-1;i>=0;i--){
+//      heapify(arr,n,i)
+//    }
+// }
+// const arr = [12, 11, 13, 5, 6, 7];
+// const sortedArr = heapSort(arr);
+// console.log("sorted ARray : ",sortedArr)
+
+// const heapify = (arr,n,i) =>{
+//    let largest = i;
+//    let leftIndex = 2*i+1;
+//    let rightIndex = 2*i+2;
+//    if(leftIndex < n && arr[leftIndex]>arr[largest]){
+//     largest = leftIndex
+//    }
+//    if(rightIndex < n && arr[rightIndex] > arr[largest]){
+//      largest = rightIndex
+//    }
+
+//    if(largest!==i){
+//     [arr[largest],arr[i]] = [arr[i],arr[largest]]
+//     heapify(arr,n,largest)
+//    }
+// }
+// const heapSort=(arr,n,i)=>{
+//     var n= arr.length;
+//    for(var i=Math.floor(n/2)-1;i>=0;i--){
+//       heapify(arr,n,i)
+//    }
+
+//    for(var i = n-1;i>=0;i--){
+//      [arr[i],arr[0] ] = [arr[0],arr[i]]
+//      heapify(arr,i,0)
+//    }
+//    return arr
+// }
+
+// const arr = [12, 11, 13, 5, 6, 7,56];
+
+// const arr1 = heapSort(arr)
+// console.log(arr1)
+
+class Heap{
     constructor(){
-        this.root = null
+        this.heap = []
     }
-    isEmpty(){
-        return this.root == null;
-    }
-    insert(data){
-        const newNode = new Node(data)
-        if(this.isEmpty()){
-            this.root = newNode;
-        }else{
-            this.insertNode(this.root,newNode)
+    heapifyUp(index){
+        let parentIndex = Math.floor(index-1)/2;
+        if(parentIndex>=0 && this.heap[parentIndex]<this.heap[index]){
+            [this.heap[index],this.heap[parentIndex]] = [this.heap[parentIndex],this.heap[9]];
+            this.heapifyUp(parentIndex)
         }
     }
-    insertNode(root,newNode){
-        if(newNode.data<root.data){
-            if(root.left == null){
-                root.left = newNode;
-            }else{
-                this.insertNode(root.left,newNode)
-            }
-        }else{
-            if(root.right == null){
-                root.right = newNode;
-            }else{
-                this.insertNode(root.right,newNode)
-            }
-        }
+    insert(value){
+        this.heap.push(value)
+        let index = this.heap.length-1;
+        this.heapifyUp(index)
     }
-    search(root,value){
-       if(!root){
-        return false
-       } 
-       if(root.data == value){
-        return true
-       }
-       if(value<root.data){
-         return this.search(root.left,value)
-       }else{
-        return this.search(root.right,value)
-       }
-    }
-
-    min(root){
-        if(!root.left){
-            return root.data
-        }else{
-            return this.min(root.left)
-        }
-    }
-    max(root){
-        if(!root.right){
-            return root.data
-        }else{
-            return this.max(root.right)
-        }
-    }
-    printAllLeaves(root){
-        if(!root){
-            return root
-        }
-        if(!root.right && !root.left){
-           
-        }
-    }
-
-    preOrder(root){
-        if(root){
-            console.log(root.data)
-            this.preOrder(root.left)
-            this.preOrder(root.right)
-        }
-    }
-    postOrder(root){
-        if(root){
-            this.postOrder(root.left)
-            this.postOrder(root.right)
-            console.log(root.data)
-        }
-    }
-    inOrder(root){
-        if(root){
-            this.inOrder(root.left)
-            console.log(root.data)
-            this.inOrder(root.right)
+    display(){
+        for(var i=0;i<this.heap.length;i++){
+            console.log(this.heap[i])
         }
     }
 }
 
-
-    const bst = new Bst()
-    bst.insert(10)
-    bst.insert(5)
-    bst.insert(12)
-    bst.insert(16)
-    bst.insert(7)
-    bst.inOrder(bst.root)
-    // const res= bst.search(bst.root,142)
-    // console.log(res)
-    const res = bst.min(bst.root)
-    console.log("min",res)
-    const max = bst.max(bst.root)
-    console.log("max",max)
-
+const maxHeap = new Heap()
+maxHeap.insert(10)
+maxHeap.insert(50)
+maxHeap.insert(1)
+maxHeap.insert(7)
+maxHeap.insert(12)
+maxHeap.insert(30)
+maxHeap.display()
+// maxHeap.insert(10)
+// maxHeap.insert(10)
+// maxHeap.insert(10)
+// maxHeap.insert(10)

@@ -232,6 +232,70 @@ Mongo Db--------------------------------------------------------------------
 ●
 ●
 
+REact------------------------------------------------------------------------------
+
+
+● Virtual dom , Dom
+● createRoot(),render().
+● JSX
+● diffing
+● React Components. Types of components
+● Props
+● Props drilling
+● React Conditional Rendering
+● React Lists
+● React Router
+● React Memo
+● React Hooks
+● useState
+● useEffect
+● useContext
+● useRef
+● useReducer
+● useCallback
+● useMemo
+● Custom Hooks
+● react life cycle
+● context vs Redux
+● side effect working
+● state vs props 
+● shadow Dom
+● react fibre
+● counter application
+● cleanup function
+● imitation of react (initial Load ,seo)
+● memo vs useMemo
+● object empty
+● array duplicate
+● dynamic import
+● fragment
+● webAPI
+● diff algorithm
+● reconcilation
+● pure component
+● controlled components
+● uncontrolled components
+● type of events
+● native events
+● synthetic events
+● event pooling
+● error boundries
+● class component
+● React.Profiler
+● JSX provide security
+● Webpack code splitting
+● Higher order components
+● REST api
+● 
+● 
+● 
+● 
+● 
+● 
+● 
+● 
+● jwt
+● Pricniples of redux
 
 
 
