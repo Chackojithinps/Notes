@@ -270,17 +270,112 @@ function MyComponent() {
 In this example, we create a reference to the input element with inputRef and use inputRef.current to access and manipulate the DOM element.
 
 ----------------------------------------------------------------------
---->
+--->useReducer
+
+useReducer is a React Hook that is used for managing complex state logic in a more organized and predictable way, especially when state transitions involve multiple actions. It is often used as an alternative to useState when state management becomes more complex. useReducer is inspired by the concept of reducers in Redux, a popular state management library.
+
+Here's a detailed explanation of useReducer in a simple way:
+
+Importing the Hook:
+First, you need to import useReducer from the react library.
+
+jsx
+Copy code
+import React, { useReducer } from 'react';
+Defining a Reducer Function:
+A reducer function is a pure JavaScript function that takes two arguments: the current state and an action. It calculates the new state based on the action and returns it.
+
+jsx
+Copy code
+function reducer(state, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+In this example, the reducer function takes an action object with a type property and performs state updates based on the action type.
+
+Using useReducer:
+You call useReducer to initialize your state and specify the reducer function.
+
+jsx
+Copy code
+const [state, dispatch] = useReducer(reducer, initialState);
+state: The current state object.
+dispatch: A function that you use to dispatch actions to update the state.
+reducer: The reducer function you defined earlier.
+initialState: The initial state of the component.
+Dispatching Actions:
+To update the state, you call the dispatch function and pass an action object as an argument. The reducer function then handles the action and returns the new state.
+
+jsx
+Copy code
+dispatch({ type: 'INCREMENT' });
+dispatch({ type: 'DECREMENT' });
+In this example, calling dispatch with an action type of 'INCREMENT' or 'DECREMENT' triggers the state to be updated accordingly.
+
+Using the State:
+You can use the state object to access the current state values in your component.
+
+jsx
+Copy code
+return (
+  <div>
+    <p>Count: {state.count}</p>
+    <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
+    <button onClick={() => dispatch({ type: 'DECREMENT' })}>Decrement</button>
+  </div>
+);
+In this example, we display the current count from the state, and the buttons dispatch actions to update it.
+
 ----------------------------------------------------------------------
---->
+--->useCallback
+
+useCallback is a React Hook used to optimize the performance of your components by memoizing (caching) 
+functions so that they are not recreated on every render. It's particularly useful when you need to pass
+functions as props to child components, ensuring that these functions do not trigger unnecessary re-renders.
 ----------------------------------------------------------------------
---->
+--->diff bw useMemo and useCallback
+
+useCallback is for memoizing functions, while useMemo is for memoizing any value.
+Both hooks take a function as their first argument and an array of dependencies as their second argument.
+useCallback is typically used when you want to optimize functions to avoid unnecessary re-renders, especially in the context of passing functions as props.
+useMemo is more general and can be used to memoize any value or result, such as the result of a complex calculation or an object that depends on certain values.
+
 ----------------------------------------------------------------------
---->
+--->diff bw React memo and useMemo
+
+useCallback is for memoizing functions, while useMemo is for memoizing any value.
+Both hooks take a function as their first argument and an array of dependencies as their second argument.
+useCallback is typically used when you want to optimize functions to avoid unnecessary re-renders, especially in the context of passing functions as props.
+useMemo is more general and can be used to memoize any value or result, such as the result of a complex calculation or an object that depends on certain values.
+
+
 ----------------------------------------------------------------------
---->
+--->Custom Hooks
+
+They enable you to create your own hooks, making it easier to share and reuse code across different components and applications. 
+Custom Hooks follow the same rules as built-in React hooks, but you can define your own behavior.
+When you have component logic that needs to be used by multiple components, we can extract that logic to a custom Hook.
+Custom Hooks start with "use". Example: useFetch.
+
 ----------------------------------------------------------------------
---->
+--->Context API vs Redux
+
+Context API and Redux are both state management solutions for React applications, 
+
+With Redux, the entire state of your application is stored in a single place, making it easily accessible to any 
+component without the need to pass props around. It operates based on three core concepts:
+
+Actions
+Reducers
+Store
+Actions represent events that send data to the Redux store. They can be triggered by user interactions or called directly by your 
+application. Each action has a unique type and a payload associated with it.
 ----------------------------------------------------------------------
 --->
 ----------------------------------------------------------------------

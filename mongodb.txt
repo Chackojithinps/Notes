@@ -178,6 +178,7 @@
       If the primary node fails, one of the secondaries automatically becomes the new primary, providing seamless failover and allowing the database to remain operational.
       In a replication setup, the minimum number of servers required to store data is two: one primary server and one secondary server 
 ● Replic set-
+   
      
 ● Normalisation
     helps to avoid repeating the same information multiple times, making your data more efficient and easier to manage. 
@@ -275,3 +276,8 @@ In MongoDB, an "embedded document" (also known as an embedded object) refers to 
 --->In MongoDB, the unset operation is used to remove a specific field from a document. It allows you to delete a field and its value from a document,
  effectively reducing the document's size and modifying its structure.
  
+--->Upsert: The default value of this parameter is false. When it is true it will make a new document in the collection when no document
+matches the given condition in the update method.
+
+--->Multi: The default value of this parameter is false. When it is true, the update method updates all the documents that meet the query 
+condition. Otherwise, it will update only one document.
