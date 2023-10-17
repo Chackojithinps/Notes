@@ -237,18 +237,40 @@ Mongo Db--------------------------------------------------------------------
 ●update 
 ●updateOne
 ●updteMany
-●
-●
-●
-●
-●
-●
-●
-●
-●
-●
-●
+●sort
+●count or countDocuments
+●drop (collection)
+●remove({})
+●remove({name:"jitin"})
+●db.student.remove({age:{$eq:18}}, true)  delete only one
+●db.student.deleteOne({age:17})
+●deleteOne() first will delete
+●db.student.distinct("name")
+●db.gfg.find().limit(2)
+●db.gfg.find().skip(1)
+●db.contributor.find({name: {$in: ["Amit", "Suman"]}}).pretty() 
+●Badge> db.users.find({$and:[{"place":"kannur"},{age:{$gte:20}}]})
+●db.contributor.find({salary: {$not: {$gt: 2000}}}).pretty() 
+●db.contributor.find({$nor: [{salary: 3000}, {branch: "ECE"}]}).pretty() 
+●db.contributor.update({name: "Mohit"}, {$inc: {publisharticles: 10, salary: -100}}) 
 
+●db.contributor.update({name: "Rohit"}, {$push: {language: "C++"}})
+●db.contributor.update({name: "Rohit"}, {$pop: { language: -1}}) removing first
+●db.contributor.update({name: "Rohit"}, {$pop: { language: 1}})  removing last
+●
+db.contributor.update({}, 
+... {$pull: {language: {$in: ["C#", "Perl"]}}}, 
+... {multi: true}) 
+●db.contributor.update({name: "Rohit"}, 
+					{$pullAll: {language: ["Java", "C#", "Python"]}})
+
+●IN and All
+
+● db.users.aggregate([{$group:{_id:"$place"}}])
+● db.users.aggregate([{$match:{category:"Human"}},{$group:{"place":"kannur"}}])
+● db.users.aggregate([{$project:{name:1,place:1,_id:0}}])
+● db.users.aggregate([{$group:{_id:"$place",count:{$sum:1}}}])
+● db.users.aggregate([{$match:{place:"kannur",total:{$sum:"$age"}}}])
 
 REact------------------------------------------------------------------------------
 
