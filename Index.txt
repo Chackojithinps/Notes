@@ -86,18 +86,22 @@ javascript
 NOde js--------------------------------------------------------------------
 
 .what is node js?
+.MVC
 .repl
 .npm 
+.API
 .render
 .res.send() vs res.render()
+.server side rendering
 .res.end()
 .res.write()
 .res.writeHead()
+.set head
 .server.listen
-.API
-.server side rendering
 .Streams
 .types of streams available in Node.js
+.piping
+.difference between readFile and create Read Stream in Node.js
 .BUFFER
 .Modules
 .MORGON
@@ -117,27 +121,21 @@ NOde js--------------------------------------------------------------------
 .params
 .view engine
 .cors
-.Preflight request
+.OPTIONS
+.Preflight      
 .PM2 -r
 .session-storage
 .localStorage
 .cookie
-.writeHead()
 .expires vs maxAge
 .Dynamic rendering vs conditional rendering
-.OPTIONS
-.preflight request
-.CORS
 .dependencies vs devdependencies
 .env
 .trace 
 .error middleware
-.piping
 .controll flow functions
 .dynamic routing
 .router chaining
-.write head
-.set head
 .disadvantages to using Node.js
 .primary reason for using the event-based model in Node.js
 .difference between Node.js and Ajax
@@ -145,16 +143,23 @@ NOde js--------------------------------------------------------------------
 ."non-blocking" in node.js
 .overcome the problem of blocking I/O operations
 .concept of stub in Node.js
-.Libuv.
-.Threadpool
+.Dependencies vs Dev dependencies
+.Global objects
+.Timer functions
+.Status Codes
 .assert used in Node.js 
 .handle the child threads
 .Event Emitter in Node.js
 .Clustering
 .measure the duration of async operations
 .measure the performance of async operations
-.difference between readFile and create Read Stream in Node.js
+.Libuv.
+.Threadpool
 .Node concurrentcy
+.Child process
+.differences between process.nextTick(), setImmediate(), and setTimeout()
+.Explain the spawn, fork, and exec methods
+
 
 
 Mongo Db--------------------------------------------------------------------
@@ -167,8 +172,8 @@ Mongo Db--------------------------------------------------------------------
 ● BSON (Binary json)
 ● JSON
 ● Comparison Operators - 
-●  Logical Operators 
-●  UPSERT
+● Logical Operators 
+● UPSERT
 ●  Array update Operators - 
 ●  EXISTS
 ●  $ELEMMATCH   
@@ -181,13 +186,13 @@ Mongo Db--------------------------------------------------------------------
 ●  AllowDiskuse
 ●  Accumilators
 ●  Unary operators
-●  Lookup -
-●  MongoDB utilities
-●  indexes 
+● Lookup -
+● MongoDB utilities
+● indexes 
 ● Types of indexing
-●  Distinct
-●  Capped collection - 
-●  cap theorm
+● Distinct
+● Capped collection - 
+● cap theorm
 ● Replication 
 ● Replic set-
 ● Normalisation
@@ -217,8 +222,6 @@ Mongo Db--------------------------------------------------------------------
 ● $ne $nin $in $not
 ● $project
 ● Atomic operation
-●Explain the spawn, fork, and exec methods
-●differences between process.nextTick(), setImmediate(), and setTimeout()
 ●$addToSet
 ●method binding(check)
 ●
@@ -286,7 +289,9 @@ REact---------------------------------------------------------------------------
 ● Webpack code splitting
 ● Higher order components
 ● REST api
-● 
+● Immutable data in redux
+● Redux immutablity
+● Redux persistentce
 ● 
 ● 
 ● 

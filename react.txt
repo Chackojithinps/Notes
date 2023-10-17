@@ -1,0 +1,54 @@
+
+----------------------------------------------------------------------
+
+React is a JavaScript library for building user interfaces.
+
+React is used to build single-page applications.
+
+React allows us to create reusable UI components.
+
+----------------------------------------------------------------------
+
+How does React Work?
+React creates a VIRTUAL DOM in memory.
+
+Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, 
+before making the changes in the browser DOM.
+
+React only changes what needs to be changed!
+----------------------------------------------------------------------
+DOM
+
+In JavaScript, the Document Object Model (DOM) is a programming interface that represents the structure of a web page and
+ allows you to interact with and manipulate the content and elements of that page.
+. It provides a structured representation of a web page, where each HTML element, attribute, and piece of content is represented as an object.
+Think of the DOM as a tree structure, where the entire web page is represented as a tree of nodes. The top node, or the root, is called the document object.
+HTML elements, such as headings (<h1>), paragraphs (<p>), and images (<img>), are represented as nodes in the DOM tree. Each node can have child nodes,
+ which represent elements contained within it.
+
+----------------------------------------------------------------------
+
+Virtual Dom
+
+n React, the Virtual DOM (short for "Virtual Document Object Model") is a key concept that helps improve the performance and 
+efficiency of rendering updates in web applications. It's a virtual representation of the actual DOM in memory, and it plays a
+ crucial role in React's ability to efficiently update the user interface.
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------

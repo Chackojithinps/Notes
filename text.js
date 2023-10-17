@@ -882,3 +882,7 @@
 // console.log(iterator.next().value)
 // console.log("jithin")
 // console.log(iterator.next().value)
+
+let name = "jithin"
+name = 9
+console.log(typeof(name))

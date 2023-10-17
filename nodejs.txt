@@ -25,13 +25,15 @@
 
 --->API - (APPLICATION PROGRAMMING INTERFACE) - the connection between the browser
     and server
-    Request: The client application sends a request to the server application using a specific API endpoint. The request typically includes information about what data or action the client wants from the server.
+    Request: The client application sends a request to the server application using a specific API endpoint. The request typically includes information about what data or
+     action the client wants from the server.
 
     Processing: The server receives the request, processes it, and performs the necessary actions based on the information provided by the client.
 
     Response: After processing the request, the server sends back a response to the client. The response includes the requested data or the outcome of the action.
 
-    Data Format: APIs use standard data formats, such as JSON or XML, to structure the data exchanged between the client and server. This ensures that both applications understand and can interpret the information correctly.
+    Data Format: APIs use standard data formats, such as JSON or XML, to structure the data exchanged between the client and server. This ensures that both applications
+     understand and can interpret the information correctly.
 
 
 ---------------------------------------------------------
@@ -67,7 +69,6 @@ server.listen(3000);
 
      res. end() - if we don't give this, the program won't end, it will load any file to fetch.
      This means the client will keep waiting for the response to finish, and the connection between the server and the client will not be closed properly.
-     This means the client will keep waiting for the response to finish, and the connection between the server and the client will not be closed properly.
 
 ---------------------------------------------------------
 
@@ -82,6 +83,17 @@ server.listen(3000);
     This line writes data to the response. It sends the text "Hello, World!" to the response body. This data will be included in the HTTP response
     sent to the client.
 ---------------------------------------------------------
+
+
+response.setHeader(name, value) allows you to set a single header with a given name and value. If the header already exists, 
+it will be replaced with the new value. If it doesn't exist, it will be created.
+res.setHeader('Content-Type', 'text/html');
+The res.setHeader('Content-Type', 'text/html') line is where we set the "Content-Type" HTTP header. This header informs the client (browser) that the
+response content is in HTML format. The header name is "Content-Type," and the header value is "text/html."
+
+Use response.writeHead() if you want to set the status code and headers together, 
+
+-----------------------------------------------------------
 
 --->server.listen(3000);: Finally, you start the HTTP server by calling the server.listen() method and specifying the port number 3000.
     This means the server will listen for incoming requests on port 3000.
@@ -123,9 +135,76 @@ server.listen(3000);
 
     Streams are particularly useful for dealing with large data or real-time data, as they allow you to process it efficiently without consuming too much memory.
 
+  types
+Readable Streams:
+
+These streams are used for reading data. You can read data from sources like files, network requests, or other streams.
+ Common examples include the fs.createReadStream for reading files and http.IncomingMessage for handling HTTP request bodies.
+ You can use a readable stream to read the contents of a file, allowing your program to access and work with the file's data.
+Writable Streams:
+Writable streams in Node.js are a way to send data from your program to a destination.
+These streams are used for writing data. You can write data to destinations like files, network sockets, or other streams.
+ Examples include fs.createWriteStream for writing to files and http.ServerResponse for sending HTTP responses.
+
+Duplex Streams:
+
+in other words, they can be used to both read data from a source and write data to a destination at the same time. eg:real time chat
+
+These streams are both readable and writable, meaning you can both read from and write to them simultaneously. Duplex streams 
+are often used for tasks like implementing proxy servers and data transformation.
+
+Transform Streams:
+
+Transform streams are used to change data in some way as it passes through the stream. 
+You can apply transformations like compression, encryption, data parsing, or any custom data manipulation.
+These are a specific type of duplex stream that is used to modify or transform data as it flows from the readable side to the
+writable side. They are often used for tasks like data compression, encryption, or parsing.
+
+---------------------------------------------------------
+Piping in streams is like connecting a series of pipes to move water from one place to another without spilling.
+ In Node.js, it means connecting streams to move data from one place to another without losing or wasting it.
+
+Imagine you have a water source (a readable stream) and a destination (a writable stream), and you want to 
+move water (data) from the source to the destination. Piping is like connecting a pipe (a stream) between them 
+so that the water flows smoothly without overflowing or getting lost.
+
+
+You have a readable stream where data is coming from, such as reading a file, receiving data from a network request, or even generating data.
+You have a writable stream where you want to send that data, like writing to a file, sending data over a network response, or processing and storing it.
+Instead of manually moving each piece of data from the source to the destination, you connect these two streams using the .pipe() method.
+Once the streams are connected, data flows from the source to the destination automatically, without you having to worry about it.
+ If the destination can't keep up with the flow, the streams handle it so that you don't lose data, just like a series of pipes
+ would prevent water from overflowing.
+
 ---------------------------------------------------------
 
 --->BUFFER
+      Buffers provide a structured and efficient way to store, manipulate, and transport binary data.
+      Buffer.alloc(size)	It creates a buffer and allocates size to it.
+      2	Buffer.from(initialization)	It initializes the buffer with given data.
+      3	Buffer.write(data)	It writes the data on the buffer.
+      4	toString()	It read data from the buffer and returned it. 
+        
+        When data is read from a source, like a file or a network socket, it is often read into a buffer first. 
+        Buffers act as temporary storage for data before it is processed or transferred to a writable stream.
+
+        Streams in Node.js work by breaking data into smaller chunks (buffers) and processing or transferring these chunks one at a time.
+         Buffers act as containers for these data chunks, ensuring they are efficiently managed.
+---------------------------------------------------------
+
+--->package.json()
+
+Dependency Management:
+
+One of the primary functions of package.json is to manage project dependencies. It lists all the packages (libraries or modules) 
+that your project depends on, along with their specific versions. This is essential for ensuring that your project works consistently 
+across different environments and with other developers.
+
+Metadata:
+
+It contains metadata about your project, such as its name, version, description, author, and license information.
+ This metadata helps others understand your project and its purpose.
+---------------------------------------------------------
 
 --->MODULES - Modules are JavaScript libraries you can include in your project.
               core modules - - It is Built-in module
@@ -249,14 +328,54 @@ server.listen(3000);
        from one domain (origin) can request and interact with resources hosted on another domain.
        It protects users from unauthorized access to sensitive data and resources. 
        (more details needed)
+---------------------------------------------------------
 
 --->Preflight requests
+     The working of a preflight request can be explained in a simple way:
+
+Request Permission:
+
+When a web page wants to make a potentially complex or customized request to a different domain (cross-origin request), it first sends a special request to the target server. This request is called a preflight request.
+Ask the Server:
+
+The preflight request is like asking the server for permission to make the actual request. It's a way to check if the server is okay with the specific type of request you want to send.
+OPTIONS Request:
+
+The preflight request is typically an HTTP OPTIONS request, which is a special type of request used to inquire about the server's capabilities and permissions.
+Server Responds:
+
+The server receives the preflight request and checks if the web page making the request is allowed to do so. The server also checks if the requested method (e.g., GET, POST, DELETE) and headers are permitted.
+CORS Headers:
+
+The server responds with special headers called CORS headers. These headers indicate which origins (web pages) are allowed to make requests, what methods are permitted, which headers can be used, and whether credentials (like cookies) can be sent.
+Permission Granted:
+
+If the server's CORS headers indicate that the request is allowed, the web page proceeds to make the actual request, such as a GET, POST, or DELETE request.
+Data Transfer:
+
+The actual request is sent to the server, and data is transferred as needed.
+In simple terms, a preflight request is like asking for permission before making a request to a different domain. It's a security measure to ensure that the server is okay with the type of request you want to send. If permission is granted (based on the server's CORS headers), you can then make the actual request. This helps protect users and ensure the security of web applications.
+
+---------------------------------------------------------
+
+
+
+-  DEVdependencies are modules which only required during development.
+   
+   Eg:Nodemon,PM2
+
+-  Dependencies are essential modules in your programme if we didn't use that , the app wont work
+
+   Eg:HTTP module 
+
+---------------------------------------------------------
 
 --->PM2 -r. It allows you to keep applications alive forever
 
 --->With express-session, you can create and manage sessions for users, which allows you to store user data on the server-side.
     It generates a unique session ID for each user, which is sent to the client as a cookie. This session ID helps identify the user and retrieve 
     their session data on subsequent requests.In subsequent requests from the same user, the session ID cookie is automatically included in the request headers. 
+    
 --->Session storage is a client-side storage mechanism
     It is used to store data on the client's side during the duration of a page session, which means the data persists across page reloads but is 
     cleared when the user closes the browser or navigates to a different website.
@@ -390,11 +509,7 @@ app.listen(3000, () => {
 
 -----------------------------------------------------------
 
-response.setHeader(name, value) allows you to set a single header with a given name and value. If the header already exists, 
-it will be replaced with the new value. If it doesn't exist, it will be created.
-Use response.writeHead() if you want to set the status code and headers together, 
-
------------------------------------------------------------
+disadvantages of node js
 
 Asynchronous Programming Model
  Lack Of Library Support 
@@ -471,9 +586,19 @@ handles different scenarios without making real network calls.
 
   -----------------------------------------------------------
 
+ Child processes allow you to execute tasks in parallel with your main Node.js application. This is particularly useful for tasks
+ that are CPU-bound (tasks that require a lot of computational power) because they can be run on separate CPU cores.
+  There are four different ways to create a child process in Node: spawn(), fork(), exec(), and execFile().
+
+  spawn() and fork() are used to create new processes for running scripts or Node.js modules. 
+  exec() and execFile() are used for executing shell commands or external programs.
+
+  -----------------------------------------------------------
+
 In Node.js, the term "concurrency" refers to thFile Size:
 
-readFile: It reads the entire file into memory as a buffer or string. This is suitable for small to moderately-sized files, but it may not be efficient for very large files as it can consume a lot of memory.
+readFile: It reads the entire file into memory as a buffer or string. This is suitable for small to moderately-sized files, but 
+it may not be efficient for very large files as it can consume a lot of memory.
 createReadStream: It reads the file in chunks or streams, making it more memory-efficient and suitable for large files.
 Memory Usage:
 
@@ -481,8 +606,14 @@ readFile: It loads the entire file content into memory, which can be a problem f
 createReadStream: It reads the file in smaller chunks, so it doesn't load the entire file into memory at once, making it memory-efficient. You can process chunks one at a time, reducing memory usage.e ability of the runtime environment to handle multiple tasks or operations simultaneously.
 Node.js is known for its efficient concurrency model due to its event-driven, non-blocking architecture.
 
+
+Concurrency in the context of Node.js refers to the ability of the Node.js runtime to efficiently handle multiple tasks 
+or operations simultaneously. It allows Node.js to execute multiple parts of your code in overlapping timeframes without
+blocking the entire application.This is achieved through various mechanisms, including the event loop, asynchronous operations,
+and worker threads. Here's how Node.js achieves concurrency:
+
 Event Loop: Node.js operates using a single-threaded event loop. This event loop continuously checks for tasks and executes them as they
- become available. It doesn't wait for one task to complete before moving on to the next.
+become available. It doesn't wait for one task to complete before moving on to the next.
 
 Non-Blocking I/O: Most I/O operations in Node.js are non-blocking. When a function initiates an I/O operation, it doesn't block the entire
  program but continues executing other tasks. The result of the I/O operation is provided through callback functions when it's ready.
@@ -496,7 +627,7 @@ Callback Functions: Callback functions are a crucial part of Node.js concurrency
   -----------------------------------------------------------
 .difference between readFile and create Read Stream in Node.js
 
-  File Size:
+File Size:
 
 : It reads the entire file into memory as a buffer or string. This is suitable for small to moderately-sized files, but it may not be efficient for very large files 
 as it can consume a lot of memory.
@@ -508,7 +639,6 @@ readFile: It loads the entire file content into memory, which can be a problem f
 be processed simultaneously. This can lead to high memory consumption.
 createReadStream: It reads the file in smaller chunks, so it doesn't load the entire file into memory at once, making it memory-efficient.
  You can process chunks one at a time, reducing memory usage.
-
 
 -----------------------------------------------------------
 
@@ -582,3 +712,30 @@ values meet expected conditions. These assertion functions are helpful for writi
 and for debugging purposes. The assert module is part of Node.js's built-in tools for test-driven development (TDD) and debugging.
 
 -----------------------------------------------------------
+--->libuv
+
+In summary, libuv is the engine behind Node.js that handles asynchronous operations and ensures that your Node.js applications can efficiently perform tasks without
+ getting stuck waiting for I/O operations to complete.
+
+
+This thread pool is composed of four threads used to delegate operations that are too heavy for the event loop. 
+When the thread pool completes a task, a callback function is called which handles the error(if any) or does some other operation. This callback function
+ is sent to the event queue. When the call stack is empty, the event goes through the event queue and sends the callback to the call stack. 
+
+ To address this issue, Node.js uses a thread pool to create worker threads outside of the main event loop. These worker threads are separate from the JavaScript
+  execution environment. They allow Node.js to perform CPU-bound operations in parallel without blocking the main event loop.
+
+ This offloads these operations to separate worker threads, ensuring the main event loop remains responsive.
+
+
+ Task Queue: When you initiate an asynchronous operation, like reading a file, libuv starts that task in the background and doesn't
+  block your program. It then adds this task to a queue known as the "Task Queue."
+
+Event Loop: Meanwhile, Node.js continues to execute the rest of your code and checks the Task Queue periodically. This continuous
+ checking is what we call the "Event Loop." The Event Loop is managed by libuv.
+
+Callback Execution: When the asynchronous operation, such as file reading, is completed, libuv moves the corresponding callback
+ function (the function that you provided to be executed when the task is done) to another queue known as the "Callback Queue."
+
+Queue Processing: The Event Loop checks the Callback Queue and, when it finds a callback function, executes it. This is where your
+ code handles the results of the asynchronous operation.
