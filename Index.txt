@@ -271,6 +271,10 @@ db.contributor.update({},
 ● db.users.aggregate([{$project:{name:1,place:1,_id:0}}])
 ● db.users.aggregate([{$group:{_id:"$place",count:{$sum:1}}}])
 ● db.users.aggregate([{$match:{place:"kannur",total:{$sum:"$age"}}}])
+● db.person.find({name: {$regex:/rel/i}})  where ever the rel present in the name it will show .
+● $regex - db.person.find({name: {$regex:/^rel/i}}) if name starts with rel then that document shows
+● $regex - db.person.find({name: {$regex:/rel$/i}}) if name ends with rel then that document shows.
+
 
 REact------------------------------------------------------------------------------
 
@@ -308,7 +312,7 @@ REact---------------------------------------------------------------------------
 ● react fibre
 ● counter application
 ● cleanup function
-● imitation of react (initial Load ,seo)
+● limitation of react (initial Load ,seo)
 ● object empty
 ● array duplicate
  ● dynamic import

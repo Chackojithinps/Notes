@@ -2,8 +2,12 @@
     NoSQL database management System.
     we can  store, manage, and retrieve large volumes of unstructured or semi-structured data.
 
+---------------------------------------------------------------
+
 ● Where is Mongo DB used?
      Mongo Db is used as a Web application as a back-end database.
+
+---------------------------------------------------------------
 
 ● Difference bw relation and non relation database
      In relational databases, data is organized into tables with rows and columns, and each table has a predefined schema that defines
@@ -18,8 +22,12 @@
      This flexibility allows developers to store and retrieve data without a fixed schema, making it ideal for handling dynamic or evolving data structures.
      eg:- Mongo DB, Apache Cassandra, OrientDB, DynamoDB, google’s -BigTable.
 
+---------------------------------------------------------------
+
 ● Collection
       A collection is a groups of documents. A collection is the equivalent of a table in a relational database system
+
+---------------------------------------------------------------
 
 ● document
      a way to organize and store data 
@@ -27,21 +35,31 @@
      A document in MongoDB is a JSON-like data structure that consists of field-value pairs,
      MongoDB internally uses BSON (Binary JSON) to represent and store documents.  
 
+---------------------------------------------------------------
+
 ● BSON (Binary json)
      Binary version of json.
      BSON - MongoDB stores documents (objects) in a format called BSON. The
      reason why BSON is used is BSON supports much more datatypes than json
+
+---------------------------------------------------------------
 
 ● JSON
       JSON is a data format  that is easy for humans to read and write 
       JSON is a text-based data format, and its data is represented using key-value pairs, where keys are strings, and values can be strings,
       numbers, booleans, arrays, objects, or null.
 
+---------------------------------------------------------------
+
 ● Comparison Operators - 
       $in , $nin , $ne, $eq, $gt ,$lt ,$gte , $lte
 
+---------------------------------------------------------------
+
 ●  Logical Operators 
       - $and, $or, $not, $nor
+
+---------------------------------------------------------------
 
 ●  UPSERT
         upsert() - upsert is a method that is used to insert and update the value in any
@@ -53,11 +71,17 @@
         document in the collection. This new document contains the fields that indicate
         the operation.
 
+---------------------------------------------------------------
+
 ●  Array update Operators - 
         $push , $pop , $pull , $pullall , $ - positional operator$all() , $size()$addtoset()
 
+---------------------------------------------------------------
+
 ●  EXISTS   
         $exists - checking the existence of the field in the specified collection using the $exists operator.
+
+---------------------------------------------------------------
 
 ●  $ELEMMATCH
 
@@ -139,7 +163,7 @@ The query returns the students who have taken "Mathematics" and received a grade
         Field filtering in MongoDB is the process of selecting specific fields from documents in a collection, 
         rather than returning the entire document. This can be particularly useful when you want to reduce the amount of data returned, 
         improve query performance
-        
+
 ---------------------------------------------------------------
 
 ●  $regex -
@@ -147,39 +171,59 @@ The query returns the students who have taken "Mathematics" and received a grade
       $regex - db.person.find({name: {$regex:/^rel/i}}) if name starts with rel then that document shows
       $regex - db.person.find({name: {$regex:/rel$/i}}) if name ends with rel then that document shows. 
 
+---------------------------------------------------------------
+
 ●  Agregation
      In MongoDB, the aggregation framework allows you to perform advanced data processing and transformation operations on the data stored in collections. 
-     it is a way of processing a large number ofdocuments in a collection by means of passing them through different stages.
+     it is a way of processing a large number of documents in a collection by means of passing them through different stages.
+
+---------------------------------------------------------------
 
 ●  OUt stage
       The $out stage is the last stage in the pipeline and it writes the resulting documents to a specified collection. 
+
+---------------------------------------------------------------
 
 ●  Unwind
       Unwind - $unwind Deconstructs an array field from the input documents to output a document for each element.
       $unwind stage is used to deconstruct an array field in a document and produce a new document for each element in the array.
       This is particularly useful when you have documents with arrays and want to perform further operations on the individual array elements.
 
+---------------------------------------------------------------
+
 ●  aggregation pipeline
       The aggregation pipeline refers to a specific flow of operations that processes, transforms, and returns results. 
-      It allows you to take a collection of documents (data) and apply a series of steps (stages) to transform, filter, and analyze that data to get meaningful results.
+      It allows you to take a collection of documents (data) and apply a series of steps (stages) to transform, filter, and analyze that data to get 
+      meaningful results.
+
+---------------------------------------------------------------
 
 ●  AllowDiskuse
       Allowdiskuse - all aggregation stages can use a maximum of 100 MB of RAM. Use allowDiskUse() to either allow or prohibit writing temporary files on disk
       when a pipeline stage exceeds the 100 MB limit. Syntax: {allowDiskUse:true}
 
+---------------------------------------------------------------
+
 ●  Accumilators
      $sum, $min, $max, $avg
 
+---------------------------------------------------------------
+
 ●  Unary operators
      $type, $or, $lt, $gt, $and, $multiply
+
+---------------------------------------------------------------
 
 ●  Lookup -
       The $lookup operator is an aggregation operator or an aggregation
       stage, which is used to join a Document from one collection to a document of
       another collection of the same database.
 
+---------------------------------------------------------------
+
 ●  MongoDB utilities
-      MongoDB utilities, also known as MongoDB tools, are software programs provided by MongoDB to help people manage and work with their MongoDB databases more easily. 
+      MongoDB utilities, also known as MongoDB tools, are software programs provided by MongoDB to help people manage and work with their MongoDB 
+      databases more easily. 
       MongoDB utilities are a set of tools provided by MongoDB to manage and maintain MongoDB databases.
       mongoexport-
         it is used to export data from a MongoDB collection to an external file. It generates a JSON, CSV, or TSV file containing the exported data.
@@ -225,6 +269,8 @@ The query returns the students who have taken "Mathematics" and received a grade
         Fixed-size collections are called capped collections in MongoDB. While creating a collection, the user must 
         specify the collection's maximum size in bytes and the maximum number of documents it would store.
         Syntax- isCapped()
+        db.createCollection("collectionName", { capped: true, size: maxSizeInBytes })
+
         Once the collection reaches its size limit, new documents will replace the oldest ones
 
 ●  cap theorm
@@ -351,7 +397,7 @@ With transactions, you can combine these two operations into a single transactio
 --->
 In MongoDB, an "embedded document" (also known as an embedded object) refers to a data structure that allows you to store nested or complex data within a single document. 
 
---->In MongoDB, the unset operation is used to remove a specific field from a document. It allows you to delete a field and its value from a document,
+---> In MongoDB, the unset operation is used to remove a specific field from a document. It allows you to delete a field and its value from a document,
  effectively reducing the document's size and modifying its structure.
  
 --->Upsert: The default value of this parameter is false. When it is true it will make a new document in the collection when no document
