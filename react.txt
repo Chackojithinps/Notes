@@ -393,15 +393,40 @@ component to reflect the changes.
 ----------------------------------------------------------------------
 --->diff b/w useMemo and React.memo
 
+
 useMemo: It is a hook used for memoizing the result of a function or a computation. It allows you to optimize the performance 
 of your component by caching the result of a function and recalculating it only when the dependencies change.
 
 React.memo: It is a higher-order component used to optimize functional components by preventing unnecessary re-renders. It memoizes 
 the rendering output of a component and only re-renders when the component's props change.
 
+----------------------------------------------------------------------
 
 
 Certainly! In a simpler way, a cleanup function in React is like tidying up after yourself when you're done with something. It's a 
 piece of code that you write to clean up resources or cancel tasks when a part of your web page (a component) is no longer needed
 
+----------------------------------------------------------------------
+
 div. Fragments allow you to avoid adding unnecessary elements to the DOM structure.
+
+----------------------------------------------------------------------
+
+Controlled components and uncontrolled components are two approaches to managing form elements (like input fields, checkboxes, and radio buttons) 
+in a React application.
+In a controlled component, React controls the form element's value by maintaining it in the component's state. You handle changes by defining 
+event handlers and updating the state. 
+In an uncontrolled component, you let the HTML element maintain its state. You don't control the form element's value with React state. Instead, 
+you directly access the element's value through references or DOM manipulation when needed.
+
+----------------------------------------------------------------------
+
+
+The React Profiler is a tool that is part of React's developer tools suite. It is designed to help you analyze and optimize 
+the performance of your React applications. Profiling your application can be essential to ensure that it runs smoothly, especially 
+in large and complex applications. 
+
+
+Lazy loading in React is a technique used to improve the performance of your web application. It allows you to load certain parts of your 
+application only when they are actually needed, rather than loading everything when the page first loads. This can make your app faster and 
+more efficient because it reduces the initial load time.
