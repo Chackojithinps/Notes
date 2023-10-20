@@ -254,7 +254,7 @@ The query returns the students who have taken "Mathematics" and received a grade
                   { "_id": 3, "name": "Apple", "color": "Green" },
                   { "_id": 4, "name": "Orange", "color": "Orange" },
                   { "_id": 5, "name": "Apple", "color": "Yellow" },
-                  { "_id": 6, "name": "Grapes", "color": "Purple" }
+                  { "_id": 6, "name": "Grapes", "color": "Purple"}
               ]
               db.fruits.distinct("name");
               [
@@ -270,8 +270,7 @@ The query returns the students who have taken "Mathematics" and received a grade
         specify the collection's maximum size in bytes and the maximum number of documents it would store.
         Syntax- isCapped()
         db.createCollection("collectionName", { capped: true, size: maxSizeInBytes })
-
-        Once the collection reaches its size limit, new documents will replace the oldest ones
+        Once the collection reaches its size limit, new documents will replace the oldest ones.
 
 ●  cap theorm
        The CAP Theorem is a concept that a distributed database system can only guarantee two out of three characteristics: Consistency, Availability, and Partition tolerance.
@@ -280,7 +279,6 @@ The query returns the students who have taken "Mathematics" and received a grade
                     So, a write operation by one client is immediately seen by all other clients.
 
                     eg:Suppose we have a user profile for "John" stored in the database. His age is initially set to 30.
-
                         Client A sends a request to update John's age to 31.
                         At the same time, Client B sends a request to read John's profile.
                         In a consistent system:
@@ -377,7 +375,8 @@ The query returns the students who have taken "Mathematics" and received a grade
 
 ● Transaction
     A transaction in MongoDB is like a safe box that holds a group of actions.
-    Transactions ensure that either all the operations in the group are executed successfully, or none of them are executed at all. This property is known as atomicity, 
+    Transactions ensure that either all the operations in the group are executed successfully, or none of them are executed at all. 
+    This property is known as atomicity, 
 
     Imagine you have a banking application that needs to transfer money from one account to another. 
     This transfer involves two operations: deducting the money from the sender's account and adding the money to the recipient's account.
@@ -395,7 +394,8 @@ With transactions, you can combine these two operations into a single transactio
     isolation
     durability
 --->
-In MongoDB, an "embedded document" (also known as an embedded object) refers to a data structure that allows you to store nested or complex data within a single document. 
+In MongoDB, an "embedded document" (also known as an embedded object) refers to a data structure that allows you to store nested or complex 
+data within a single document. 
 
 ---> In MongoDB, the unset operation is used to remove a specific field from a document. It allows you to delete a field and its value from a document,
  effectively reducing the document's size and modifying its structure.
@@ -403,5 +403,5 @@ In MongoDB, an "embedded document" (also known as an embedded object) refers to 
 --->Upsert: The default value of this parameter is false. When it is true it will make a new document in the collection when no document
 matches the given condition in the update method.
 
---->Multi: The default value of this parameter is false. When it is true, the update method updates all the documents that meet the query 
+---> Multi: The default value of this parameter is false. When it is true, the update method updates all the documents that meet the query 
 condition. Otherwise, it will update only one document.

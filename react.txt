@@ -343,7 +343,6 @@ useCallback is a React Hook used to optimize the performance of your components 
 functions so that they are not recreated on every render. It's particularly useful when you need to pass
 functions as props to child components, ensuring that these functions do not trigger unnecessary re-renders.
 
-
 ----------------------------------------------------------------------
 --->diff bw useMemo and useCallback
 

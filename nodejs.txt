@@ -116,6 +116,7 @@ Use response.writeHead() if you want to set the status code and headers together
 
     Display: When your browser receives the HTML page, it can instantly display the complete web page, with all the content visible and ready to interact with.
      No extra processing is needed on the client-side for the initial display.
+
 ---------------------------------------------------------
 
 --->STREAMS
@@ -213,13 +214,16 @@ It contains metadata about your project, such as its name, version, description,
                                We can export this module using the module. Exports
               NPM Third-party Modules-
         
---->LOGGER 
+---> LOGGER 
 
---->MORGON
+     the logger records various types of information about the program, such as errors, warnings, or just plain messages. 
+     It's like writing down what's going on.
+
+---> MORGON
     When you run your application and send HTTP requests to it, Morgan will automatically log the request details to the console.
     The log output will include information like the HTTP method, URL, status code, response time, and more. 
 
---->MIDDLEWARE
+---> MIDDLEWARE
 
     if any request comes from the client it'll go through each middleware function after it
     we'll get a response. this cycle is called the REQUEST RESPONSE CYCLE.
@@ -273,16 +277,16 @@ It contains metadata about your project, such as its name, version, description,
            --express.session
            --express.cookieParser
 
---->App.use()
+---> App.use()
 
---->App.set()
+---> App.set()
     view engine': This setting is used to specify the template engine to be used for rendering views in your application.
     In summary, app.use() is for setting up middleware to process incoming requests, while app.set() is for configuring various options and characteristics of your application. 
 
---->App.all
+---> App.all
      It allows you to handle all types of requests to a specific URL path in a single place.
 
---->Http vs Https
+---> Http vs Https
       HTTP and HTTPS are both communication protocols used for transmitting data over the internet
       The main difference between HTTP and HTTPS lies in the level of security provided when transmitting data over the internet:
 
@@ -335,30 +339,35 @@ It contains metadata about your project, such as its name, version, description,
 
 Request Permission:
 
-When a web page wants to make a potentially complex or customized request to a different domain (cross-origin request), it first sends a special request to the target server. This request is called a preflight request.
+When a web page wants to make a potentially complex or customized request to a different domain (cross-origin request), it first sends a special request to 
+the target server. This request is called a preflight request.
+
 Ask the Server:
 
-The preflight request is like asking the server for permission to make the actual request. It's a way to check if the server is okay with the specific type of request you want to send.
+The preflight request is like asking the server for permission to make the actual request. It's a way to check if the server is okay with the specific 
+type of request you want to send.
 OPTIONS Request:
 
 The preflight request is typically an HTTP OPTIONS request, which is a special type of request used to inquire about the server's capabilities and permissions.
 Server Responds:
 
-The server receives the preflight request and checks if the web page making the request is allowed to do so. The server also checks if the requested method (e.g., GET, POST, DELETE) and headers are permitted.
+The server receives the preflight request and checks if the web page making the request is allowed to do so. The server also checks if the 
+requested method (e.g., GET, POST, DELETE) and headers are permitted.
 CORS Headers:
 
-The server responds with special headers called CORS headers. These headers indicate which origins (web pages) are allowed to make requests, what methods are permitted, which headers can be used, and whether credentials (like cookies) can be sent.
+The server responds with special headers called CORS headers. These headers indicate which origins (web pages) are allowed to make requests, 
+what methods are permitted, which headers can be used, and whether credentials (like cookies) can be sent.
 Permission Granted:
 
-If the server's CORS headers indicate that the request is allowed, the web page proceeds to make the actual request, such as a GET, POST, or DELETE request.
+If the server's CORS headers indicate that the request is allowed, the web page proceeds to make the actual request, such as a 
+GET, POST, or DELETE request.
 Data Transfer:
 
 The actual request is sent to the server, and data is transferred as needed.
-In simple terms, a preflight request is like asking for permission before making a request to a different domain. It's a security measure to ensure that the server is okay with the type of request you want to send. If permission is granted (based on the server's CORS headers), you can then make the actual request. This helps protect users and ensure the security of web applications.
+In simple terms, a preflight request is like asking for permission before making a request to a different domain. It's a security measure to 
+ensure that the server is okay with the type of request you want to send. If permission is granted (based on the server's CORS headers), you can then make the actual request. This helps protect users and ensure the security of web applications.
 
 ---------------------------------------------------------
-
-
 
 -  DEVdependencies are modules which only required during development.
    
@@ -372,25 +381,36 @@ In simple terms, a preflight request is like asking for permission before making
 
 --->PM2 -r. It allows you to keep applications alive forever
 
+---------------------------------------------------------
+
 --->With express-session, you can create and manage sessions for users, which allows you to store user data on the server-side.
     It generates a unique session ID for each user, which is sent to the client as a cookie. This session ID helps identify the user and retrieve 
     their session data on subsequent requests.In subsequent requests from the same user, the session ID cookie is automatically included in the request headers. 
-    
+
+---------------------------------------------------------
+
 --->Session storage is a client-side storage mechanism
+
     It is used to store data on the client's side during the duration of a page session, which means the data persists across page reloads but is 
     cleared when the user closes the browser or navigates to a different website.
     Session storage provides a simple key-value storage system that allows web applications to store data specific to a user's browsing session. 
     Unlike cookies, session storage data is not sent to the server with every HTTP request; it remains on the client-side and is accessible only to
     the web application running in that particular browser tab or window.
 
+
+---------------------------------------------------------
+
 ---> Cookies are sent to the server with each HTTP request, allowing the server to recognize the user.
       Cookies have a relatively small size limit 
       The cookie is a small text file that contains information, like a unique identifier (ID) for your session.
       our browser stores the cookie on your computer or device. Whenever you visit the same website again, your browser sends the cookie back to the web server
        along with your request.
-       The web server receives the cookie and reads the information it contains. This allows the server to recognize you and
-        remember your previous interactions with the website.
-        . They are commonly used for user authentication, tracking user behavior, and maintaining session information (e.g., login status, shopping cart items).
+     The web server receives the cookie and reads the information it contains. This allows the server to recognize you and
+       remember your previous interactions with the website.
+    . They are commonly used for user authentication, tracking user behavior, and maintaining session information (e.g., login status, shopping cart items).
+
+---------------------------------------------------------
+
 --->Session storage
       ts part of the Web Storage API and is used to store data temporarily during a user's browsing session
        Similar  to localStorage, sessionStorage has a larger size limit (usually several megabytes) compared to cookies. 
@@ -398,6 +418,9 @@ In simple terms, a preflight request is like asking for permission before making
        sessionStorage is accessible only within the same tab or window.
 
        Purpose: sessionStorage is used for storing data temporarily during a user's browsing session.
+
+---------------------------------------------------------
+
 --->Local Storage
       : localStorage is also part of the Web Storage API and is used for long-term client-side storage. Data stored in localStorage
        persists even when the browser is closed and is available across browser sessions.
@@ -409,12 +432,18 @@ is not accessible from other tabs/windows, even if they belong to the same websi
 Purpose: localStorage is used for long-term client-side storage. Data stored in localStorage persists even when the browser is closed and 
 is available across browser sessions.
 
+---------------------------------------------------------
+
 --->In Node.js, the writeHead() method is used to set the HTTP response status code and headers before sending the response body to the client
+
+---------------------------------------------------------
 
 --->Both expires and maxAge are options used for setting the expiration time of cookies in web development. They control how long a cookie should 
 remain valid before it is automatically deleted from the user's browser
 The expires option is used to specify an exact date and time when the cookie should expire
 The maxAge option is used to set the maximum age of the cookie in seconds
+
+---------------------------------------------------------
 
 --->Dynamic rendering and conditional rendering
     After the initial page load, client-side JavaScript code takes over the control of the application. JavaScript is responsible
@@ -423,7 +452,8 @@ The maxAge option is used to set the maximum age of the cookie in seconds
 ---------------------------------------------------------
 
 Control flow functions
- control flow – a way of managing the flow of function calls in a Node.js program.
+
+control flow – a way of managing the flow of function calls in a Node.js program.
 In Node.js, functions are often executed asynchronously. This means that a function does not block the execution of the program while it is running,
 but instead returns control back to the event loop. The event loop is a key component of Node.js that manages the execution of functions and callbacks.
 Control flow in Node.js is typically managed using one of three methods: callbacks, promises, and async/await.
@@ -431,7 +461,9 @@ Control flow in Node.js is typically managed using one of three methods: callbac
 A control flow function in Node.js is a function or technique that helps you manage the order in which tasks are executed in your code, especially 
 when dealing with asynchronous operations. It's a way to control the flow of your program, ensuring that one task completes before another starts.
 
+
 ---------------------------------------------------------
+
 
 Dynamic routing in Node.js typically refers to creating routes in your web application that can handle variable parts of the URL dynamically.
 It allows you to capture values from the URL and use them to customize the behavior of your server. 
@@ -453,6 +485,7 @@ app.listen(port, () => {
 In this example, when you access URLs like /users/123 or /users/456, Express will capture the value after /users/ as a parameter named "id."
 You can then use this parameter within your route handler to perform specific actions based on the user's ID.
 
+
 ---------------------------------------------------------
 
 Router chaining in web development is like setting up a sequence of steps or tasks that are performed one after the other when a user makes
@@ -469,13 +502,13 @@ Authenticate the User - You want to check if the user is logged in before showin
 const express = require('express');
 const app = express();
 
-// Middleware for logging requests
+Middleware for logging requests
 function logRequest(req, res, next) {
   console.log(`Request received for: ${req.url}`);
   next();
 }
 
-// Middleware for authentication
+ Middleware for authentication
 function authenticate(req, res, next) {
   if (userIsAuthenticated) {
     // User is authenticated, so continue to the next middleware
@@ -521,20 +554,20 @@ Occasionally, a new API will come with several incompatible changes. As a result
 -----------------------------------------------------------
 
 In an event-based model, a program responds to events or occurrences rather than running in a linear sequence. It's like being at
- a party where things happen in response to various triggers. Here's a simple explanation:
+a party where things happen in response to various triggers. Here's a simple explanation:
 
 Events: Think of an event as something that happens, like a button click, a file being read, or data arriving over the internet.
 
 Listeners: In an event-based model, you set up "listeners" for specific events. These listeners are like people waiting for
- something to happen at the party.
+something to happen at the party.
 
 Asynchronous: The program doesn't wait around for events. It keeps doing other things until an event occurs.
 
 Callbacks: When an event occurs, the program calls a "callback" function, which is like giving a task to someone
- at the party. For example, when a button is clicked, you might want to display a message, and that's the callback's job.
+at the party. For example, when a button is clicked, you might want to display a message, and that's the callback's job.
 
 Parallel Processing: Many events can happen simultaneously, and the program can handle them all. It's like having
- multiple conversations at the party at the same time.
+multiple conversations at the party at the same time.
 
 So, in an event-based model, the program is constantly ready to respond to events as they occur, making it highly
  efficient for handling things like user interactions, network data, and more. It's a bit like how we interact at a lively party,
@@ -573,6 +606,7 @@ When you want to test this code, you might not want it to actually talk to the o
 So, you create a "stub," which is like a pretend version of the other parts. It acts like the real thing but doesn't do all the work.
 You use this stub in your tests to make sure your code works correctly without involving the real, potentially slow or costly, parts.
 Stubs help you test your code in isolation and make sure it behaves as expected.
+ A stub is a simplified implementation of a function or module that returns predefined or hardcoded values
 
 For example, think of a video game where you want to test how a character moves. You don't want to test 
 it in the actual game world because that could be complex. Instead, you create a "stub world" that acts like
@@ -596,15 +630,6 @@ handles different scenarios without making real network calls.
   -----------------------------------------------------------
 
 In Node.js, the term "concurrency" refers to thFile Size:
-
-readFile: It reads the entire file into memory as a buffer or string. This is suitable for small to moderately-sized files, but 
-it may not be efficient for very large files as it can consume a lot of memory.
-createReadStream: It reads the file in chunks or streams, making it more memory-efficient and suitable for large files.
-Memory Usage:
-
-readFile: It loads the entire file content into memory, which can be a problem for large files or when multiple files need to be processed simultaneously. This can lead to high memory consumption.
-createReadStream: It reads the file in smaller chunks, so it doesn't load the entire file into memory at once, making it memory-efficient. You can process chunks one at a time, reducing memory usage.e ability of the runtime environment to handle multiple tasks or operations simultaneously.
-Node.js is known for its efficient concurrency model due to its event-driven, non-blocking architecture.
 
 
 Concurrency in the context of Node.js refers to the ability of the Node.js runtime to efficiently handle multiple tasks 
@@ -715,7 +740,7 @@ and for debugging purposes. The assert module is part of Node.js's built-in tool
 --->libuv
 
 In summary, libuv is the engine behind Node.js that handles asynchronous operations and ensures that your Node.js applications can efficiently perform tasks without
- getting stuck waiting for I/O operations to complete.
+getting stuck waiting for I/O operations to complete.
 
 
 This thread pool is composed of four threads used to delegate operations that are too heavy for the event loop. 
