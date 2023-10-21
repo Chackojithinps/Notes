@@ -705,7 +705,7 @@ Distribution: The master chef takes orders from customers and gives them to the 
 Efficiency: By having multiple cooks (workers), the restaurant can serve more customers (handle more requests) at the same time. This is more
  efficient, especially when there are many orders (concurrent requests).
 
-Communication: The master chef can talk to the cooks to give them new orders or tell them when to stop cooking. This communication ensures that
+Communication:The master chef can talk to the cooks to give them new orders or tell them when to stop cooking. This communication ensures that
  everything runs smoothly.
 
 In Node.js, clustering allows your server to work like this restaurant kitchen, making it faster and more efficient at handling requests,
