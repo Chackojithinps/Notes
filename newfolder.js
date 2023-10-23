@@ -1,0 +1,2 @@
+#Rest principles
+  By following these REST principles in Node.js with the help of frameworks like Express, you can design APIs that are easy to understand, maintain, and interact with. RESTful APIs are commonly used for building web services and are a fundamental concept for modern web development.

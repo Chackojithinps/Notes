@@ -233,14 +233,16 @@ Mongo Db--------------------------------------------------------------------
 ●insertMany()
 ●insert()
 ●update - upsert
+●db.users.updateOne({name:"Justin Thomas"},{$set:{place:"kannur",age:13}},{upsert:true})
 ●update - multi
 ●update 
 ●updateOne
 ●updteMany
 ●sort
 ●count or countDocuments
-●drop (collection)
-●remove({})
+●db.users.countDocuments({place:"kannur"})
+●drop (collection) ---------To drop the collection
+●remove({})  ---------remove all documents
 ●remove({name:"jitin"})
 ●db.student.remove({age:{$eq:18}}, true)  delete only one
 ●db.student.deleteOne({age:17})
@@ -252,13 +254,12 @@ Mongo Db--------------------------------------------------------------------
 ●Badge> db.users.find({$and:[{"place":"kannur"},{age:{$gte:20}}]})
 ●db.contributor.find({salary: {$not: {$gt: 2000}}}).pretty() 
 ●db.contributor.find({$nor: [{salary: 3000}, {branch: "ECE"}]}).pretty() 
-●db.contributor.update({name: "Mohit"}, {$inc: {publisharticles: 10, salary: -100}}) 
+●db.contributor.update({name: "Mohit"},{$inc: {publisharticles: 10, salary: -100}}) 
 
 ●db.contributor.update({name: "Rohit"}, {$push: {language: "C++"}})
 ●db.contributor.update({name: "Rohit"}, {$pop: { language: -1}}) removing first
 ●db.contributor.update({name: "Rohit"}, {$pop: { language: 1}})  removing last
-●
-db.contributor.update({}, 
+●db.contributor.update({}, 
 ... {$pull: {language: {$in: ["C#", "Perl"]}}}, 
 ... {multi: true}) 
 ●db.contributor.update({name: "Rohit"}, 
