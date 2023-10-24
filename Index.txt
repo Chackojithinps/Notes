@@ -159,7 +159,9 @@ NOde js--------------------------------------------------------------------
 .Child process
 .differences between process.nextTick(), setImmediate(), and setTimeout()
 .Explain the spawn, fork, and exec methods
-
+.fetch vs axios
+.Rest principles/constraints
+.content negotiation
 
 
 Mongo Db--------------------------------------------------------------------
