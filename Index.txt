@@ -78,10 +78,12 @@ javascript
 .promises states
 .promise.all,promise.any,promise.race
 .promisify
+.promise chaining
 .memoization
 .IIFE
 .control flow function
-
+.object.freeze object.searl()
+.async defer
 
 NOde js--------------------------------------------------------------------
 
@@ -160,9 +162,12 @@ NOde js--------------------------------------------------------------------
 .differences between process.nextTick(), setImmediate(), and setTimeout()
 .Explain the spawn, fork, and exec methods
 .fetch vs axios
+.Rest apis
 .Rest principles/constraints
 .content negotiation
-
+.Accept
+.api versioning
+.import and require
 
 Mongo Db--------------------------------------------------------------------
 
@@ -224,8 +229,8 @@ Mongo Db--------------------------------------------------------------------
 ● $ne $nin $in $not
 ● $project
 ● Atomic operation
-●$addToSet
-●method binding(check)
+● $addToSet
+● method binding(check)
 ●
 ●
 ●
@@ -338,11 +343,11 @@ REact---------------------------------------------------------------------------
 ● Redux persistentce
 ● jwt
 ● Pricniples of redux
-● 
-● 
-● 
-● 
-● 
+● Prop types
+● react latest features 
+● concurrent mode
+● webpack
+● axios cancel token
 ● 
 ● 
 
