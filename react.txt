@@ -112,6 +112,10 @@ Pure Components are a way to optimize your application's performance by reducing
 
 Higher-Order Components are a powerful mechanism for enhancing and reusing the functionality of components in React applications.
 HOCs are not components themselves but are functions that take a component as input and return a new component with enhanced functionality. 
+HOCs are components that wrap other components. 
+HOCs are functions that take a component as input and return a new component with additional props, behavior, 
+or functionality. They wrap the original component.
+
 
 import React,{useState} from 'react' 
 
@@ -123,7 +127,7 @@ function HOC(WrappedComponent){
     }
     return(
       <div>
-        <WrappedComponent count={count} handleAdd={handleAdd}/>
+        <WrappedComponent count={count} handleAdd={handleAdd} />
       </div>
     )
   }
@@ -147,9 +151,11 @@ function B(props){
 }
 export default HOC(B);
 
+
 import React, { useState } from 'react'
 import './App.css'
 import HOC from './HOC'
+
 function A(props){
   const {count,handleAdd} = props
    return(
@@ -157,9 +163,12 @@ function A(props){
        <h3>This is A {count}</h3>
        <button onClick={handleAdd}>Add</button>
       </div>
-   )
+   )  
 }
+
 export default HOC(A);
+
+
 ----------------------------------------------------------------------
 ---> render prop
 
@@ -389,6 +398,73 @@ In this example, we display the current count from the state, and the buttons di
 useCallback is a React Hook used to optimize the performance of your components by memoizing (caching) 
 functions so that they are not recreated on every render. It's particularly useful when you need to pass
 functions as props to child components, ensuring that these functions do not trigger unnecessary re-renders.
+
+import React, { useCallback, useState } from 'react'
+import Callback1 from './Callback1'
+import Callback2 from './Callback2'
+import Callback3 from './Callback3'
+  const UseCallback = ()=>{
+  const [count,setCount] = useState(0)
+  const [name,setName] = useState("jithin")
+  console.log("main page rendering");
+
+  const increment1 = useCallback(() => {
+    setCount(count + 1);
+  },[count]);
+
+  const handleName = useCallback(() =>{
+    setName("Kiran")
+  },[name]);
+
+  return(
+    <div>
+      <Callback1 increment={increment1} />
+      <Callback2 count={count} />
+      <Callback3 handleName={handleName} />
+    </div>
+  )
+}
+export default UseCallback;
+
+
+import React from 'react' 
+
+const Callback3 = ({handleName})=>{
+  console.log("callback 3 rnedinrign")
+  return( 
+     <div>
+        <button onClick={handleName}>Change Name</button>
+     </div>
+  )
+}
+
+export default Callback3;
+
+
+import React from 'react'
+
+const Callback2 =({count})=>{
+  console.log("callback2 rendering")
+   return(
+     <div>
+       <h1>count - {count}</h1>
+     </div>
+   )
+}
+export default Callback2
+
+
+import React from 'react'
+
+function Callback1({increment}){
+  console.log("callback1 rendering")
+  return(
+    <div>
+      <button onClick={increment}>Increment</button>
+    </div>
+  )
+}
+export default Callback1
 
 ----------------------------------------------------------------------
 --->diff bw useMemo and useCallback
