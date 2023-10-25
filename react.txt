@@ -113,6 +113,53 @@ Pure Components are a way to optimize your application's performance by reducing
 Higher-Order Components are a powerful mechanism for enhancing and reusing the functionality of components in React applications.
 HOCs are not components themselves but are functions that take a component as input and return a new component with enhanced functionality. 
 
+import React,{useState} from 'react' 
+
+function HOC(WrappedComponent){
+  function Counter(props){
+    const [count,setCount] = useState(0)
+    const handleAdd = ()=>{
+      setCount(count+1)
+    }
+    return(
+      <div>
+        <WrappedComponent count={count} handleAdd={handleAdd}/>
+      </div>
+    )
+  }
+  return Counter
+}
+
+export default HOC;
+
+import React, { useState } from 'react'
+import './App.css'
+import HOC from './HOC'
+
+function B(props){
+  const {count,handleAdd} = props
+  return (
+    <div className="maindiv">
+      <h3>This is B {count}</h3>
+      <button onClick={handleAdd}>Add</button>
+    </div>
+  )
+}
+export default HOC(B);
+
+import React, { useState } from 'react'
+import './App.css'
+import HOC from './HOC'
+function A(props){
+  const {count,handleAdd} = props
+   return(
+     <div className="maindiv">
+       <h3>This is A {count}</h3>
+       <button onClick={handleAdd}>Add</button>
+      </div>
+   )
+}
+export default HOC(A);
 ----------------------------------------------------------------------
 ---> render prop
 
@@ -359,6 +406,45 @@ Both hooks take a function as their first argument and an array of dependencies 
 useCallback is typically used when you want to optimize functions to avoid unnecessary re-renders, especially in the context of passing functions as props.
 useMemo is more general and can be used to memoize any value or result, such as the result of a complex calculation or an object that depends on certain values.
 
+----------------------------------------------------------------------
+
+--->React memo
+
+import React, { useState } from 'react'
+import {MemoizedChild} from './Child'
+const Parent =()=>{
+  const [count,setCount] = useState(0)
+  const [name,setName] = useState("jithin")
+  const handleCount = () =>{
+    setCount(count+1)
+  }
+  const handleName =()=>{
+    setName("Jinto")
+  }
+  console.log("parent rendering")
+  return(
+    <div>
+      <button onClick={handleCount}>Add count - {count}</button>
+      <button onClick = {handleName}>Change name</button>
+      <MemoizedChild name={name}/>
+    </div>
+  )
+}
+export default Parent
+
+
+import React from 'react' 
+
+export const Child = (props) =>{
+  console.log("child rendering")
+  return(
+    <div>
+      <p>{props.name}</p>
+    </div>
+  )
+}
+
+export const MemoizedChild = React.memo(Child)
 
 ----------------------------------------------------------------------
 --->Custom Hooks
@@ -367,6 +453,35 @@ They enable you to create your own hooks, making it easier to share and reuse co
 Custom Hooks follow the same rules as built-in React hooks, but you can define your own behavior.
 When you have component logic that needs to be used by multiple components, we can extract that logic to a custom Hook.
 Custom Hooks start with "use". Example: useFetch.
+
+import React,{useState} from 'react' 
+
+const UserCounter = () =>{
+  const [count,setCount] = useState(0)
+  const handleDec=()=>{
+    setCount(count-1)
+ }
+ const handleInc=()=>{
+   setCount(count+1)
+ }
+  return {count,handleDec,handleInc}
+}
+
+
+export default UserCounter;
+import React, { useState } from 'react'
+import UserCounter from './UserCounter'
+function Counter(){
+  const {count,handleDec,handleInc} = UserCounter() 
+  return(
+    <div>
+      <p>Count - {count}</p>
+      <button onClick={handleInc}>Increment</button>
+      <button onClick={handleDec}>decrement</button>
+    </div>
+  )
+}
+export default Counter 
 
 ----------------------------------------------------------------------
 --->Context API vs Redux

@@ -156,12 +156,12 @@ NOde js--------------------------------------------------------------------
 .measure the duration of async operations
 .measure the performance of async operations
 .Libuv.
+.express async handler
 .Threadpool
 .Node concurrentcy
 .Child process
 .differences between process.nextTick(), setImmediate(), and setTimeout()
 .Explain the spawn, fork, and exec methods
-.fetch vs axios
 .Rest apis
 .Rest principles/constraints
 .content negotiation
@@ -295,25 +295,25 @@ REact---------------------------------------------------------------------------
 ● React Components. Types of components
 ● Props
 ● pure component
-● Higher order components
+● ● ●  Higher order components
 ● Props drilling
 ● React Conditional Rendering
 ● React Lists
 ● React Router
-● React Memo
+● ● ● React Memo
 ● React Hooks
 ● state
 ● useState
 ● useEffect
 ● react life cycle  
-● useContext
-● useRef
-● useReducer
-● useCallback
-● useMemo
-● memo vs useMemo
-● Custom Hooks
-● context vs Redux
+● ● ● useContext
+● ● ● useRef
+● ● ● useReducer
+● ● ● useCallback
+● ● ●  useMemo
+● REact memo vs useMemo
+● ● ●  Custom Hooks
+● ● ●  context vs Redux
 ● side effect working
 ● state vs props 
 ● shadow Dom
@@ -323,7 +323,7 @@ REact---------------------------------------------------------------------------
 ● limitation of react (initial Load ,seo)
 ● object empty
 ● array duplicate
- ● dynamic import
+● dynamic import
 ● fragment
 ● webAPI
 ● controlled components
@@ -348,7 +348,8 @@ REact---------------------------------------------------------------------------
 ● concurrent mode
 ● webpack
 ● axios cancel token
-● 
+● fetch vs axios
+
 ● 
 
 
