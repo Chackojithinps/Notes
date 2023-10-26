@@ -56,7 +56,7 @@ It identifies the differences (or "diffs") between the two Virtual DOM trees.
 Determining Minimal Updates:
 
 The diffing process determines the minimal set of changes needed to bring the new Virtual DOM in line with
- the updated state. It calculates what elements have been added, changed, or removed.
+the updated state. It calculates what elements have been added, changed, or removed.
 Batching Updates:
 
 React batches multiple updates together for efficiency. Instead of immediately updating the real DOM with every change, 
@@ -122,7 +122,7 @@ import React,{useState} from 'react'
 function HOC(WrappedComponent){
   function Counter(props){
     const [count,setCount] = useState(0)
-    const handleAdd = ()=>{
+    const handleAdd = () =>{
       setCount(count+1)
     }
     return(
@@ -175,6 +175,9 @@ export default HOC(A);
 A "render prop" is a pattern in React where a component takes a function as a prop and calls that function to render some part of its content.
 The function, often called the "render prop," is used to provide data or behavior to the component that incorporates it. 
 
+Scenario: You want to create a Toggle component that can be used in various parts of your application to toggle the visibility of different elements. 
+However, you want the content that gets displayed when the toggle is on or off to be completely customizable based on where you use the Toggle component.
+
 ----------------------------------------------------------------------
 ---> props
 
@@ -218,6 +221,45 @@ of the React library and doesn't require any additional installations.
 In summary, React.memo is a powerful tool for optimizing the performance of functional components by reducing unnecessary re-renders.
 It's especially helpful in scenarios where you want to prevent re-renders when props don't change.
 
+
+--->React memo
+
+import React, { useState } from 'react'
+import {MemoizedChild} from './Child'
+
+const Parent =()=>{
+  const [count,setCount] = useState(0)
+  const [name,setName] = useState("jithin")
+  const handleCount = () =>{
+    setCount(count+1)
+  }
+  const handleName =()=>{
+    setName("Jinto")
+  }
+  console.log("parent rendering")
+  return(
+    <div>
+      <button onClick={handleCount}>Add count - {count}</button>
+      <button onClick = {handleName}> Change name </button>
+      <MemoizedChild name={name}/>
+    </div>
+  )
+}
+export default Parent
+
+
+import React from 'react' 
+
+export const Child = (props) =>{
+  console.log("child rendering")
+  return(
+    <div>
+      <p>{props.name}</p>
+    </div>
+  )
+}
+
+export const MemoizedChild = React.memo(Child)
 ----------------------------------------------------------------------
 ---> Hooks
 
@@ -230,14 +272,28 @@ Hooks allow function components to have access to state and other React features
 State generally refers to data or properties that need to be tracking in an application.
 State in React holds dynamic data that can change during a component's lifecycle.
 data of a specific component.
-
+used to contain data or information about the component. A component’s state can change over time; whenever it changes, the component re-renders. 
 ----------------------------------------------------------------------
 --->useState
 
 useState is a React Hook that allows you to add state to functional components. It's used to declare and manage local component state within 
 functional components,
+It returns an array with two values: the current state and a function to update it.
+The Hook takes an initial state value as an argument and returns an updated state value whenever the setter function is called. 
 
 ----------------------------------------------------------------------
+--->child parent relation
+
+When ever we want a component inside any other component it is called child parent relationship.
+
+----------------------------------------------------------------------
+--->state vs variable
+
+when a normal variable or js variable get updates,react doenst care,it doest make changes in frontend.Reacts only looks states to change.
+whenever the states changes it will rerender the component.
+
+----------------------------------------------------------------------
+
 --->useEffect
 
 useEffect is a React Hook that allows you to perform side effects in functional components. Side effects include data fetching,
@@ -287,6 +343,7 @@ props explicitly at every level of the component tree.
 First, you need to create a context using React.createContext(). This function returns an object with Provider and Consumer components.Wrap the part 
 of your component tree where you want to provide a context value with a Provider. The value prop of the Provider sets the value that will be shared 
 with components consuming the context.In any functional component that is a descendant of the Provider, you can use the useContext hook to access the context's value.
+SomeContext.Consumer is an alternative and rarely used way to read the context value.
 
 ----------------------------------------------------------------------
 --->useRef
@@ -305,6 +362,12 @@ myRef: This is the reference object.
 initialValue: This is the initial value of the reference, which is typically null.
 Accessing DOM Elements:
 You can attach a ref attribute to a JSX element, allowing you to reference that DOM element using the myRef.current property.
+
+It can be used to store a mutable value that does not cause a re-render when updated.
+
+It can be used to access a DOM element directly.
+
+
 
 jsx
 Copy code
@@ -326,6 +389,21 @@ function MyComponent() {
 }
 In this example, we create a reference to the input element with inputRef and use inputRef.current to access and manipulate the DOM element.
 
+import React,{useRef} from "react";
+export default function App() {
+  const inputElement = useRef()
+  const handleClick = () =>{
+    console.log(inputElement.current.value)
+  }
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <input type="text" ref={inputElement}/>
+      <button onClick={handleClick}>click me</button>
+      {/* <p>{inputElement.current.value}</p> */}
+    </div>
+  );
+}
 ----------------------------------------------------------------------
 --->useReducer
 
@@ -392,6 +470,35 @@ return (
 );
 In this example, we display the current count from the state, and the buttons dispatch actions to update it.
 
+
+import React, { useReducer } from 'react'
+
+const reducer =(state,action)=>{
+   switch(action.type){
+     case "increment":
+       return {count:state.count+1}
+     case "decrement":
+       return {count:state.count-1}
+     case "reset":
+       return {count:0}
+     default:
+       return state;
+   }
+}
+const App =()=>{
+  const [state,dispatch] = useReducer(reducer,{count:0})
+  return(
+     <div>
+       <button onClick={()=>dispatch({type:"increment"})}>Increment</button>
+       <button onClick={()=>dispatch({type:"decrement"})}>decrement</button>
+       <button onClick={()=>dispatch({type:"reset"})}>reset</button>
+       <p>{state.count}</p>
+    </div>
+  )
+}
+export default App;
+
+
 ----------------------------------------------------------------------
 --->useCallback
 
@@ -400,71 +507,49 @@ functions so that they are not recreated on every render. It's particularly usef
 functions as props to child components, ensuring that these functions do not trigger unnecessary re-renders.
 
 import React, { useCallback, useState } from 'react'
-import Callback1 from './Callback1'
-import Callback2 from './Callback2'
-import Callback3 from './Callback3'
-  const UseCallback = ()=>{
-  const [count,setCount] = useState(0)
-  const [name,setName] = useState("jithin")
-  console.log("main page rendering");
 
-  const increment1 = useCallback(() => {
+Certainly, here's an example that illustrates how useCallback can be useful for optimizing child components when you pass functions as props:
+
+jsx
+Copy code
+import React, { useState, useCallback } from "react";
+
+function ChildComponent({ onClick }) {
+  console.log("ChildComponent rendering");
+  return <button onClick={onClick}>Click me</button>;
+}
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  // Without useCallback, this function would be recreated on every render of App
+  const handleClick = useCallback(() => {
     setCount(count + 1);
-  },[count]);
+  }, [count]);
 
-  const handleName = useCallback(() =>{
-    setName("Kiran")
-  },[name]);
-
-  return(
-    <div>
-      <Callback1 increment={increment1} />
-      <Callback2 count={count} />
-      <Callback3 handleName={handleName} />
+  return (
+    <div className="App">
+      <h1>useCallback Example</h1>
+      <p>Count: {count}</p>
+      <ChildComponent onClick={handleClick} />
     </div>
-  )
-}
-export default UseCallback;
-
-
-import React from 'react' 
-
-const Callback3 = ({handleName})=>{
-  console.log("callback 3 rnedinrign")
-  return( 
-     <div>
-        <button onClick={handleName}>Change Name</button>
-     </div>
-  )
+  );
 }
 
-export default Callback3;
+export default App;
+In this example:
 
+handleClick is defined in the App component and passed as a prop to the ChildComponent.
 
-import React from 'react'
+handleClick is memoized using useCallback with its dependency array [count]. This means that the function is recreated only when count changes.
 
-const Callback2 =({count})=>{
-  console.log("callback2 rendering")
-   return(
-     <div>
-       <h1>count - {count}</h1>
-     </div>
-   )
-}
-export default Callback2
+ChildComponent receives the onClick function as a prop and uses it to handle the button's click event.
 
+The ChildComponent displays a button that triggers the onClick function when clicked.
 
-import React from 'react'
-
-function Callback1({increment}){
-  console.log("callback1 rendering")
-  return(
-    <div>
-      <button onClick={increment}>Increment</button>
-    </div>
-  )
-}
-export default Callback1
+Because we've memoized the handleClick function using useCallback, ChildComponent won't re-render unnecessarily 
+when the App component re-renders. It will continue using the same function reference unless the count state changes. 
+This helps optimize the performance of child components, especially when dealing with more complex components or a large number of child components.
 
 ----------------------------------------------------------------------
 --->diff bw useMemo and useCallback
@@ -473,54 +558,83 @@ useCallback is for memoizing functions, while useMemo is for memoizing any value
 Both hooks take a function as their first argument and an array of dependencies as their second argument.
 useCallback is typically used when you want to optimize functions to avoid unnecessary re-renders, especially in the context of passing functions as props.
 useMemo is more general and can be used to memoize any value or result, such as the result of a complex calculation or an object that depends on certain values.
+The useMemo and useCallback Hooks are similar. The main difference is that useMemo returns a memoized value and useCallback returns 
+a memoized function. You can learn more about useCallback
 
+
+To illustrate how useMemo can help avoid unnecessary re-renders, let's consider an example where a computationally expensive calculation 
+is memoized to improve performance. Here's a simple example:
+
+jsx
+Copy code
+import React, { useState, useMemo } from "react";
+
+function App() {
+  const [number, setNumber] = useState(5);
+  const [multiplier, setMultiplier] = useState(2);
+
+  // Calculate the result using useMemo
+  const result = useMemo(() => {
+    console.log("Calculating result...");
+    // Simulate a computationally expensive operation
+    let computedResult = number;
+    for (let i = 0; i < 100000000; i++) {
+      computedResult *= multiplier;
+    }
+    return computedResult;
+  }, [number, multiplier]);
+
+  return (
+    <div className="App">
+      <h1>useMemo Example</h1>
+      <p>Number: {number}</p>
+      <p>Multiplier: {multiplier}</p>
+      <p>Result: {result}</p>
+      <button onClick={() => setNumber(number + 1)}>Increment Number</button>
+      <button onClick={() => setMultiplier(multiplier + 1)}>Increment Multiplier</button>
+    </div>
+  );
+}
+
+export default App;
+In this example:
+
+We have a computationally expensive operation simulated by the loop that multiplies number by multiplier many times.
+
+Without useMemo, this expensive calculation would be performed on every render, even if number or multiplier haven't changed.
+
+With useMemo, the calculation is performed only when number or multiplier changes. If you click the "Increment Number" or "Increment Multiplier" button, the calculation is triggered. However, if you click them without any changes to the dependencies, the calculation is not performed. This avoids unnecessary re-renders and improves performance.
+
+You'll see that the "Calculating result..." log message is only displayed when the calculation is performed, and it's not displayed on every render, demonstrating how useMemo helps avoid unnecessary re-renders when the dependencies remain the same.
 ----------------------------------------------------------------------
 --->diff bw React memo and useMemo
 
-useCallback is for memoizing functions, while useMemo is for memoizing any value.
-Both hooks take a function as their first argument and an array of dependencies as their second argument.
-useCallback is typically used when you want to optimize functions to avoid unnecessary re-renders, especially in the context of passing functions as props.
-useMemo is more general and can be used to memoize any value or result, such as the result of a complex calculation or an object that depends on certain values.
+useMemo:
 
-----------------------------------------------------------------------
+useMemo is a hook in React used to memoize the result of a computation and avoid re-calculating that result on every render.
+It is typically used for optimizing performance when you have a costly computation that depends on some values, and you want to compute the 
+result only when the dependencies change.
+useMemo is used to memoize values, such as computed values or derived data, so that they are cached and only re-calculated when the dependencies change.
+It's primarily used for optimizing calculations and data transformations within a component.
+Example:
 
---->React memo
+jsx
+Copy code
+const memoizedValue = useMemo(() => computeExpensiveValue(dep1, dep2), [dep1, dep2]);
+React.memo:
 
-import React, { useState } from 'react'
-import {MemoizedChild} from './Child'
-const Parent =()=>{
-  const [count,setCount] = useState(0)
-  const [name,setName] = useState("jithin")
-  const handleCount = () =>{
-    setCount(count+1)
-  }
-  const handleName =()=>{
-    setName("Jinto")
-  }
-  console.log("parent rendering")
-  return(
-    <div>
-      <button onClick={handleCount}>Add count - {count}</button>
-      <button onClick = {handleName}>Change name</button>
-      <MemoizedChild name={name}/>
-    </div>
-  )
-}
-export default Parent
+React.memo is a higher-order component in React that is used to memoize functional components, preventing them from re-rendering if their 
+props have not changed.
+It is typically used for optimizing the performance of functional components by preventing unnecessary re-renders.
+React.memo is used to memoize entire components, ensuring that a component re-renders only if its props have changed.
+It's useful for functional components that receive the same props but don't need to re-render unless those props change.
+Example:
 
+jsx
+Copy code
+const MemoizedComponent = React.memo(MyComponent);
+In summary, useMemo is used to memoize values or results of calculations, while React.memo is used to memoize entire functional components. They are both valuable tools for performance optimization in React, but they serve different purposes and are used in different contexts. You can even use them together in the same component if needed, where useMemo can optimize calculations within a memoized component.
 
-import React from 'react' 
-
-export const Child = (props) =>{
-  console.log("child rendering")
-  return(
-    <div>
-      <p>{props.name}</p>
-    </div>
-  )
-}
-
-export const MemoizedChild = React.memo(Child)
 
 ----------------------------------------------------------------------
 --->Custom Hooks
@@ -545,6 +659,7 @@ const UserCounter = () =>{
 
 
 export default UserCounter;
+
 import React, { useState } from 'react'
 import UserCounter from './UserCounter'
 function Counter(){
@@ -591,16 +706,18 @@ React.memo: It is a higher-order component used to optimize functional component
 the rendering output of a component and only re-renders when the component's props change.
 
 ----------------------------------------------------------------------
-
+--->Cleanup function
 
 Certainly! In a simpler way, a cleanup function in React is like tidying up after yourself when you're done with something. It's a 
 piece of code that you write to clean up resources or cancel tasks when a part of your web page (a component) is no longer needed
 
 ----------------------------------------------------------------------
+--->Fragments
 
 div. Fragments allow you to avoid adding unnecessary elements to the DOM structure.
 
 ----------------------------------------------------------------------
+--->Controlled components and uncontrolled components
 
 Controlled components and uncontrolled components are two approaches to managing form elements (like input fields, checkboxes, and radio buttons) 
 in a React application.
@@ -609,6 +726,82 @@ event handlers and updating the state.
 In an uncontrolled component, you let the HTML element maintain its state. You don't control the form element's value with React state. Instead, 
 you directly access the element's value through references or DOM manipulation when needed.
 
+
+
+Controlled Components:
+
+In a controlled component, the value of the form element is controlled by React. This means that you store 
+the input's value in a state variable and update the value through the onChange event handler. When the state changes, the input element updates accordingly.
+
+Here's a simple example of a controlled component:
+
+jsx
+Copy code
+import React, { useState } from "react";
+
+function ControlledInput() {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  return (
+    <div>
+      <label>Controlled Input:</label>
+      <input type="text" value={inputValue} onChange={handleChange} />
+      <p>You typed: {inputValue}</p>
+    </div>
+  );
+}
+
+export default ControlledInput;
+In this example:
+
+The inputValue is stored in a state variable using useState.
+
+The <input> element has its value attribute set to inputValue, which makes it a controlled component.
+
+The onChange event handler updates the inputValue state variable when the user types in the input field.
+
+As you type, the input value is controlled by React, and the changes are reflected in the paragraph below the input.
+
+Uncontrolled Components:
+
+In an uncontrolled component, the input value is not controlled by React. Instead, you let the DOM handle the input's value, 
+and you access it through a ref. Uncontrolled components are typically used when you need to integrate with non-React code or 
+when you want a more imperative approach.
+
+Here's a simple example of an uncontrolled component:
+
+jsx
+Copy code
+import React, { useRef } from "react";
+
+function UncontrolledInput() {
+  const inputRef = useRef();
+
+  const handleShowValue = () => {
+    alert("Input Value: " + inputRef.current.value);
+  };
+
+  return (
+    <div>
+      <label>Uncontrolled Input:</label>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleShowValue}>Show Value</button>
+    </div>
+  );
+}
+
+export default UncontrolledInput;
+In this example:
+
+The <input> element is uncontrolled because it doesn't have a value attribute and isn't managed by React.
+
+Instead, we use useRef to create a reference to the input element.
+
+When the "Show Value" button is clicked, we access the input's value using inputRef.current.value.
 ----------------------------------------------------------------------
 
 
@@ -622,12 +815,73 @@ Lazy loading in React is a technique used to improve the performance of your web
 application only when they are actually needed, rather than loading everything when the page first loads. This can make your app faster and 
 more efficient because it reduces the initial load time.
 
+Create a React Project:
+
+If you don't have a React project set up, you can create one using Create React App:
+
+bash
+Copy code
+npx create-react-app lazy-loading-example
+cd lazy-loading-example
+Create Components:
+
+Create two components that we'll load lazily.
+
+jsx
+Copy code
+// ComponentA.js
+import React from "react";
+
+const ComponentA = () => {
+  return <div>Component A</div>;
+};
+
+export default ComponentA;
+jsx
+Copy code
+// ComponentB.js
+import React from "react";
+
+const ComponentB = () => {
+  return <div>Component B</div>;
+};
+
+export default ComponentB;
+Create the Main Component:
+
+Create a main component where you'll use lazy loading to load the other components.
+
+jsx
+Copy code
+// App.js
+import React, { lazy, Suspense } from "react";
+
+const ComponentA = lazy(() => import("./ComponentA"));
+const ComponentB = lazy(() => import("./ComponentB"));
+
+function App() {
+  return (
+    <div>
+      <h1>Lazy Loading Example</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ComponentA />
+        <ComponentB />
+      </Suspense>
+    </div>
+  );
+}
+
+export default App;
+
 ----------------------------------------------------------------------
+Webpack
 
 It takes all of the individual JavaScript files and other assets in a project, such as images and CSS, and combines them into a single 
 bundle that can be loaded by the browser. Webpack also has the ability to transpile modern JavaScript code (such as ES6) into older 
 versions that can be understood by older browsers.
 
+Loaders: If your code uses modern features like JSX and ES6 that browsers can't understand directly, Webpack uses "loaders" to process these files. 
+For example, it might use a Babel loader to convert JSX and ES6 into plain JavaScript that browsers can run.
 ----------------------------------------------------------------------
 --->PropTypes
 
@@ -644,7 +898,9 @@ MyComponent.propTypes = {
 };
 
 
-PropTypes in React functional components are used to specify the expected data types and, optionally, additional validation rules for the props that a component should receive. They help catch errors and ensure that the component is used correctly. Here's how to use PropTypes in a functional component with an example:
+PropTypes in React functional components are used to specify the expected data types and, optionally, additional validation rules 
+for the props that a component should receive. They help catch errors and ensure that the component is used correctly. Here's how 
+to use PropTypes in a functional component with an example:
 
 First, make sure to import PropTypes from the prop-types library:
 
@@ -759,6 +1015,128 @@ function makeRequest() {
 makeRequest();
 In this example, we create a request, set a timeout to cancel it after 1 second, and handle both the successful response 
 and the canceled request using Axios cancel tokens.
+
+
+----------------------------------------------------------------------
+fetch vs axios
+
+Rich Feature Set: Axios has a more extensive feature set, including automatic transformation of response data to JSON, 
+support for request and response interceptors, request cancellation, and more.
+
+HTTP Error Handling: Axios provides better HTTP error handling and allows you to intercept and customize error responses.
+
+
+exmple of fetch:
+
+useEffect(() => {
+    // Using the fetch API to make a GET request
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
+----------------------------------------------------------------------
+
+axios interceptors
+
+  axios.interceptors.request.use(function (config) {
+    // Do something before request is sent
+    return config;
+  }, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  });
+
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    return response;
+  }, function (error) {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(error);
+  });
+
+
+axios.interceptors.request.use((config)=>{
+  
+  return config
+},error=>{
+  return Promise.reject(error)
+})
+
+----------------------------------------------------------------------
+
+shadow dom
+
+In React, you can use the Shadow DOM with a web component. A web component is like a special HTML element that you create. 
+Inside this special HTML element, you can put your own styles and behavior. This special HTML element is encapsulated, meaning 
+its styles and code won't affect the rest of your web page, and vice versa.
+
+----------------------------------------------------------------------
+React Fiber
+
+Of course, React is a popular JavaScript library that is used by developers to create complex and modern UIs (user interfaces). 
+To identify which elements are to be rendered after certain changes are made by the developer, React uses a "reconciler", 
+an algorithm that helps it compare two DOM trees and diff them with one another. React Fiber helps do this better.
+
+----------------------------------------------------------------------
+
+React is a powerful library for building dynamic web applications, but it does have some limitations and challenges, especially when 
+it comes to initial loading and SEO (Search Engine Optimization). Here are the limitations and challenges in these areas:
+
+Initial Load Performance:
+
+Initial Bundle Size: React applications can have relatively large initial bundle sizes, especially when using many third-party libraries 
+and dependencies. This can result in longer load times for users, especially on slower internet connections.
+
+Client-Side Rendering (CSR): React primarily relies on client-side rendering, which means that the initial rendering of the page happens 
+in the user's browser. This can lead to slower initial load times, particularly on devices with limited resources or slower CPUs.
+
+First Contentful Paint (FCP): Achieving a fast FCP (when the browser displays the first content on the page) can be a challenge in React 
+applications, as they often require more JavaScript to render content compared to server-side rendering.
+
+SEO (Search Engine Optimization):
+
+Initial HTML: React's client-side rendering approach can affect SEO because search engine crawlers often need to see the initial HTML content to index a page properly. React applications initially render with empty or minimal HTML content, which can lead to SEO issues.
+
+Server-Side Rendering (SSR) Complexity: To improve SEO, many React applications implement server-side rendering (SSR), which can be complex to set up and maintain. SSR requires server infrastructure and can increase the complexity of your application.
+
+JavaScript Dependency: Even with SSR, React applications may rely heavily on JavaScript to render content. This can still pose SEO challenges, as search engines may not fully process and execute JavaScript.
+
+----------------------------------------------------------------------
+Automatic batching
+
+Automatic batching includes batching state updates in a non-event handler function. It happens such that only one re-render is required instead of 
+several re-renders for each state update.
+
+called transition to help distinguish between urgent and non-urgent updates.
+
+Urgent updates like typing, clicking, or pressing are expected to respond immediately on the screen.
+
+Non—urgent updates are displaying the list of users, where a slight delay can be acceptable, and doesn’t expect to see every intermediate value on screen.
+
+useTransition Hook:
+So let me give you an example: if you are doing a task and another urgent task comes in that has a higher priority, react will 
+stop that task and work on the higher priority task and then start that task again.
+
+Suspense
+Before react 18 was introduced, if one component of an app was slow, it slowed down the entire app, but with react 18, 
+if one component is slow, it will not slow down the entire App. Suspense allows you to instruct React to send HTML for other 
+components, such as a loading spinner, before sending HTML for the placeholder. The server renderer will then insert its HTML 
+into the same stream once the slow component is prepared and has fetched its data.
+
+
+----------------------------------------------------------------------
+
+React 18, on the other hand, introduces concurrent rendering. This new mode enables React to interrupt a rendering process to handle more 
+urgent tasks, like responding to user input. It's like having a superpower that allows React to be in multiple places at the same time.
 
 
 ----------------------------------------------------------------------

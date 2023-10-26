@@ -136,16 +136,18 @@ Use response.writeHead() if you want to set the status code and headers together
 
     Streams are particularly useful for dealing with large data or real-time data, as they allow you to process it efficiently without consuming too much memory.
 
-  types
+types
 Readable Streams:
 
 These streams are used for reading data. You can read data from sources like files, network requests, or other streams.
- Common examples include the fs.createReadStream for reading files and http.IncomingMessage for handling HTTP request bodies.
- You can use a readable stream to read the contents of a file, allowing your program to access and work with the file's data.
+Common examples include the fs.createReadStream for reading files and http.IncomingMessage for handling HTTP request bodies.
+You can use a readable stream to read the contents of a file, allowing your program to access and work with the file's data.
+
 Writable Streams:
+
 Writable streams in Node.js are a way to send data from your program to a destination.
 These streams are used for writing data. You can write data to destinations like files, network sockets, or other streams.
- Examples include fs.createWriteStream for writing to files and http.ServerResponse for sending HTTP responses.
+Examples include fs.createWriteStream for writing to files and http.ServerResponse for sending HTTP responses.
 
 Duplex Streams:
 

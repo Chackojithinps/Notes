@@ -251,6 +251,7 @@ Mongo Db--------------------------------------------------------------------
 ●drop (collection) ---------To drop the collection
 ●remove({})  ---------remove all documents
 ●remove({name:"jitin"})
+db.users.find({},{name:1,place:1,_id:0}) ---field filtering
 ●db.student.remove({age:{$eq:18}}, true)  delete only one
 ●db.student.deleteOne({age:17})
 ●deleteOne() first will delete
@@ -279,9 +280,10 @@ Mongo Db--------------------------------------------------------------------
 ● db.users.aggregate([{$project:{name:1,place:1,_id:0}}])
 ● db.users.aggregate([{$group:{_id:"$place",count:{$sum:1}}}])
 ● db.users.aggregate([{$match:{place:"kannur",total:{$sum:"$age"}}}])
-● db.person.find({name: {$regex:/rel/i}})  where ever the rel present in the name it will show .
-● $regex - db.person.find({name: {$regex:/^rel/i}}) if name starts with rel then that document shows
+● db.person.find({name: {$regex:/rel/i}})  where ever the rel present in the name it will show.
+● $regex - db.person.find({name: {$regex:/^rel/i}}) if name starts with rel then that document shows.
 ● $regex - db.person.find({name: {$regex:/rel$/i}}) if name ends with rel then that document shows.
+
 
 
 REact------------------------------------------------------------------------------
@@ -289,11 +291,15 @@ REact---------------------------------------------------------------------------
 
 ● Virtual dom , Dom
 ● createRoot(),render().
+● strict mode
 ● JSX
 ● diffing
 ● reconcilation
 ● React Components. Types of components
 ● Props
+● Render Props
+●parent child relationship
+●difference between state and variable
 ● pure component
 ● ● ●  Higher order components
 ● Props drilling
@@ -310,7 +316,7 @@ REact---------------------------------------------------------------------------
 ● ● ● useRef
 ● ● ● useReducer
 ● ● ● useCallback
-● ● ●  useMemo
+● ● ●  useMemo 
 ● REact memo vs useMemo
 ● ● ●  Custom Hooks
 ● ● ●  context vs Redux
@@ -349,7 +355,6 @@ REact---------------------------------------------------------------------------
 ● webpack
 ● axios cancel token
 ● fetch vs axios
-
 ● 
 
 
