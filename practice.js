@@ -914,6 +914,7 @@
 
 
 const newArray = []
+
 function commonElements(arr,root){
     function inorder(node){
         if(node){
@@ -924,6 +925,7 @@ function commonElements(arr,root){
     }
     inorder(root)
 }
+
 class Node{
     constructor(data){
         this.data= data;
@@ -991,3 +993,52 @@ for(var i=0;i<arr.length;i++){
     }
 }
 console.log(newArr)
+
+
+
+class Node {
+    constructor(data) {
+      this.data = data;
+      this.left = null;
+      this.right = null;
+    }
+  }
+  
+  class BinaryTree {
+    constructor() {
+      this.root = null;
+    }
+  
+    insert(data) {
+      const newNode = new Node(data);
+      
+      if (this.root === null) {
+        this.root = newNode;
+      } else {
+        this.insertNode(this.root, newNode);
+      }
+    }
+  
+    insertNode(node, newNode) {
+      if (node.left === null) {
+        node.left = newNode;
+      } else if (node.right === null) {
+        node.right = newNode;
+      } else {
+        // If both left and right nodes are occupied, we need to choose one branch to continue inserting.
+        // You can define your own logic for choosing the branch.
+        // For example, you might insert on the left if it is null, or follow some other rule based on your needs.
+        this.insertNode(node.left, newNode);
+      }
+    }
+  }
+  
+  // Example usage:
+  const binaryTree = new BinaryTree();
+  
+  binaryTree.insert(1);
+  binaryTree.insert(2);
+  binaryTree.insert(3);
+  binaryTree.insert(4);
+  binaryTree.insert(5);
+  

@@ -258,6 +258,9 @@ db.users.find({},{name:1,place:1,_id:0}) ---field filtering
 ●db.student.distinct("name")
 ●db.gfg.find().limit(2)
 ●db.gfg.find().skip(1)
+●$exists
+      $elemMatch: {
+
 ●db.contributor.find({name: {$in: ["Amit", "Suman"]}}).pretty() 
 ●Badge> db.users.find({$and:[{"place":"kannur"},{age:{$gte:20}}]})
 ●db.contributor.find({salary: {$not: {$gt: 2000}}}).pretty() 

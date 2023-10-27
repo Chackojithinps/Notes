@@ -228,7 +228,7 @@ The query returns the students who have taken "Mathematics" and received a grade
       mongoexport-
         it is used to export data from a MongoDB collection to an external file. It generates a JSON, CSV, or TSV file containing the exported data.
         Exports MongoDB collection data into JSON or CSV format
-      mongoImport-
+      mongoImport -
          it is used to import data from an external file (e.g., JSON, CSV, TSV) into a MongoDB collection.
          Imports MongoDB collection data in JSON or CSV format
       MongoDumb -
@@ -244,7 +244,7 @@ The query returns the students who have taken "Mathematics" and received a grade
          used to restore the binary backups of MongoDB, indexes will be recreated
 ●  indexes 
         Indexes - In MongoDB, an index is a data structure that improves the performance of queries by allowing them to quickly locate the specific documents they are looking for.
-
+        Single Field Index:Compound Index:Text Index:Geo-spatial Index:
 ●  Distinct
         The distinct() method in MongoDB is primarily used to get a list of unique or distinct values from a specific field in a collection.
         It provides a way to extract all the different values that exist in that field without any duplicates.
@@ -277,7 +277,6 @@ The query returns the students who have taken "Mathematics" and received a grade
        This theorem is applicable to all distributed systems, including MongoDB.
        Consistency: Consistency means that all clients see the same data at the same time, even with concurrent updates.
                     So, a write operation by one client is immediately seen by all other clients.
-
                     eg:Suppose we have a user profile for "John" stored in the database. His age is initially set to 30.
                         Client A sends a request to update John's age to 31.
                         At the same time, Client B sends a request to read John's profile.
@@ -405,3 +404,45 @@ matches the given condition in the update method.
 
 ---> Multi: The default value of this parameter is false. When it is true, the update method updates all the documents that meet the query 
 condition. Otherwise, it will update only one document.
+
+
+---------------------------------------------------------------
+
+
+Atomicity: Atomicity ensures that a transaction is treated as a single, indivisible unit of work. It means that a transaction is either fully completed or fully rolled back to its previous state. In other words, a transaction is all or nothing. If any part of the transaction fails, the entire transaction is rolled back, ensuring that the database remains in a consistent state.
+
+Example: In a banking application, when transferring money from one account to another, atomicity ensures that both the withdrawal from one account and the deposit into another account happen as a single atomic transaction. If either part fails, the entire transaction is rolled back to prevent inconsistencies in account balances.
+
+Consistency: Consistency ensures that a transaction takes the database from one consistent state to another consistent state. It enforces data integrity constraints, such as primary key constraints, uniqueness constraints, and referential integrity. This property guarantees that the database remains in a valid state before and after the transaction.
+
+Example: If a database enforces the rule that each student's ID must be unique, a consistency check ensures that no two students can have the same ID after a transaction is executed.
+
+Isolation: Isolation ensures that concurrent transactions do not interfere with each other. It prevents one transaction from seeing the intermediate, uncommitted changes made by another transaction. Isolation levels, such as Read Uncommitted, Read Committed, Repeatable Read, and Serializable, define the level of isolation between transactions.
+
+Example: Two users concurrently updating their profile information should not see each other's changes until the transactions are committed. Isolation prevents one user from reading the uncommitted changes made by the other.
+
+Durability: Durability guarantees that once a transaction is committed, its changes are permanent and will survive any subsequent failures, such as system crashes or power outages. This is typically achieved by writing the changes to non-volatile storage, such as a hard drive.
+
+---------------------------------------------------------------
+
+
+
+Auto-scaling in MongoDB typically refers to the ability to automatically adjust the capacity of a MongoDB cluster based on the changing workload and resource requirements of your application. Auto-scaling can help ensure that your MongoDB deployment can handle increased traffic and workloads without manual intervention. Here are some ways to achieve auto-scaling in MongoDB:
+
+Sharding: MongoDB provides horizontal scalability through sharding. Sharding involves distributing data across multiple servers, known as shards. As your data grows and the workload increases, you can add more shards to distribute the data and queries evenly. This can be done dynamically, allowing for auto-scaling as needed.
+
+Replica Sets: While replica sets are primarily used for high availability and fault tolerance, they can also be part of an auto-scaling strategy. You can add or remove replica set members as your read traffic increases. These additional members can serve read queries, thus offloading the primary server.
+
+---------------------------------------------------------------
+
+Concurrency in MongoDB refers to the ability of multiple operations or transactions to be executed simultaneously, allowing for multiple clients to read and write data concurrently. 
+
+---------------------------------------------------------------
+lk write operations in MongoDB are a way to efficiently perform multiple write operations in a single batch, which can significantly improve the performance and reduce the overhead associated with executing individual write operations one at a time. MongoDB provides a bulk write API that allows you to perform bulk insert, update, delete, and replace operations. This is especially useful when dealing with large datasets or when you need to make multiple changes to the database simultaneously.
+---------------------------------------------------------------
+In MongoDB, a "shard key" (also known as a shard field) is a field in a document that is used to determine how data is distributed across multiple shards in a sharded cluster.
+---------------------------------------------------------------
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------

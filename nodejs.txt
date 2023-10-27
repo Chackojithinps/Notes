@@ -207,9 +207,11 @@ Metadata:
 
 It contains metadata about your project, such as its name, version, description, author, and license information.
  This metadata helps others understand your project and its purpose.
+
 ---------------------------------------------------------
 
 --->MODULES - Modules are JavaScript libraries you can include in your project.
+
               core modules - - It is Built-in module
                                 HTTP, URL, path, fs, os, query string
               Local modules -- We can create our own modules and we can use it in our Project
@@ -280,7 +282,7 @@ It contains metadata about your project, such as its name, version, description,
            --express.cookieParser
 
 ---> App.use()
-
+       
 ---> App.set()
     view engine': This setting is used to specify the template engine to be used for rendering views in your application.
     In summary, app.use() is for setting up middleware to process incoming requests, while app.set() is for configuring various options and characteristics of your application. 
@@ -288,11 +290,16 @@ It contains metadata about your project, such as its name, version, description,
 ---> App.all
      It allows you to handle all types of requests to a specific URL path in a single place.
 
+   app.all('/api', function (req, res, next) {
+   console.log('/api called with method: ', req.method);
+   next();
+   });
+
 ---> Http vs Https
       HTTP and HTTPS are both communication protocols used for transmitting data over the internet
       The main difference between HTTP and HTTPS lies in the level of security provided when transmitting data over the internet:
 
-      HTTP Stands for "Hypertext Transfer Protocol."
+      HTTP Stands for "Hypertext Transfer Protocol"
       Plain text communication: Data is transmitted in plain text format, which means it is not encrypted.
       Less secure: Since the data is not encrypted, it can be easily intercepted and read by malicious parties during transmission. This makes it vulnerable to security threats
       such as eavesdropping and data tampering.
@@ -316,11 +323,13 @@ It contains metadata about your project, such as its name, version, description,
         The query parameter is the variable whose value is passed in the URL in the form of key-value pair at the end of the URL after a question mark (?). Forexample, www.geeksforgeeks.org? 
         name=abc where 'name' is the key of the query parameter whose value is 'abc'.
 --->params 
+
         both "params" and "query" are ways to pass data from the client (e.g., a web browser) to the server in the URL.
         app.get('/users/:id', (req, res) => {
         const userId = req.params.id; // Access the value of the "id" parameter
         res.send(`User ID: ${userId}`);
         });
+
 --->View Engine
         In simple terms, a view engine is a tool used in web development to dynamically generate the HTML code that will be sent to the user's web browser.
         It helps to create dynamic and interactive web pages by combining data from the server with HTML templates.Developers create template files containing HTML code with special placeholders
@@ -355,6 +364,7 @@ Server Responds:
 
 The server receives the preflight request and checks if the web page making the request is allowed to do so. The server also checks if the 
 requested method (e.g., GET, POST, DELETE) and headers are permitted.
+
 CORS Headers:
 
 The server responds with special headers called CORS headers. These headers indicate which origins (web pages) are allowed to make requests, 
@@ -368,6 +378,12 @@ Data Transfer:
 The actual request is sent to the server, and data is transferred as needed.
 In simple terms, a preflight request is like asking for permission before making a request to a different domain. It's a security measure to 
 ensure that the server is okay with the type of request you want to send. If permission is granted (based on the server's CORS headers), you can then make the actual request. This helps protect users and ensure the security of web applications.
+
+
+"OPTIONS" is an HTTP request method like "GET" or "POST."
+It's used to ask a server about the communication options available for a specific resource.
+In the "OPTIONS" request, the browser essentially asks the server, "What can I do with this resource? Are 'PUT' and 'DELETE' 
+requests allowed? Can I use custom headers in my request? Can I access this resource from 'yourapp.com'?"
 
 ---------------------------------------------------------
 
@@ -463,6 +479,8 @@ Control flow in Node.js is typically managed using one of three methods: callbac
 A control flow function in Node.js is a function or technique that helps you manage the order in which tasks are executed in your code, especially 
 when dealing with asynchronous operations. It's a way to control the flow of your program, ensuring that one task completes before another starts.
 
+determine the order in which statements and instructions are executed in a program. They allow you to make decisions, create loops, 
+and control the overall flow of your code
 
 ---------------------------------------------------------
 
@@ -579,6 +597,7 @@ So, in an event-based model, the program is constantly ready to respond to event
 The primary reason for using the event-based model in Node.js is to efficiently handle many tasks that can happen concurrently,
 like responding to multiple requests or events, without waiting for one to finish before moving on to the next. This is crucial
 for building fast and responsive applications, such as web servers, real-time chat apps, or streaming services.
+
 
 -----------------------------------------------------------
 
@@ -769,7 +788,7 @@ Queue Processing: The Event Loop checks the Callback Queue and, when it finds a 
 
 
 -----------------------------------------------------------
---->Rest Api
+---> Rest Api
 
  An API can use various architectural styles, and one of the common styles for web APIs is the REST architectural style.
  REST API (Representational State Transfer API):
@@ -835,7 +854,7 @@ Representation: The librarian gives you a book, not the entire library. If you p
 she'll give it to you in your chosen language (representation).
 
 -----------------------------------------------------------
---->Content negotiation
+---> Content negotiation
 
 Content negotiation is a mechanism used in HTTP to allow a client and a server to agree on the most suitable representation of a resource. 
 It enables clients to request a specific content type (e.g., JSON, XML, HTML) or language (e.g., English, French) for a resource, and the 
@@ -1067,6 +1086,8 @@ executed in older browsers without issues.
 
 -----------------------------------------------------------
 
+Node.js: Node.js is an open-source, server-side runtime environment that allows you to run JavaScript code outside of a web browser. 
+    It is built on top of the V8 engine,
 
 -----------------------------------------------------------
 -----------------------------------------------------------
