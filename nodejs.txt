@@ -641,9 +641,9 @@ handles different scenarios without making real network calls.
 
   -----------------------------------------------------------
 
- Child processes allow you to execute tasks in parallel with your main Node.js application. This is particularly useful for tasks
- that are CPU-bound (tasks that require a lot of computational power) because they can be run on separate CPU cores.
-  There are four different ways to create a child process in Node: spawn(), fork(), exec(), and execFile().
+Child processes allow you to execute tasks in parallel with your main Node.js application. This is particularly useful for tasks
+that are CPU-bound (tasks that require a lot of computational power) because they can be run on separate CPU cores.
+There are four different ways to create a child process in Node: spawn(), fork(), exec(), and execFile().
 
   spawn() and fork() are used to create new processes for running scripts or Node.js modules. 
   exec() and execFile() are used for executing shell commands or external programs.
@@ -736,7 +736,6 @@ In Node.js, clustering is a technique used to improve the performance and scalab
 multiple child processes (workers)that can share the incoming workload, thus taking advantage of multi-core processors and enabling better utilization
  of system resources. 
 
-
 application's ability to handle more concurrent requests.
 How Clustering Works:
 
@@ -769,7 +768,7 @@ When the thread pool completes a task, a callback function is called which handl
  is sent to the event queue. When the call stack is empty, the event goes through the event queue and sends the callback to the call stack. 
 
  To address this issue, Node.js uses a thread pool to create worker threads outside of the main event loop. These worker threads are separate from the JavaScript
-  execution environment. They allow Node.js to perform CPU-bound operations in parallel without blocking the main event loop.
+ execution environment. They allow Node.js to perform CPU-bound operations in parallel without blocking the main event loop.
 
  This offloads these operations to separate worker threads, ensuring the main event loop remains responsive.
 
@@ -972,6 +971,7 @@ bash
 Copy code
 https://api.example.com/v1/resource
 https://api.example.com/v2/resource
+
 Header Versioning:
 
 With header versioning, the client specifies the API version it wants to use by including a version header in the HTTP request.
@@ -1087,7 +1087,7 @@ executed in older browsers without issues.
 -----------------------------------------------------------
 
 Node.js: Node.js is an open-source, server-side runtime environment that allows you to run JavaScript code outside of a web browser. 
-    It is built on top of the V8 engine,
+It is built on top of the V8 engine,
 
 -----------------------------------------------------------
 -----------------------------------------------------------

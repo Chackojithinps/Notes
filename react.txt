@@ -2,10 +2,15 @@
 ----------------------------------------------------------------------
 
 React is a JavaScript library for building user interfaces.
-
 React is used to build single-page applications.
-
 React allows us to create reusable UI components.
+
+----------------------------------------------------------------------
+
+When you enable Strict Mode, your console will show warnings and errors that are meant to help you catch 
+and address issues early in the development process. 
+When you enable Strict Mode, your console will show warnings and errors that are meant to help you catch and address 
+issues early in the development process. 
 
 ----------------------------------------------------------------------
 
@@ -170,7 +175,7 @@ export default HOC(A);
 
 
 ----------------------------------------------------------------------
----> render prop
+---> render prop 
 
 A "render prop" is a pattern in React where a component takes a function as a prop and calls that function to render some part of its content.
 The function, often called the "render prop," is used to provide data or behavior to the component that incorporates it. 
@@ -882,6 +887,7 @@ versions that can be understood by older browsers.
 
 Loaders: If your code uses modern features like JSX and ES6 that browsers can't understand directly, Webpack uses "loaders" to process these files. 
 For example, it might use a Babel loader to convert JSX and ES6 into plain JavaScript that browsers can run.
+
 ----------------------------------------------------------------------
 --->PropTypes
 
@@ -1102,7 +1108,7 @@ in the user's browser. This can lead to slower initial load times, particularly 
 First Contentful Paint (FCP): Achieving a fast FCP (when the browser displays the first content on the page) can be a challenge in React 
 applications, as they often require more JavaScript to render content compared to server-side rendering.
 
-SEO (Search Engine Optimization):
+SEO(Search Engine Optimization):
 
 Initial HTML: React's client-side rendering approach can affect SEO because search engine crawlers often need to see the initial HTML content to index a page properly. React applications initially render with empty or minimal HTML content, which can lead to SEO issues.
 
@@ -1138,5 +1144,7 @@ into the same stream once the slow component is prepared and has fetched its dat
 React 18, on the other hand, introduces concurrent rendering. This new mode enables React to interrupt a rendering process to handle more 
 urgent tasks, like responding to user input. It's like having a superpower that allows React to be in multiple places at the same time.
 
-
 ----------------------------------------------------------------------
+Code splitting in Webpack is a technique used to optimize the performance and loading speed of web applications by splitting the code into smaller, 
+more manageable chunks. Instead of bundling the entire application into a single JavaScript file, you break it down into smaller parts and load 
+them on-demand as needed. This can significantly reduce the initial load time and improve the user experience.

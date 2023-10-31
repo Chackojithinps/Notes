@@ -1,4 +1,5 @@
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
      Everything inside a javascript happens inside an execution context.
      inside execution context memory component and code component are there.(it is also know variable environment and theread of execution)
@@ -13,7 +14,7 @@
 
 --->Once javascript done it all works then Main exectution context also get deleted.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
 
 --->
 
@@ -65,7 +66,7 @@ Use code with caution. Learn more
 
 ]
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
 
 --->for the function that function code is allocated in the memory allocation phase.
 
@@ -73,13 +74,13 @@ Use code with caution. Learn more
      single threaded means js can execute one command at a time in a specific order.
 
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
 
 --->Hoisting means we can access the variable and functins even before we are initializing it .
 
 --->Scope means where we can access a specific variable and functins in our code 
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
 
 --->Why callstack?
     The call stack maintains the order of function calls
@@ -90,6 +91,8 @@ Use code with caution. Learn more
     When a function finishes executing, it's like removing a plate from the top of the stack, and the program goes back to the previous
     function in the stack to continue its execution.
     The call stack ensures that JavaScript executes functions in the order they were called.
+
+--------------------------------------------------------------------------------------------
 
 --->Event loop
     it plays a crucial role in handling asynchronous operations and events in a single-threaded environment.
@@ -105,10 +108,14 @@ Use code with caution. Learn more
      If JavaScript were to wait for each of these tasks to finish before moving on, it would make the entire application slow and unresponsive.
      The event loop helps solve this problem by allowing JavaScript to keep doing other tasks while waiting for these time-consuming operations to complete.
 
+--------------------------------------------------------------------------------------------
+
 --->Lexical environment is created whenever the the exectution context is created.
     Lexical environment is the local memory + the referece to the Lexical environment of the parent
     parent means where actually that code present.
     this whole chain of Lexical environment is called scope chain  
+
+--------------------------------------------------------------------------------------------
 
 --->let and const also allocating memmory (that is what Hoisting).but they are stored in different memory space than global and  
     we cant access this memeory space before we put values in them . The time where we are assigning values to that variable is temporary dead Zone.
@@ -116,6 +123,8 @@ Use code with caution. Learn more
     in the let and const also happening the Hoisting.but in if we trying to accss them even before we are initializing it , it will give a reference error. because
     it is not allocating memmory in global space. instead a script is there and there it is allcoating memmory. 
     so the time taking to  which we initializing the value to that variable is called tdz.
+
+--------------------------------------------------------------------------------------------
 
 --->Shadowing: Now, when a variable is declared in a certain scope having the same name defined on its outer scope and when we call the variable from the inner scope,
    the value assigned to the variable in the inner scope is the value that will be stored in the variable in the memory space. This is known as Shadowing or Variable Shadowing. 
@@ -154,8 +163,12 @@ Use code with caution. Learn more
          }
          this is the example of illegal shadowing
 
+--------------------------------------------------------------------------------------------
+
 --->let and const will be in block scope when we write let and const inside {}.(inside block like if condition).
     but var will be in global scope if we write inside {}.
+
+--------------------------------------------------------------------------------------------
 
 --->function along with its Lexical scope is bundled together to form a closure.
      a funciton bind with the variables of its outer funciton
@@ -170,11 +183,14 @@ Use code with caution. Learn more
     myFunc();
    Here it afer the makeFunc get deleted from the global exectution context the myFunc variable still rememebers it lexical scope.
 
+--------------------------------------------------------------------------------------------
+
 --->First-Class Function: A programming language is said to have First-class functions if functions in that language are treated 
    like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function.
    JavaScript treat function as a first-class-citizens. This means that functions are simply a value and are just another type of object.
 
 
+--------------------------------------------------------------------------------------------
 
 --->The main difference between Primitive and non-primitive data types is that Non-primitive data types are mutable, meaning that their values can be changed after they are created. 
     And Primitive data types are immutable, meaning that their values cannot be changed once they are created.
@@ -200,12 +216,17 @@ Use code with caution. Learn more
     cannot be accidentally or intentionally altered once created.
 
 
+--------------------------------------------------------------------------------------------
 
 
 --->Keyword
    a keyword is a reserved word that has a specific meaning and purpose in the language's syntax. 
 
+--------------------------------------------------------------------------------------------
+
 --->In programming, an identifier is a name used to identify a variable, function, class, object, or any other entity in the code.
+
+--------------------------------------------------------------------------------------------
 
 --->
 Optional chaining is a feature introduced in JavaScript (starting from ECMAScript 2020, also known as ES11) that provides a convenient way to access
@@ -222,8 +243,12 @@ const person = {
 const city = person.address?.city;
  If the object is null or undefined, the expression will short-circuit, and the result will be undefined, without throwing an error.
 
+--------------------------------------------------------------------------------------------
+
 ---> json.stringify() This method is used to convert a JavaScript object (or an array) into a JSON string.
      json.parse() -this method is used to convert a JSON string back into a JavaScript object (or array).
+
+--------------------------------------------------------------------------------------------
 
 --->Memoization is an optimization technique used in computer programming, including JavaScript, to improve the performance of functions by caching the
  results of expensive function calls. The primary goal of memoization is to avoid redundant computations and reduce the overall processing time by storing 
@@ -237,6 +262,8 @@ function is called with specific inputs, the memoization system first checks if 
  the cached result is returned directly without recomputing the function. If the result is not in the cache, the function is executed, and the result
   is stored in the cache for future use.
 
+--------------------------------------------------------------------------------------------
+
   --->IIFE stands for Immediately Invoked Function Expression. It is a JavaScript function that is defined and executed immediately after its creation. 
         (function() {
         // This code is wrapped in an IIFE and is executed immediately
@@ -247,7 +274,11 @@ function is called with specific inputs, the memoization system first checks if 
          IIFE functions are often used to encapsulate code and create private scopes for variables and functions.
         This helps prevent naming conflicts and keeps variables from polluting the global scope.
 
+--------------------------------------------------------------------------------------------
+
 ---> Type casting, also known as type conversion, is the process of converting a value from one data type to another.
+
+--------------------------------------------------------------------------------------------
 
 --->Higher-order functions are functions in programming languages that can take other functions as arguments, return functions as results, or both.
 
@@ -258,9 +289,12 @@ function is called with specific inputs, the memoization system first checks if 
     is a function that either takes one or more functions as arguments (callbacks) or returns a function as its result.
      In other words, it treats functions as first-class citizens.
 
+--------------------------------------------------------------------------------------------
+
 --->With call(), an object can use a method belonging to another object.
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+
 callback
 
 --->JavaScript is single threaded and synchronous
@@ -279,11 +313,15 @@ callback
     
 --->non-blocking refers to code that doesn't block execution.
 
+--------------------------------------------------------------------------------------------
+
 --->Why callback
     we know that javascript is synchronous. That means code will execute line by line. so if a large operation is want to perform then it will wait for that 
     particular line of code to complete. so this will affect the efficient and takes time. so using callback we are setting this Asynchronous. that means it wont wait 
     for the particular code .it will execute the next line of code.
     
+--------------------------------------------------------------------------------------------
+
 --->what is callback
 
     a callback is a function that is passed as an argument to another function and is intended to be executed at a later time or under specific conditions. Callbacks are commonly used in
@@ -307,11 +345,15 @@ callback
 In JavaScript, a callback function is a function that is passed as an argument to another function and is intended to be executed at a later point in time.
 The function receiving the callback can "call back" or execute the provided function once it has completed its task or when a certain event occurs.
 
+--------------------------------------------------------------------------------------------
+
 
 --->event loop 
     the event loop constantly checks if the call stack is empty. If it is, it takes the first task from the task queue (if there's any) and pushes it onto the call stack. This means that the next asynchronous task is processed when the call stack is empty.
     Asynchronous operations, such as reading from a file, making network requests, or handling user input, often take time to complete. Instead of waiting
     for these operations to finish, JavaScript can continue executing other tasks while keeping track of the callback function. 
+
+--------------------------------------------------------------------------------------------
 
 
 ---->Callback hell
@@ -346,6 +388,9 @@ The function receiving the callback can "call back" or execute the provided func
            })
         })
      })
+
+--------------------------------------------------------------------------------------------
+
 A Promise can have three possible states:
 
 Pending: The initial state when the Promise is created and the asynchronous operation is still in progress.
@@ -353,6 +398,8 @@ Pending: The initial state when the Promise is created and the asynchronous oper
 Fulfilled (Resolved): The state when the asynchronous operation is successfully completed, and the Promise has a resulting value. This is also known as "resolved."
 
 Rejected: The state when the asynchronous operation encounters an error or fails to produce the expected result.
+
+--------------------------------------------------------------------------------------------
 
 Promise.all() is a method in JavaScript that takes an array of Promises as input and returns a new Promise. This new Promise is fulfilled
 with an array containing the resolved values of all the input Promises, in the same order as the original array of Promises. If any of the input
@@ -449,11 +496,11 @@ const promise1 = new Promise((resolve,reject)=>{
    what ever the result of the first promise finished it will show that one. if it is resolved then it shows the resolved promise.
    if it is rejected then it shows the rejected one. 
 
+--------------------------------------------------------------------------------------------
 
 --->"Promisify" is a term used in JavaScript to describe the process of converting a function that uses callbacks into a function that returns a Promise. 
 
--------------------------------------------------------------------------------
-
+--------------------------------------------------------------------------------------------
 
 --->call()->we can borrow funcitons from other objects and use it with the data of some other object. so inside the call() we have to pass what the this 
 (this of that funciton) pointing to. 
@@ -504,7 +551,8 @@ eg:
                   res()
                   here it create a copy of Person funciton and bind with the name object and return the funciton which can be call late
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 ---->currying
      Currying is a technique used in JavaScript (and in functional programming in general) to transform a function that takes multiple
@@ -519,27 +567,30 @@ eg:
      const res  = multiply(3)
      res(3)
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 --->ternary operator
     ternary operator is a conditional operator.
     condition ? expressionIfTrue : expressionIfFalse
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 --->Nullish Coalescing Operator (??) 
     It's often used in cases where you want to provide a default value if a variable is null or undefined,
     const someValue = null; // or undefined or any other potentially falsy value
     const result = someValue ?? defaultValue;
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 --->spread Operator 
     In summary, the spread operator is used for spreading or unpacking values, while the rest operator is used for collecting values
      into arrays or variables. 
     https://chat.openai.com/c/7588db26-a174-41f0-97a1-ddf082f389ad
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
 
 --->rest operator
     The rest operator is used to collect multiple function arguments into a single array or to collect the remaining elements
@@ -555,7 +606,8 @@ eg:
     const [first, second, ...rest] = [1, 2, 3, 4, 5];
     // first = 1, second = 2, rest = [3, 4, 5]
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 --->Shallow copy
      (array1 and array2) that reference the same array in memory. 
@@ -566,7 +618,8 @@ eg:
     shallowCopy[2][0] = 99;
     console.log(originalArray); // Output: [1, 2, [99, 4]]
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 ---->Set Creating a Set
     const uniqueNumbers = new Set();
@@ -590,7 +643,8 @@ eg:
     for (const number of uniqueNumbers) {
     console.log(number);
     }
-----------------------------------------------
+
+--------------------------------------------------------------------------------------------
 
 ---->Map 
     A Map is a collection of key-value pairs where each key is associated with a value. Unlike objects, Map keys can be of any data type,
@@ -618,7 +672,9 @@ eg:
     for (const [key, value] of personMap) {
     console.log(`${key}: ${value}`);
     }
-----------------------------------------------
+
+--------------------------------------------------------------------------------------------
+
 
 ---->difference of map and object
      
@@ -628,7 +684,8 @@ eg:
      .The order of keys in an Object is not guaranteed to be preserved. 
      .in map it is preserved
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 --->Diff between null and undefined
     let myVariable = null; // Initializing myVariable as empty
@@ -636,7 +693,8 @@ eg:
     on the other hand, is a value that you can explicitly assign to a variable to indicate that it has no value or is empty.
 
     undefined is a primitive value that is automatically assigned to a variable that has been declared but hasn't been assigned any value.
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 --->Weakset
     In JavaScript, both WeakSet and WeakMap are specialized collections that allow you to store and manage objects 
@@ -644,7 +702,8 @@ eg:
     will automatically remove them because the references to them are weak.
 
     A WeakSet can only store objects as values. Primitive values (e.g., numbers, strings) are not allowed.
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
  
 --->WeakMap
     Key-Value Pairs: A WeakMap stores key-value pairs, where the keys are objects and the values can be of any data type
@@ -674,7 +733,8 @@ eg:
         // Because key1 is no longer referenced, it can be garbage collected,
         // and the corresponding entry in the WeakMap will automatically be removed.
         console.log(weakMap.get(key1)); // Output: undefined
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 ---->difference between the weakSet and Set
 
@@ -695,7 +755,8 @@ eg:
 
      WeakSet: A WeakSet can only store objects. Primitive values are not allowed.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 ---->difference between Map and weakMap
 
@@ -709,7 +770,8 @@ eg:
      it from being garbage collected if there are no strong references to it elsewhere in your code. Keys stored in a WeakMap are 
      not kept alive solely by the WeakMap.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 --->Factory funciton
 
@@ -755,7 +817,8 @@ eg:
 
         So, a factory function is like a template that helps you create objects with similar
          properties and behaviors without repeating yourself. It's a handy way to make objects in JavaScript!
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 --->Throatling
        Imagine you have a button, and every time you click it, a function runs. If you click the button multiple times very quickly,
@@ -767,7 +830,8 @@ eg:
         It's commonly used to optimize performance when dealing with events that can trigger rapidly, such as scroll events or resize events.
         no matter how fast you trigger it.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 debouncing
 
@@ -776,7 +840,8 @@ Debouncing is like waiting for a pause before taking action.
 If you press the button multiple times quickly, debouncing makes sure the function only runs once after you stop pressing for a moment.
 It's useful when you want to wait for a break in activity, like waiting for someone to finish typing in a search bar before searching.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
  Defer 
 
  Certainly! Let's break down the default behavior of script execution in more detail:
@@ -814,7 +879,8 @@ It's useful when you want to wait for a break in activity, like waiting for some
  section of the HTML, as they can delay the rendering of the visible content. To mitigate this issue, developers use techniques like the `async`
   and `defer` attributes to control when and how scripts are executed, allowing the browser to continue rendering the webpage while scripts load and run.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 Function composition
 
 Function composition in JavaScript is like building a sequence of actions by combining smaller functions. It's a way to take multiple functions and use
@@ -828,14 +894,16 @@ Spread peanut butter on one slice of bread.
 Add jelly on top of the peanut butter.
 Place another slice of bread on top.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 a literal is a direct way to write and represent a value in your code. It's like writing a value exactly
 as it is, without any calculations or extra steps.
 String Liter,Number Literals,Boolean Literes
 Number Literals is used to represent Numbers . like that others case also.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 
 Use Struct (strict mode)
@@ -855,7 +923,8 @@ console.log(x); // This line won't be reached due to the errors
 With strict mode enabled, both x and y cause errors because they are used without being declared. Strict mode helps you catch these kinds
  of issues early in development, making your code more reliable and less error-prone.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 Event bubbling is a concept in JavaScript where an event triggered on a nested or innermost element "bubbles" up through its ancestors
  in the DOM hierarchy, triggering their respective event handlers as well. This means that when an event occurs on an element inside another 
@@ -883,7 +952,8 @@ If you click on the "Inner Element," the event will first trigger the inner elem
  printing "Click event on inner element" to the console. Then, the event will bubble up to the outer element and 
  trigger its click event handler, printing "Click event on outer element" to the console.
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 Evetnt propagation
 
@@ -928,7 +998,8 @@ now the out put is
 "Outer Element Clicked - Capturing Phase"
 "Inner Element Clicked - Capturing Phase"
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 Generator function
 A generator function in JavaScript is a special type of function that can be paused and resumed during its execution. 
 It allows you to generate a sequence of values lazily, meaning you can produce values one at a time and only when needed, which 
@@ -947,7 +1018,8 @@ console.log(generat.next().value)
 console.log('hello')
 console.log(generat.next().value)
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 Regular Functions: Regular functions have their own this binding, which is determined by how the function is called.
  The value of this can vary based on the calling context (e.g., the object that calls the function or the global object).
@@ -955,7 +1027,8 @@ Regular Functions: Regular functions have their own this binding, which is deter
 Arrow Functions: Arrow functions do not have their own this binding. Instead, they inherit the this value from the surrounding
 lexical context (the context in which they were created). This can be advantageous in certain scenarios, such as when working
 with callbacks or event handlers.
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 A pure function always produces the same output for the same input. It doesn't rely on any external state or data that may change over time. 
 This property makes pure functions predictable, which is essential for debugging and testing.
@@ -963,10 +1036,13 @@ This property makes pure functions predictable, which is essential for debugging
 function add(a, b) {
   return a + b;
 }
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 do...while loop guarantees that the block of code will execute at least once, even if the condition is initially false.
-----------------------------------------------
+
+--------------------------------------------------------------------------------------------
+
 In JavaScript, the finally block is used in conjunction with try...catch to specify a block of code that should be executed
  regardless of whether an exception (error) was thrown or not. This is useful for performing cleanup operations or releasing
   resources that need to be done no matter what.
@@ -979,7 +1055,8 @@ try {
   // Code that will always run, whether there was an exception or not
 }
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+
 
 In pass by value, a copy of the actual data (the value) is passed to a function. This means that changes made to the parameter 
 inside the function don't affect the original variable outside the function.
@@ -1008,4 +1085,5 @@ doubleArray(numbers);
 
 console.log(numbers); // numbers is now [2, 4, 6]
 
-----------------------------------------------
+--------------------------------------------------------------------------------------------
+

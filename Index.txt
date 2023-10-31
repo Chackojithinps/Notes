@@ -155,7 +155,7 @@ NOde js--------------------------------------------------------------------
 .Clustering
 .measure the duration of async operations
 .measure the performance of async operations
-.Libuv.
+.Libuv
 .express async handler
 .Threadpool
 .Node concurrentcy
@@ -251,7 +251,7 @@ Mongo Db--------------------------------------------------------------------
 ●drop (collection) ---------To drop the collection
 ●remove({})  ---------remove all documents
 ●remove({name:"jitin"})
-db.users.find({},{name:1,place:1,_id:0}) ---field filtering
+●db.users.find({},{name:1,place:1,_id:0}) ---field filtering
 ●db.student.remove({age:{$eq:18}}, true)  delete only one
 ●db.student.deleteOne({age:17})
 ●deleteOne() first will delete
@@ -259,8 +259,7 @@ db.users.find({},{name:1,place:1,_id:0}) ---field filtering
 ●db.gfg.find().limit(2)
 ●db.gfg.find().skip(1)
 ●$exists
-      $elemMatch: {
-
+●$elemMatch
 ●db.contributor.find({name: {$in: ["Amit", "Suman"]}}).pretty() 
 ●Badge> db.users.find({$and:[{"place":"kannur"},{age:{$gte:20}}]})
 ●db.contributor.find({salary: {$not: {$gt: 2000}}}).pretty() 
@@ -301,8 +300,8 @@ REact---------------------------------------------------------------------------
 ● React Components. Types of components
 ● Props
 ● Render Props
-●parent child relationship
-●difference between state and variable
+● parent child relationship
+● difference between state and variable
 ● pure component
 ● ● ●  Higher order components
 ● Props drilling

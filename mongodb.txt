@@ -297,7 +297,8 @@ The query returns the students who have taken "Mathematics" and received a grade
     - MongoDB replication is the process of creating a copy of the same data set in more than one MongoDB server.This can be achieved by using a Replica Set.
       Replication in MongoDB is the process of creating and maintaining copies of the database across multiple servers
       If the primary node fails, one of the secondaries automatically becomes the new primary, providing seamless failover and allowing the database to remain operational.
-      In a replication setup, the minimum number of servers required to store data is two: one primary server and one secondary server 
+      In a replication setup, the minimum number of servers required to store data is two: one primary server and one secondary server
+
 ● Replic set-
    
      
@@ -382,7 +383,7 @@ The query returns the students who have taken "Mathematics" and received a grade
      Without transactions, if one operation succeeds and the other fails (e.g., due to a server error or network interruption), the system might
       end up in an inconsistent state where money is lost or duplicated.
 
-With transactions, you can combine these two operations into a single transaction. MongoDB ensures that either both the deduction and addition
+ With transactions, you can combine these two operations into a single transaction. MongoDB ensures that either both the deduction and addition
  happen successfully, or none of them happen, leaving the data in a consistent state. This means that if any part of the transaction fails,
   MongoDB will automatically roll back (undo) any changes made within that transaction.
 
@@ -409,38 +410,71 @@ condition. Otherwise, it will update only one document.
 ---------------------------------------------------------------
 
 
-Atomicity: Atomicity ensures that a transaction is treated as a single, indivisible unit of work. It means that a transaction is either fully completed or fully rolled back to its previous state. In other words, a transaction is all or nothing. If any part of the transaction fails, the entire transaction is rolled back, ensuring that the database remains in a consistent state.
+Atomicity: Atomicity ensures that a transaction is treated as a single, indivisible unit of work. It means that a transaction is either fully 
+completed or fully rolled back to its previous state. In other words, a transaction is all or nothing. If any part of the transaction fails, 
+the entire transaction is rolled back, ensuring that the database remains in a consistent state.
 
-Example: In a banking application, when transferring money from one account to another, atomicity ensures that both the withdrawal from one account and the deposit into another account happen as a single atomic transaction. If either part fails, the entire transaction is rolled back to prevent inconsistencies in account balances.
+Example: In a banking application, when transferring money from one account to another, atomicity ensures that both the withdrawal from one 
+account and the deposit into another account happen as a single atomic transaction. If either part fails, the entire transaction is rolled back 
+to prevent inconsistencies in account balances.
 
-Consistency: Consistency ensures that a transaction takes the database from one consistent state to another consistent state. It enforces data integrity constraints, such as primary key constraints, uniqueness constraints, and referential integrity. This property guarantees that the database remains in a valid state before and after the transaction.
+Consistency: Consistency ensures that a transaction takes the database from one consistent state to another consistent state. It enforces data 
+integrity constraints, such as primary key constraints, uniqueness constraints, and referential integrity. This property guarantees that the 
+database remains in a valid state before and after the transaction.
 
-Example: If a database enforces the rule that each student's ID must be unique, a consistency check ensures that no two students can have the same ID after a transaction is executed.
+Example: If a database enforces the rule that each student's ID must be unique, a consistency check ensures that no two students can have the 
+same ID after a transaction is executed.
 
-Isolation: Isolation ensures that concurrent transactions do not interfere with each other. It prevents one transaction from seeing the intermediate, uncommitted changes made by another transaction. Isolation levels, such as Read Uncommitted, Read Committed, Repeatable Read, and Serializable, define the level of isolation between transactions.
+Isolation: Isolation ensures that concurrent transactions do not interfere with each other. It prevents one transaction from seeing the intermediate, 
+uncommitted changes made by another transaction. Isolation levels, such as Read Uncommitted, Read Committed, Repeatable Read, and Serializable, 
+define the level of isolation between transactions.
 
-Example: Two users concurrently updating their profile information should not see each other's changes until the transactions are committed. Isolation prevents one user from reading the uncommitted changes made by the other.
+Example: Two users concurrently updating their profile information should not see each other's changes until the transactions are committed. 
+Isolation prevents one user from reading the uncommitted changes made by the other.
 
-Durability: Durability guarantees that once a transaction is committed, its changes are permanent and will survive any subsequent failures, such as system crashes or power outages. This is typically achieved by writing the changes to non-volatile storage, such as a hard drive.
+Durability: Durability guarantees that once a transaction is committed, its changes are permanent and will survive any subsequent failures, 
+such as system crashes or power outages. This is typically achieved by writing the changes to non-volatile storage, such as a hard drive.
+
+
+---------------------------------------------------------------
+In MongoDB, "views" refer to a feature that allows you to create virtual collections that are based on the documents from one or 
+more source collections. These virtual collections, known as "views," are read-only and do not store the data themselves. Instead, 
+they provide a dynamic way to access and query data from one or more source collections. MongoDB views are particularly useful when 
+you want to abstract, simplify, or reshape your data without altering the original source documents. Here's how views work in MongoDB:
+
+Creating Views:
+You can create a view using the db.createView() method or by using the MongoDB Compass GUI. When you create a view, you specify the source collection(s) and define an aggregation pipeline that determines how data is presented in the view.
+
+Example of creating a view in MongoDB using the db.createView() method:
 
 ---------------------------------------------------------------
 
 
+Auto-scaling in MongoDB typically refers to the ability to automatically adjust the capacity of a MongoDB cluster based on the changing 
+workload and resource requirements of your application. Auto-scaling can help ensure that your MongoDB deployment can handle increased 
+traffic and workloads without manual intervention. Here are some ways to achieve auto-scaling in MongoDB:
 
-Auto-scaling in MongoDB typically refers to the ability to automatically adjust the capacity of a MongoDB cluster based on the changing workload and resource requirements of your application. Auto-scaling can help ensure that your MongoDB deployment can handle increased traffic and workloads without manual intervention. Here are some ways to achieve auto-scaling in MongoDB:
+Sharding: MongoDB provides horizontal scalability through sharding. Sharding involves distributing data across multiple servers, known 
+as shards. As your data grows and the workload increases, you can add more shards to distribute the data and queries evenly. This can 
+be done dynamically, allowing for auto-scaling as needed.
 
-Sharding: MongoDB provides horizontal scalability through sharding. Sharding involves distributing data across multiple servers, known as shards. As your data grows and the workload increases, you can add more shards to distribute the data and queries evenly. This can be done dynamically, allowing for auto-scaling as needed.
-
-Replica Sets: While replica sets are primarily used for high availability and fault tolerance, they can also be part of an auto-scaling strategy. You can add or remove replica set members as your read traffic increases. These additional members can serve read queries, thus offloading the primary server.
+Replica Sets: While replica sets are primarily used for high availability and fault tolerance, they can also be part 
+of an auto-scaling strategy. You can add or remove replica set members as your read traffic increases. These additional 
+members can serve read queries, thus offloading the primary server.
 
 ---------------------------------------------------------------
 
-Concurrency in MongoDB refers to the ability of multiple operations or transactions to be executed simultaneously, allowing for multiple clients to read and write data concurrently. 
+Concurrency in MongoDB refers to the ability of multiple operations or transactions to be executed simultaneously, allowing 
+for multiple clients to read and write data concurrently. 
 
 ---------------------------------------------------------------
-lk write operations in MongoDB are a way to efficiently perform multiple write operations in a single batch, which can significantly improve the performance and reduce the overhead associated with executing individual write operations one at a time. MongoDB provides a bulk write API that allows you to perform bulk insert, update, delete, and replace operations. This is especially useful when dealing with large datasets or when you need to make multiple changes to the database simultaneously.
+bulk write operations in MongoDB are a way to efficiently perform multiple write operations in a single batch, which can significantly 
+improve the performance and reduce the overhead associated with executing individual write operations one at a time. MongoDB provides 
+a bulk write API that allows you to perform bulk insert, update, delete, and replace operations. This is especially useful when dealing 
+with large datasets or when you need to make multiple changes to the database simultaneously.
 ---------------------------------------------------------------
-In MongoDB, a "shard key" (also known as a shard field) is a field in a document that is used to determine how data is distributed across multiple shards in a sharded cluster.
+In MongoDB, a "shard key" (also known as a shard field) is a field in a document that is used to determine how data is distributed across 
+multiple shards in a sharded cluster.
 ---------------------------------------------------------------
 
 ---------------------------------------------------------------
