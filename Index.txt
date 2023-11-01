@@ -82,7 +82,7 @@ javascript
 .memoization
 .IIFE
 .control flow function
-.object.freeze object.searl()
+.object.freeze object.seal()
 .async defer
 
 NOde js--------------------------------------------------------------------

@@ -271,8 +271,13 @@ function is called with specific inputs, the memoization system first checks if 
         console.log(message);
         })();
 
-         IIFE functions are often used to encapsulate code and create private scopes for variables and functions.
-        This helps prevent naming conflicts and keeps variables from polluting the global scope.
+        Why Use IIFE:
+
+      a. Encapsulation: IIFE helps encapsulate your code. Variables declared inside an IIFE are not accessible from outside the function. 
+      This allows you to create private variables and avoid polluting the global scope.
+
+      b. Isolation: It can help isolate your code from the rest of the application, reducing the chances of naming conflicts and unintended 
+      side effects. This is especially important when working in a collaborative or large codebase.  
 
 --------------------------------------------------------------------------------------------
 
@@ -952,6 +957,7 @@ If you click on the "Inner Element," the event will first trigger the inner elem
  printing "Click event on inner element" to the console. Then, the event will bubble up to the outer element and 
  trigger its click event handler, printing "Click event on outer element" to the console.
 
+
 --------------------------------------------------------------------------------------------
 
 
@@ -1056,7 +1062,7 @@ try {
 }
 
 --------------------------------------------------------------------------------------------
-
+--->pass by value and pass by reference
 
 In pass by value, a copy of the actual data (the value) is passed to a function. This means that changes made to the parameter 
 inside the function don't affect the original variable outside the function.
@@ -1074,7 +1080,7 @@ console.log(result); // result is 10
 In pass by reference, a reference to the original data (the memory location) is passed to a function. This means that changes made to the 
 parameter inside the function affect the original variable outside the function.
 
-function doubleArray(arr) {
+eg1: function doubleArray(arr) {
   for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i] * 2;
   }
@@ -1085,5 +1091,101 @@ doubleArray(numbers);
 
 console.log(numbers); // numbers is now [2, 4, 6]
 
+eg:2
+
+let originalArray = [1, 2, 3];
+let referenceArray = originalArray; // referenceArray now points to the same array
+
+referenceArray.push(4); // Modifying referenceArray also affects originalArray
+
+console.log(originalArray); // Output: [1, 2, 3, 4]
+console.log(referenceArray); // Output: [1, 2, 3, 4]
+
 --------------------------------------------------------------------------------------------
 
+--->Object.freeze() and Object.seal()
+
+in JavaScript, Object.freeze() and Object.seal() are two methods used to control and restrict the mutability of 
+objects. They are used to prevent changes to the properties of an object in different ways. Let's explore each of them in detail with examples.
+
+Object.freeze():
+
+The Object.freeze() method is used to make an object immutable, which means that you cannot add, delete, or modify 
+its properties. Once an object is frozen, it remains in a fixed state, and any attempts to change it will be ignored.
+Here's the syntax for Object.freeze():
+
+javascript
+Copy code
+Object.freeze(obj);
+obj: The object you want to freeze.
+Example:
+
+javascript
+Copy code
+const person = {
+  name: 'John',
+  age: 30,
+};
+
+Object.freeze(person);
+
+// Attempting to modify a property will have no effect.
+person.name = 'Alice'; // This change is ignored
+person.address = '123 Main St'; // This addition is ignored
+
+// You can still access the existing properties.
+console.log(person.name); // Output: 'John'
+
+// You can also check if an object is frozen.
+console.log(Object.isFrozen(person)); // Output: true
+Object.freeze() also works recursively, so if an object property is an object itself, it will also be frozen.
+
+Object.seal():
+
+The Object.seal() method is used to create a "sealed" object. A sealed object allows property 
+values to be changed but prevents the addition or deletion of properties. In other words, you can 
+update existing properties, but you can't add new ones or remove existing ones.
+
+Here's the syntax for Object.seal():
+
+javascript
+Copy code
+Object.seal(obj);
+obj: The object you want to seal.
+Example:
+
+javascript
+Copy code
+const car = {
+  make: 'Toyota',
+  model: 'Camry',
+};
+
+Object.seal(car);
+
+// Modifying property values is allowed.
+car.model = 'Corolla';
+console.log(car.model); // Output: 'Corolla'
+
+// Adding a new property is not allowed.
+car.year = 2022; // This addition is ignored
+
+// Deleting an existing property is not allowed.
+delete car.make; // This deletion is ignored
+
+// You can still access the existing properties.
+console.log(car.make); // Output: 'Toyota'
+
+// You can also check if an object is sealed.
+console.log(Object.isSealed(car)); // Output: true
+Just like with Object.freeze(), Object.seal() works recursively, sealing all nested objects.
+
+In summary, Object.freeze() makes an object completely immutable, while Object.seal() allows you to modify property 
+values but prevents adding or deleting properties. Use these methods depending on your specific requirements for object 
+mutability in your JavaScript applications.
+
+--------------------------------------------------------------------------------------------
+--->Control flow functions
+
+Control flow is the order in which statements are executed in a program.
+eg:if else ,ternary , Switch, for loop ....etc
