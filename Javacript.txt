@@ -19,6 +19,9 @@
 --->
 
     when ever the javascript runs the global object also will created. that is window in case of browsers. 
+    The global object in JavaScript serves as a container for all global variables and functions in a JavaScript environment. 
+    It is accessible from any part of your JavaScript code, and it provides a set of properties and methods that are available globally.
+    
     in the global lever this === window
     when ever the execution context is created the this will also created along with execution context.
     [
@@ -109,6 +112,7 @@ Use code with caution. Learn more
      The event loop helps solve this problem by allowing JavaScript to keep doing other tasks while waiting for these time-consuming operations to complete.
 
 --------------------------------------------------------------------------------------------
+scope chain and lexical environment
 
 --->Lexical environment is created whenever the the exectution context is created.
     Lexical environment is the local memory + the referece to the Lexical environment of the parent
@@ -614,7 +618,7 @@ eg:
 --------------------------------------------------------------------------------------------
 
 
---->Shallow copy
+--->Shallow copy and deep copy
      (array1 and array2) that reference the same array in memory. 
      This means that changes made to the nested objects or arrays inside the shallow copy will also affect the original data and vice versa.
      const originalArray = [1, 2, [3, 4]];
@@ -622,6 +626,22 @@ eg:
     const shallowCopy = [...originalArray];
     shallowCopy[2][0] = 99;
     console.log(originalArray); // Output: [1, 2, [99, 4]]
+
+
+
+deep copy
+const originalObject = {
+  name: 'Alice',
+  age: 25,
+  hobbies: ['Reading', 'Painting'],
+};
+
+const deepcopy =  JSON.parse(JSON.stringify(originalObject))
+originalObject.hobbies.push("writing")
+
+console.log(originalObject)
+
+console.log(deepcopy)
 
 --------------------------------------------------------------------------------------------
 
@@ -914,7 +934,7 @@ Number Literals is used to represent Numbers . like that others case also.
 Use Struct (strict mode)
  It helps you catch common coding mistakes and prevents silent errors. For example, it makes sure you declare variables before using them.
  "use strict";
-
+  
 // This code runs with strict mode
 x = 10; // Error: x is not defined
 
@@ -1066,6 +1086,10 @@ try {
 
 In pass by value, a copy of the actual data (the value) is passed to a function. This means that changes made to the parameter 
 inside the function don't affect the original variable outside the function.
+In JavaScript, primitive data types (numbers, strings, booleans) are passed by value. When you assign a primitive 
+to a variable or pass it as an argument to a function, you're working with a copy of the original value. Modifying 
+the copy does not affect the original value.
+
 function doubleValue(num) {
   num = num * 2;
   return num;
@@ -1189,3 +1213,46 @@ mutability in your JavaScript applications.
 
 Control flow is the order in which statements are executed in a program.
 eg:if else ,ternary , Switch, for loop ....etc
+
+
+--------------------------------------------------------------------------------------------
+
+
+n the expression console.log(3-"3"), the string "3" is converted to a number using JavaScript's type coercion system. 
+Type coercion is the process of automatically converting values from one type to another when necessary.
+
+In this case, the subtraction operator (-) requires two numbers as operands. Since the operand "3" is a string, JavaScript 
+will automatically convert it to a number before performing the subtraction operation.
+
+
+--------------------------------------------------------------------------------------------
+function composition
+
+Function composition in JavaScript is a technique for combining multiple functions to create a new function. It allows you to apply a series of functions 
+to some input data, where the output of one function becomes the input for the next function, and so on. This can lead to more modular and reusable code 
+by breaking down complex operations into smaller, composable functions.
+
+// Two simple functions
+function double(x) {
+  return x * 2;
+}
+
+function addOne(x) {
+  return x + 1;
+}
+
+// Function composition
+function compose(fn1, fn2) {
+  return function (x) {
+    return fn2(fn1(x));
+  };
+}
+
+const doubleAndAddOne = compose(double, addOne);
+
+console.log(doubleAndAddOne(5)); // Output: 11 (5 * 2 + 1)
+
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------

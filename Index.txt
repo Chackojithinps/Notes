@@ -10,9 +10,11 @@ javascript
 .Shadowing
 .illegal shadowing
 .block scope,global scope,funciton scope
+.scope chain
 .closure
 .currying
 .First-class fucntion
+.Bom
 .array methods
 .string methods
 .map,filter,reduce,forEach
@@ -42,6 +44,7 @@ javascript
 .Event propagation
 .Generetor function
 .arrow function vs regular functions
+.Rest parameter ( … ):
 .pure funciton
 .settimeout vs setinterval 
 .Continue
@@ -60,6 +63,7 @@ javascript
 .passBy referece vs passBy value
 .keyword
 .identifier
+.Is javascript a statically typed or a dynamically typed language?
 .optional chaining
 .Type casting
 .Higher order functions
@@ -84,8 +88,10 @@ javascript
 .control flow function
 .object.freeze object.seal()
 .async defer
+.asynchronous function
+.fetch is asynchronous or not?
 
-NOde js--------------------------------------------------------------------
+NOde js --------------------------------------------------------------------
 
 .what is node js?
 .MVC
@@ -168,6 +174,7 @@ NOde js--------------------------------------------------------------------
 .Accept
 .api versioning
 .import and require
+.jagged array
 
 Mongo Db--------------------------------------------------------------------
 
@@ -192,6 +199,9 @@ Mongo Db--------------------------------------------------------------------
 ● aggregation pipeline
 ● AllowDiskuse
 ● Accumilators
+● Journaling
+● drawbacks of indexing
+●wildcard route
 ● Unary operators
 ● Lookup -
 ● MongoDB utilities
@@ -292,7 +302,7 @@ REact---------------------------------------------------------------------------
 
 
 ● Virtual dom , Dom
-● createRoot(),render().
+● createRoot(), render().
 ● strict mode
 ● JSX
 ● diffing
@@ -357,8 +367,18 @@ REact---------------------------------------------------------------------------
 ● webpack
 ● axios cancel token
 ● fetch vs axios
-● 
 
+● props.children
+●
+●
+●
+●
+●
+●
+●
+●
+●
+●
 
 
 

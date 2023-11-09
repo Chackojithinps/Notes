@@ -7,6 +7,8 @@ React allows us to create reusable UI components.
 
 ----------------------------------------------------------------------
 
+Strict Mode in React is a developer tool that helps you identify potential problems in your code. It runs in development mode only 
+and does not impact the production build.
 When you enable Strict Mode, your console will show warnings and errors that are meant to help you catch 
 and address issues early in the development process. 
 When you enable Strict Mode, your console will show warnings and errors that are meant to help you catch and address 
@@ -22,15 +24,16 @@ Instead of manipulating the browser's DOM directly, React creates a virtual DOM 
 before making the changes in the browser DOM.
 
 React only changes what needs to be changed!
+
 ----------------------------------------------------------------------
 ---> DOM
 
 In JavaScript, the Document Object Model (DOM) is a programming interface that represents the structure of a web page and
- allows you to interact with and manipulate the content and elements of that page.
-. It provides a structured representation of a web page, where each HTML element, attribute, and piece of content is represented as an object.
+allows you to interact with and manipulate the content and elements of that page.
+.It provides a structured representation of a web page, where each HTML element, attribute, and piece of content is represented as an object.
 Think of the DOM as a tree structure, where the entire web page is represented as a tree of nodes. The top node, or the root, is called the document object.
 HTML elements, such as headings (<h1>), paragraphs (<p>), and images (<img>), are represented as nodes in the DOM tree. Each node can have child nodes,
- which represent elements contained within it.
+which represent elements contained within it.
 
 ----------------------------------------------------------------------
 
@@ -1145,6 +1148,43 @@ React 18, on the other hand, introduces concurrent rendering. This new mode enab
 urgent tasks, like responding to user input. It's like having a superpower that allows React to be in multiple places at the same time.
 
 ----------------------------------------------------------------------
+
 Code splitting in Webpack is a technique used to optimize the performance and loading speed of web applications by splitting the code into smaller, 
 more manageable chunks. Instead of bundling the entire application into a single JavaScript file, you break it down into smaller parts and load 
 them on-demand as needed. This can significantly reduce the initial load time and improve the user experience.
+
+----------------------------------------------------------------------
+
+prop.children in React is a special property that allows child components to render whatever content was passed to them by their parent component.
+const ParentComponent = () => {
+  return (
+    <div>
+      <ChildComponent>
+        <h1>Hello, world!</h1>
+        <p>This is some text.</p>
+      </ChildComponent>
+    </div>
+  );
+};
+
+const ChildComponent = (props) => {
+  return (
+    <div>
+      {props.children}
+    </div>
+  );
+};
+----------------------------------------------------------------------
+
+The createRoot() function in React is used to create a root for a React application. A root is a DOM node that React will manage. 
+You can think of it as the point of entry for your React app into the DOM.
+
+There are a few reasons why you would use createRoot():
+
+To render React content into a DOM node.
+To hydrate React content that was rendered on the server.
+To use new features of React 18, such as concurrent rendering.
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+

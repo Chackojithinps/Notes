@@ -10,11 +10,63 @@
                  processes it, and interacts with the Model to retrieve the necessary data or update it as needed.
 
 ---------------------------------------------------------
+V8 Engine
+
+V8 is the JavaScript engine i.e. it parses and executes JavaScript code.
+V8 is known to be a JavaScript engine because it takes JavaScript code and executes it while browsing in Chrome. 
+It provides a runtime environment for the execution of JavaScript code. 
+
+---------------------------------------------------------
+Node js
+
+Node.js: Node.js is a server-side runtime environment for running JavaScript on the server. It is used for building server-side applications,
+ handling requests, performing server-side tasks, and managing server resources.
+
+---------------------------------------------------------
+Key features of node js
+
+Asynchronous and Event driven – All APIs of Node.js are asynchronous. This feature means that if a Node receives a request for some Input/Output operation, 
+it will execute that operation in the background and continue with the processing of other requests. Thus, it will not wait for the response from the previous requests.
+Fast in Code execution
+Single Threaded but Highly Scalable
+NPM - repository with huge amount of libraries, helps to find various solutions.
+
+---------------------------------------------------------
+
+ timing features of NodeJS
+
+setTimeout/clearTimeout - 
+
+Here is an example of how to use setTimeout() and clearTimeout() in JavaScript:
+
+JavaScript
+// Set a timeout to display a message after 2 seconds.
+const timeoutId = setTimeout(() => {
+  alert('This message will be displayed after 2 seconds.');
+}, 2000);
+
+// Clear the timeout if the user clicks the button.
+const button = document.querySelector('button');
+button.addEventListener('click', () => {
+  clearTimeout(timeoutId);
+});
+Use code with caution. Learn more
+If the user clicks the button before the timeout expires, the message will not be displayed.
+
+setInterval/clearInterval
+setImmediate/clearImmediate – execute code at the end of the current event loop cycle
+process.nextTick – schedule a callback function that needs to be invoked in the next iteration of the Event Loop
+Yes, process.nextTick() is also a timer function. It queues a callback function to be executed at the beginning of the next event loop cycle. 
+This means that the callback function will be executed after all of the pending I/O operations have been completed, but before any new I/O operations are started.
+
+---------------------------------------------------------
+
 
 --->REPL
       Read Evaluate Print Loop
       A REPL (Read-Eval-Print Loop) in Node.js is an interactive environment that allows you to enter JavaScript code, execute it,
       and immediately see the results.
+      REPL stands for "Read-Eval-Print Loop". It is a simple, interactive programming environment that allows you to execute code snippets and see the results immediately.
 ---------------------------------------------------------
 
 --->NPM 
@@ -294,6 +346,15 @@ It contains metadata about your project, such as its name, version, description,
    console.log('/api called with method: ', req.method);
    next();
    });
+
+   When you use app.all() to define a route, that route will match all HTTP methods (e.g., GET, POST, PUT, DELETE) for the specified path. 
+   The middleware or route handler you define for app.all() will run first for any request to that path, regardless of the HTTP method. 
+   After the app.all() middleware or handler is executed, the request will continue to be processed by other middleware and route handlers
+   defined for specific HTTP methods or additional routes.
+
+    So, if you want to perform some common tasks or apply specific logic to every request for a particular path, you can use app.all(). It's a way to 
+    create shared functionality that applies to all HTTP methods on a specific route. This is often used for tasks like logging, authentication checks, 
+    or request   preprocessing that are common to multiple HTTP methods for a given route.
 
 ---> Http vs Https
       HTTP and HTTPS are both communication protocols used for transmitting data over the internet
@@ -638,8 +699,19 @@ Let's say you have a function that makes HTTP requests to an external API. Inste
 you can create a stub for the HTTP request function. This stub can return predefined responses, allowing you to test how your code 
 handles different scenarios without making real network calls.
 
+In Node.js, stubs are basically the programs or functions that are used for stimulating the module or component behavior. During any test cases, 
+stubs provide the canned answers of the functions
+
+Features of Stub:
+
+Stubs can be either anonymous.
+Stubs can be wrapped into existing functions. When we wrap a stub into the existing function the original function is not called.
+Stubs are functions or programs that affect the behavior of components or modules.
+Stubs are dummy objects for testing.
+Stubs implement a pre-programmed response.
 
   -----------------------------------------------------------
+child process
 
 Child processes allow you to execute tasks in parallel with your main Node.js application. This is particularly useful for tasks
 that are CPU-bound (tasks that require a lot of computational power) because they can be run on separate CPU cores.
@@ -743,6 +815,9 @@ To enable clustering in Node.js, you typically use the built-in cluster module. 
 The master process listens for incoming network connections (e.g., HTTP requests) and distributes these connections among the worker processes.
 Each worker process is a separate Node.js instance that can handle requests independently.
 
+Clustering in Node.js refers to the ability to create a group of child processes that can share server ports and work together to handle incoming requests. Clustering is a way to 
+improve the performance and scalability of a Node.js application, by taking advantage of multiple CPU cores and distributing the workload across multiple processes.
+To create a cluster in Node.js, you can use the cluster module, which is part of the Node.js core. The cluster module allows you to create a master process
 -----------------------------------------------------------
 
 
@@ -1090,6 +1165,26 @@ Node.js: Node.js is an open-source, server-side runtime environment that allows 
 It is built on top of the V8 engine,
 
 -----------------------------------------------------------
+reactor pattern
+
+The reactor pattern is a design pattern that allows Node.js to handle multiple concurrent I/O operations without blocking the main thread. 
+It does this by using an event loop to monitor I/O resources and dispatch events to callback functions when data is available or an operation completes.
+simply we can say it is used in Node.js to handle asynchronous I/O operations
 -----------------------------------------------------------
+Event Emitter
+
+The EventEmitter class is a built-in class in Node.js that allows objects to emit events and register listeners for those events.
+.emit() - this method in event emitter is to emit an event in module
+.on() - this method is to listen to data on a registered event in node.js
 -----------------------------------------------------------
+load balancer
+
+A load balancer is a process that takes in HTTP requests and forwards these HTTP requests to one of a collection of servers. Load balancers are usually 
+used for performance purposes: if a server needs to do a lot of work for each request, one server might not be enough, but 2 servers alternating handling 
+incoming requests might.
+
+1. Using cluster module:
+ Using PM2:
+ using nginx
+ using expressjs
 -----------------------------------------------------------
