@@ -143,15 +143,25 @@
 //    console.log(value,person[value])
 // }
 
-function* generator(){
-   let a=1;
-   while(a<5){
-      yield ++a;
-   }
-}
+// function* generator(){
+//    let a=1;
+//    while(a<5){
+//       yield ++a;
+//    }
+// }
 
-const generate = generator()
-console.log(generate.next().value)
-console.log("Hello")
-console.log(generate.next().value)
-console.log(generate.next().value)
+// const generate = generator()
+// console.log(generate.next().value)
+// console.log("Hello")
+// console.log(generate.next().value)
+// console.log(generate.next().value)'
+
+function k(){
+   if(true){
+      console.log(a)
+      var a = 10;
+      console.log(a)
+   }
+   console.log(a)
+}
+k()
