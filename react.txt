@@ -220,6 +220,7 @@ between different views or pages without causing a full page refresh.
         <Route path="/contact" component={Contact} />
     </Switch>
 </Router>
+
 ----------------------------------------------------------------------
 ---> React.memo
 
