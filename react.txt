@@ -209,7 +209,6 @@ OpeUsing && Logical Operator:rator:
 
 ----------------------------------------------------------------------
 ---> React Router
-
 React Router is a popular library for handling routing and navigation in React applications
 with specific URLs. React Router is widely used for building single-page applications (SPAs) and provides a way to navigate
 between different views or pages without causing a full page refresh.
