@@ -87,7 +87,6 @@
 
 it's particularly useful when you have documents with arrays, and you want to find documents where a specific condition is met by an element within the array.
    $elemMatch allows you to filter documents based on specific conditions within an array field,
-   
    Sure, let's go through an example of how $elemMatch works with a dataset. Consider a MongoDB collection of "students," and each document represents a student with information about their courses. Here's a sample dataset:
 
 [
@@ -270,7 +269,7 @@ The query returns the students who have taken "Mathematics" and received a grade
         specify the collection's maximum size in bytes and the maximum number of documents it would store.
         Syntax- isCapped()
         db.createCollection("collectionName", { capped: true, size: maxSizeInBytes })
-        Once the collection reaches its size limit, new documents will replace the oldest ones.
+        Once the  rcollectioneaches its size limit, new documents will replace the oldest ones.
 
 ●  cap theorm
        The CAP Theorem is a concept that a distributed database system can only guarantee two out of three characteristics: Consistency, Availability, and Partition tolerance.
@@ -304,13 +303,12 @@ The query returns the students who have taken "Mathematics" and received a grade
      
 ● Normalisation
     helps to avoid repeating the same information multiple times, making your data more efficient and easier to manage. 
-    The goal of normalization is to minimize data duplication and ensure that each piece of information is stored only once, in the most appropriate place.
+    The goal of normalization is to mini  mize data duplication and ensure that each piece of information is stored only once, in the most appropriate place.
 
     Normalized (With Normalization):
       In a normalized structure, you create two separate collections: one for "products" and another for "categories." Each product document will only store a reference to the category it belongs to using a unique category ID:
 
       Collection: "categories"
-
             {
             "_id": 1,
             "name": "Electronics"
@@ -437,6 +435,7 @@ such as system crashes or power outages. This is typically achieved by writing t
 
 
 ---------------------------------------------------------------
+
 In MongoDB, "views" refer to a feature that allows you to create virtual collections that are based on the documents from one or 
 more source collections. These virtual collections, known as "views," are read-only and do not store the data themselves. Instead, 
 they provide a dynamic way to access and query data from one or more source collections. MongoDB views are particularly useful when 
@@ -444,11 +443,9 @@ you want to abstract, simplify, or reshape your data without altering the origin
 
 Creating Views:
 You can create a view using the db.createView() method or by using the MongoDB Compass GUI. When you create a view, you specify the source collection(s) and define an aggregation pipeline that determines how data is presented in the view.
-
 Example of creating a view in MongoDB using the db.createView() method:
 
 ---------------------------------------------------------------
-
 
 Auto-scaling in MongoDB typically refers to the ability to automatically adjust the capacity of a MongoDB cluster based on the changing 
 workload and resource requirements of your application. Auto-scaling can help ensure that your MongoDB deployment can handle increased 
@@ -468,13 +465,17 @@ Concurrency in MongoDB refers to the ability of multiple operations or transacti
 for multiple clients to read and write data concurrently. 
 
 ---------------------------------------------------------------
+
 bulk write operations in MongoDB are a way to efficiently perform multiple write operations in a single batch, which can significantly 
 improve the performance and reduce the overhead associated with executing individual write operations one at a time. MongoDB provides 
 a bulk write API that allows you to perform bulk insert, update, delete, and replace operations. This is especially useful when dealing 
-with large datasets or when you need to make multiple changes to the database simultaneously.
+with large datasets orex when you need to make multiple changes to the database simultaneously.
+
 ---------------------------------------------------------------
+
 In MongoDB, a "shard key" (also known as a shard field) is a field in a document that is used to determine how data is distributed across 
 multiple shards in a sharded cluster.
+
 ---------------------------------------------------------------
 
 ---------------------------------------------------------------

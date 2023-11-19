@@ -269,6 +269,10 @@ Mongo Db--------------------------------------------------------------------
 ●db.gfg.find().limit(2)
 ●db.gfg.find().skip(1)
 ●$exists
+			// Find documents where the "age" field exists
+			db.users.find({ "age": { $exists: true } })
+unset
+regex
 ●$elemMatch
 ●db.contributor.find({name: {$in: ["Amit", "Suman"]}}).pretty() 
 ●Badge> db.users.find({$and:[{"place":"kannur"},{age:{$gte:20}}]})
@@ -286,7 +290,6 @@ Mongo Db--------------------------------------------------------------------
 					{$pullAll: {language: ["Java", "C#", "Python"]}})
 
 ●IN and All
-
 ● db.users.aggregate([{$group:{_id:"$place"}}])
 ● db.users.aggregate([{$match:{category:"Human"}},{$group:{"place":"kannur"}}])
 ● db.users.aggregate([{$project:{name:1,place:1,_id:0}}])
