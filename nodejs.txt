@@ -1188,3 +1188,14 @@ incoming requests might.
  using nginx
  using expressjs
 -----------------------------------------------------------
+Nginx is a popular web server and reverse proxy server. In simpler terms:
+
+Web Server: Nginx can serve as a web server, meaning it can handle incoming requests from clients (such as web browsers) and respond by 
+serving web pages, images, and other content. It can handle static content very efficiently.
+
+Reverse Proxy: Nginx can also work as a reverse proxy. This means it sits between client devices and a web server, forwarding client 
+requests to the server and returning the server's responses back to the clients. It helps distribute incoming requests 
+among multiple servers, improving performance and reliability.
+
+Load Balancing: When a website or application receives a lot of traffic, multiple servers may be used to balance the load. 
+Nginx can distribute incoming requests among these servers, ensuring that no single server is overwhelmed.

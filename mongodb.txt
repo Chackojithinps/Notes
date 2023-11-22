@@ -478,6 +478,10 @@ multiple shards in a sharded cluster.
 
 ---------------------------------------------------------------
 
+In MongoDB, geospatial indexing allows for efficient storage and querying of geospatial data. 
+location-based queries
+
 ---------------------------------------------------------------
+
 ---------------------------------------------------------------
 ---------------------------------------------------------------

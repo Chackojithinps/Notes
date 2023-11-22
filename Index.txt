@@ -176,6 +176,7 @@ NOde js --------------------------------------------------------------------
 .import and require
 .jagged array
 
+
 Mongo Db--------------------------------------------------------------------
 
 ● what is mongoDb?
@@ -201,7 +202,7 @@ Mongo Db--------------------------------------------------------------------
 ● Accumilators
 ● Journaling
 ● drawbacks of indexing
-●wildcard route
+● wildcard route
 ● Unary operators
 ● Lookup -
 ● MongoDB utilities
@@ -289,7 +290,7 @@ regex
 ●db.contributor.update({name: "Rohit"}, 
 					{$pullAll: {language: ["Java", "C#", "Python"]}})
 
-●IN and All
+● IN and All
 ● db.users.aggregate([{$group:{_id:"$place"}}])
 ● db.users.aggregate([{$match:{category:"Human"}},{$group:{"place":"kannur"}}])
 ● db.users.aggregate([{$project:{name:1,place:1,_id:0}}])
@@ -300,9 +301,7 @@ regex
 ● $regex - db.person.find({name: {$regex:/rel$/i}}) if name ends with rel then that document shows.
 
 
-
 REact------------------------------------------------------------------------------
-
 
 ● Virtual dom , Dom
 ● createRoot(), render().
@@ -315,8 +314,8 @@ REact---------------------------------------------------------------------------
 ● Render Props
 ● parent child relationship
 ● difference between state and variable
-● pure component
-● ● ●  Higher order components
+● pure component 
+● ● ●  Higher order components 
 ● Props drilling
 ● React Conditional Rendering
 ● React Lists
