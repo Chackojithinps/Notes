@@ -259,7 +259,7 @@ Mongo Db--------------------------------------------------------------------
 ●sort
 ●count or countDocuments
 ●db.users.countDocuments({place:"kannur"})
-●drop (collection) ---------To drop the collection
+●drop (collection) --------- To drop the collection
 ●remove({})  ---------remove all documents
 ●remove({name:"jitin"})
 ●db.users.find({},{name:1,place:1,_id:0}) ---field filtering
