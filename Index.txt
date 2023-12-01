@@ -253,7 +253,7 @@ Mongo Db--------------------------------------------------------------------
 ●update - upsert
 ●db.users.updateOne({name:"Justin Thomas"},{$set:{place:"kannur",age:13}},{upsert:true})
 ●update - multi
-●update 
+●update  
 ●updateOne
 ●updteMany
 ●sort
