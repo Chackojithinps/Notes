@@ -1,0 +1,17 @@
+--> How data is stored
+Stores data in tables
+Columns
+Rows
+
+-->Relational Database 
+it is called relational database because two ore more tables have some kind of ralationship between them.
+
+-->Psql is an Object-relational database management system\
+
+-->password --> 12345 port --> 5432
+
+-->connect to database 
+1.Gui client
+2.Terminal or command line.
+3.Application
+

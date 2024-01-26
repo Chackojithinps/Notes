@@ -261,8 +261,8 @@ Mongo Db--------------------------------------------------------------------
 ●db.users.countDocuments({place:"kannur"})
 ●drop (collection) --------- To drop the collection
 ●remove({})  ---------remove all documents
-●remove({name:"jitin"})
-●db.users.find({},{name:1,place:1,_id:0}) ---field filtering
+●remove({name:"jithin"})
+●db.users.find({},{name:1,place:1,_id:0}) --- field filtering
 ●db.student.remove({age:{$eq:18}}, true)  delete only one
 ●db.student.deleteOne({age:17})
 ●deleteOne() first will delete
