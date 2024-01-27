@@ -15,3 +15,5 @@ it is called relational database because two ore more tables have some kind of r
 2.Terminal or command line.
 3.Application
 
+-->CREATE DATABASE test; 
+for creating new Database
