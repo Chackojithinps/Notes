@@ -29,3 +29,25 @@ for deleteing database
 - CREATE TABLE table name (
      Column name + data type + constraints if any.
   )
+
+  eg:
+    CREATE TABLE person (
+        id int,
+        first name VARCHAR (50),
+        last name VARCHAR (50),
+        gender VARCHAR(6),
+        date of birth Date,
+   )
+
+-\d - to show all tables in database
+- \d person ->we will get the details of person Table
+
+-->Creating tables with constraints
+
+CREATE TABLE person (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    first name VARCHAR (50) NOT NULL,
+    last_name VARCHAR (50) NOT NULL,
+    gender VARCHAR (5) NOT NULL,
+    date of birth DATE NOT NULL,
+)
