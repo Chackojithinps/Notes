@@ -51,3 +51,42 @@ CREATE TABLE person (
     gender VARCHAR (5) NOT NULL,
     date of birth DATE NOT NULL,
 )
+
+-->Id actually uniquely identifying a data in actual table
+
+-->DROP TABLE person --> Deletes the table person
+
+-->BIGSERIAL is an auto increment number.so we dont have to keep on remembering the previous number
+
+-->How to insert records into tables
+
+INSERT INTO person (
+    first_name,
+    last_name,
+    gender,
+    test date of birth)
+    VALUES ('Anne', 'Smith', 'FEMALE' DATE 1988-01-09'
+);
+
+-\dt for showing only tables not sequece
+
+-\i /Users/HP/Downloads/person2.sql (path of folder) --> to 
+-SELECT * FROM person -> read every records from table person
+-SELECT FROM person ->it actually shows the number of rows present in table person. dont show the data
+-SELECT first_name from person ->shows only first name
+-SELECT first_name,last_name from person ->shows only first name
+
+-ORDER BY ->for sorting
+-select * from person2 order by country_of_birth; it will sort in ascending order.
+-select * from person2 order by country_of_birth desc ->for descending order.
+
+-Distinct ->for getting the Distinct VALUES. or avoinding the duplicates datas . 
+-select distinct country_of_birth from person2 order by country_of_birth
+
+-where ->filter data based on conditions.
+-select * from person2 where country_of_birth='india';
+-select * from person2 where gender = 'Male' and (country_of_birth = 'Poland' or country_of_birth = 'usa');
+-select * from person2 where gender = 'Male' and (country_of_birth = 'Poland' or country_of_birth = 'China') and first_name = 'Brose';
+
+-Comparison Operators
+-
