@@ -89,4 +89,7 @@ INSERT INTO person (
 -select * from person2 where gender = 'Male' and (country_of_birth = 'Poland' or country_of_birth = 'China') and first_name = 'Brose';
 
 -Comparison Operators
--
+-select 1=1
+   t;(true)
+-select 1<>2 (not equel to)
+ t
