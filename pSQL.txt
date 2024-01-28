@@ -15,5 +15,17 @@ it is called relational database because two ore more tables have some kind of r
 2.Terminal or command line.
 3.Application
 
+.\c test(databsename) -->for connecting in 
+
 -->CREATE DATABASE test; 
 for creating new Database
+
+-->DROP DATABASE test;
+for deleteing database
+
+
+-->Create tables 
+
+- CREATE TABLE table name (
+     Column name + data type + constraints if any.
+  )
