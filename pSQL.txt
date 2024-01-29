@@ -93,3 +93,107 @@ INSERT INTO person (
    t;(true)
 -select 1<>2 (not equel to)
  t
+
+ -LIMIT, OFFSET, AND FETCH 
+ -select * from person2 limit 10 ->shows first 10 data
+ -select * from person2 offset 5 limit 5; ->skip first 5 and then limit the data to 5.
+ -select * from person2 fetch first 1 row only ->show only first 1 data.(same as limit)
+
+ -IN
+ -select * from person2 where country_of_birth in ('China','Poland');
+
+ -Between ->to select a data from a range
+ -select * from person2 where date_of_birth between date '2024/01/01' and '2024/01/30';
+
+ -LIKE AND ILIKE -> 
+-select * from person2 where email like '%.fr'; gives the data which is ending with .fr
+-select * from person2 where email like '%google.%'; give the data where anywhere google. is present
+-select * from person2 where email like 'P% ->starting with P
+-select * from person2 where email ilike 'p% ->starting with P (case senstive)
+
+Group BY
+-select country_of_birth, count(*) from person2 group by country_of_birth order by country_of_birth;
+
+         country_of_birth         | count
+----------------------------------+-------
+ Afghanistan                      |     4
+ Albania                          |     4
+ American Samoa                   |     1
+ Bahamas                          |     1
+ Bangladesh                       |     4
+      
+-HAVE ->For doing an extra filter
+-select country_of_birth,count(*) from person2 group by country_of_birth having count(*) >12 order by country_of_birth;
+
+Calculating Min, Max & Average,sum
+- select max(price) from car1;
+- select min(price) from car1;
+- select avg(price) from car1;
+- select round(avg(price)) from car1;
+- select make, min(price) from car1 group by make order by make;
+- select sum(price) from car1;
+- SELECT make,SUM(price) FROM car1 GROUP BY make ORDER BY make;
+
+ARITHMETIC Operators
+- select 10 + 2;
+- select 10 - 2;
+- select 10 * 2;
+- select 10 / 2;
+- select 10 ^ 2; (power of )
+- select 10!; factorial
+- select 10 % 3; gives reminder VALUE;
+-  select id,make,model,price, round(price * .10,2) from car1; here 2 is how many decimal places. example 
+test=# select id,make,model,price, round(price * .10,2) from car1;
+
+  id  |     make      |          model          |   price   |  round
+------+---------------+-------------------------+-----------+----------
+    1 | Saab          | 900                     | 604045.00 | 60404.50
+    2 | Mazda         | Protege                 |  94369.00 |  9436.90
+
+- select id,make,model,price, round(price * .10,2),round(price - price * .10,2) from car1;
+
+  id  |     make      |          model          |   price   |  round   |   round
+------+---------------+-------------------------+-----------+----------+-----------
+    1 | Saab          | 900                     | 604045.00 | 60404.50 | 543640.50
+    2 | Mazda         | Protege                 |  94369.00 |  9436.90 |  84932.10
+
+- Here is round is the column name because if we dont specify any column name then it will give function name for Columns
+- we can use the alias keyword for overwriting any column,using as
+- select id,make,model,price as original_price, round(price * .10,2) as percentage,round(price - price * .10,2) as after_offer from car1;
+
+Coalesce
+- allows us to have default value in case if first one is not present.
+- select coalesce(1); output is 1.
+- select coalesce(null,1); here first one is null, so it gives the one.
+- select coalesce(null,null,1); if first is null,take second val,if that is null take third and so on..
+- select coalesce(null,null,1,10); it will take the first value there. so here is 1.
+- select id,first_name,last_name,coalesce(email,'not provided') from person2;
+
+Nullif
+- if both values are same it will gives nothing.
+- if both are diff then it gives first argument
+- select nullif(10,10) - nothing will give;
+- select nullif(100,66) - it will give 100.
+
+Timestamp and date
+
+- select now(); ->Timestamp
+- select now()::date;
+- select now()::time;
+
+Adding and substracting with dates.
+
+- select now() - interval '1 year'
+- select now() - interval '10 months'
+- select now() - interval '10 days'
+- select now() + interval '10 days;
+- select now()::date + interval '10 days; here we will get the date.
+- select (now() + interval '10 days)::date; - we will get the date only not time(00:00:00)
+
+extracting fields
+
+- select extract(year from now())
+- select extract(day from now())
+- select extract(dow from now()) -day of week - sunday-0,monday-1;
+- selcet first_name,date_of_birth,age(now(),date_of_birth) as age from person2
+
