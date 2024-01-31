@@ -259,4 +259,6 @@ Inner joins
 LEft joins
 - select * from person3 left join car3 on person3.car_id = car3.id;
 
-if a colums is REFERENCEd then it cant be dleted. for example two tables A and B here 
+- if a colums is REFERENCEd then it cant be dleted. for example two tables A and B here id 1 is referenced to id 4 of table a. 
+  now if we try to delete a row from B we cant.
+  delete from B where id = 4; -> this wont delete. 
