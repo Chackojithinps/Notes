@@ -196,4 +196,67 @@ extracting fields
 - select extract(day from now())
 - select extract(dow from now()) -day of week - sunday-0,monday-1;
 - selcet first_name,date_of_birth,age(now(),date_of_birth) as age from person2
+PRIMARY KEY
 
+- primary key is a value which uniquely identifies a record in the table
+- ALTER TABLE car1 DROP CONSTRAINT car1_pkey; -> for removing the primary key;
+- ALTER TABLE car1 ADD PRIMARY KEY(id) -> for adding primarykey. here primary key is taking arary of values . (if need to add primary key to 
+  multiple columns then we can use like PRIMARY KEY(ID,first_name,last_name))
+- DELETE FROM car1 where id = 1; ->For deleteing the id = 1;
+- unique constraints is used to confirm that each column have unique values.
+- alter table person2 add constraint unique_email unique(email);
+- alter table person2 drop constraint unique_email
+- alter table person2 add unique(email) ->another way of adding unique constraint;here constraint name given by psql
+
+check constraint;
+
+-ALTER TABLE person2 ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male') ->here 
+ when we add a record then it should be either Male or Female
+
+Delete record;
+
+- Delete from person2 ->every thing will get deleted
+- delete from person2 where id == 3;
+- delete from person2 where gender = 'male' and  country_of_birth = 'Poland';
+
+update record;
+- update person set email = 'alan@gmail.com' ->every emai will get update with this email
+- update person set email = 'alan@gmail.com' where id= 34;
+- update person set first_name = 'jithin',last_name='chacko' where id = 356;
+
+On conflict
+
+- insert into person2 (first_name, last_name, email, gender, date_of_birth, country_of_birth)
+  values ('Loria', 'Overstreet', 'loverstreet0@blogtalkradio.com', 'Female', '2018-12-30', 'United Kingdom')
+  on conflict(email) do nothing;
+  this will work if the thing we pass inside on conflict will be either primary key or unique key, it will work with multiple columns.
+- insert into person2 (first_name, last_name, email, gender, date_of_birth, country_of_birth)
+  values ('Loria', 'Overstreet', 'loverstreet0@blogtalkradio.com', 'Female', '2018-12-30', 'United Kingdom')
+  on conflict(email) do update email = excluded.email , last_name = excluded.last_name; 
+  Here the value will update from the exculuded one(which is not taken here)
+
+Foreign key relationship
+
+- create table person3 (
+	id BIGSERIAL NOT NULL,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL,
+	email VARCHAR(50),
+	gender VARCHAR(50) NOT NULL,
+	date_of_birth DATE NOT NULL,
+	country_of_birth VARCHAR(50) NOT NULL,
+	car_id BIGINT REFERENCES car3(id),UNIQUE(car_id)
+);
+- update person3 set car_id = 10 where id = 4;
+
+Inner joins
+- it actually a way to combining two tables.
+- select * from person3 join car3 on person3.car_id = car3.id;
+- select person3.first_name,person3.gender,car3.make,car3.price from person3 join car3 on person3.car_id = car3.id;
+- select person3.first_name,person3.gender,car3.make,car3.price from person3 join car3 on person3.car_id = car3.id where car.* = null;
+  here it gives that null one which have no REFERENCES
+
+LEft joins
+- select * from person3 left join car3 on person3.car_id = car3.id;
+
+if a colums is REFERENCEd then it cant be dleted. for example two tables A and B here 
